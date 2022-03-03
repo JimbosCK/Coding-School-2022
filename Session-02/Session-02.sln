@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coding-School-2022", "Coding-School-2022.csproj", "{9A0BEF46-9B02-46C5-9283-AF4BC5BA2A22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Session-02", "Session-02.csproj", "{9A0BEF46-9B02-46C5-9283-AF4BC5BA2A22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
