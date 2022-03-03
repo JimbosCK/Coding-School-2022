@@ -32,7 +32,7 @@ TimeSpan t = TimeSpan.FromSeconds(totalSeconds);
 years = (totalSeconds / (60 * 60 * 24 * 365));
 string answerFromSeconds = string.Format("{0} years|{1} days|{2} hours|{3} minutes|{4} seconds.\n",
     years,
-    t.Days,
+    (ulong)t.Days - years*365,
     t.Hours,
     t.Minutes,
     t.Seconds);
