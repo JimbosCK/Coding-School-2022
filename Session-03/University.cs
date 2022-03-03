@@ -15,7 +15,7 @@ namespace Session_03 {
         {
             Students = new Student[30];
             Courses = new Course[20];
-            Grades = new Grade[600];
+            Grades = new Grade[600]; // numOfCourses * numOfStudents
             ScheduledCourses = new Schedule[60];
         }
 
