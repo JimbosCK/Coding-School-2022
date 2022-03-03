@@ -11,7 +11,10 @@ namespace Session_03 {
         public Guid CourseID { get; }
         public int Value { get; set; } //Grade
 
+        public Grade()
+        {
 
+        }
         public Grade( Guid _studentID, Guid _courseID)
         {
             ID = Guid.NewGuid();
