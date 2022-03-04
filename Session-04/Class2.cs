@@ -21,9 +21,9 @@ namespace Session_04 {
             return sum;
         }
 
-        public int CalculateProduct(int num)
+        public double CalculateProduct(int num)
         {
-            int product = 1;
+            double product = 1;
             if (num < 1) { product = 0; }
 
             for (int i = 2; i <= num; i++)
