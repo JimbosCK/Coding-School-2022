@@ -15,7 +15,17 @@ Console.WriteLine($"Reversed String: {reverser.ReverseString(inputString)}\n");
 Console.WriteLine("-2-\nPlease enter a positive integer: ");
 inputString = Console.ReadLine();
 
-int inputInt = Convert.ToInt32(inputString);
+int inputInt;
+try
+{
+    inputInt = Convert.ToInt32(inputString);
+}
+catch (System.FormatException)
+{
+    inputInt = 0;
+    Console.WriteLine("Error!: Not an integer received.\n");
+}
+
 
 var calculator = new Class2();
 
@@ -24,9 +34,19 @@ Console.WriteLine($"Calculated sum(1...{inputInt}): {calculator.CalculateSum(inp
 
 //--------- 3 ---------
 Console.WriteLine("-3-\nPlease enter a positive integer: ");
-inputString = Console.ReadLine();
 
-inputInt = Convert.ToInt32(inputString);
+
+inputString = Console.ReadLine();
+try
+{
+    inputInt = Convert.ToInt32(inputString);
+}
+catch (System.FormatException)
+{
+    inputInt = 0;
+    Console.WriteLine("Error!: Not an integer received.\n");
+}
+
 
 var primeCalculator = new Class3();
 
@@ -43,4 +63,18 @@ resultArray = arrayMultiplicator.Multiply2_4(Array1, Array2);
 
 for (int i = 0; i < 16; i++){
     Console.Write(resultArray[i] + ", ");
+}
+
+//--------- 5 ---------
+int[] Array = {0, -2, 1, 20, -31, 50, -4, 17, 89, 100 };
+var sorter = new Class5();
+
+int[] resultArray1 = new int[Array.Length];
+resultArray1 = sorter.SortInsertion(Array);
+
+Console.WriteLine("\n\n-5-");
+
+for (int i = 1; i < resultArray1.Length; ++i)
+{
+    Console.Write(resultArray1[i] + ", ");
 }
