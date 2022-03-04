@@ -19,7 +19,6 @@ namespace Session_04 {
                 for (int j = 0; j < 4; j++)
                 {
                     resultArray[(i * 4) + j] = array1[i] * array2[j];
-                    //Console.WriteLine($"i*j= {i * j} | array1[i] * array2[j] = {array1[i] * array2[j]}");
                 }
             }
 
