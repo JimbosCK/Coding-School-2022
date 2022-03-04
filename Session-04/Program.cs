@@ -11,4 +11,13 @@ reverser.ReverseString(inputString);
 Console.WriteLine($"Reversed String: {reverser.ReverseString(inputString)}");
 
 
+//--------- 2 ---------
+Console.WriteLine("Please enter a string: ");
+inputString = Console.ReadLine();
 
+int inputInt = Convert.ToInt32(inputString);
+
+var calculator = new Class2();
+
+Console.WriteLine($"Calculated sum: {calculator.CalculateSum(inputInt)}\n" +
+    $"Calculated product: {calculator.CalculateProduct(inputInt)}");
