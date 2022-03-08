@@ -13,17 +13,14 @@ namespace Session_05 {
 
         public MessageLogger() { Messages = new Message[_maxMessagesStored]; }
 
-        public string ReadAll()
-        {
+        public string ReadAll() {
             return GenerateLogOutput();
         }
 
-        private string GenerateLogOutput()
-        {
+        private string GenerateLogOutput() {
             string messageLog = String.Empty;
 
-            for (int i = 0; i < _numberOfMessagesStored; i++)
-            {
+            for (int i = 0; i < _numberOfMessagesStored; i++) {
                 messageLog += Messages[i].Text + "\n";
             }
 
