@@ -95,7 +95,7 @@ namespace Session_05 {
             try
             {
                 string[] words = str.Split(' ');
-                for (int i = 0; i < words.Length+1; i++)
+                for (int i = 0; i < words.Length; i++)
                 {
                     if (words[i] != String.Empty)                    {
                         numOfWords++;

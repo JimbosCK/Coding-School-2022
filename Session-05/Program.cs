@@ -23,7 +23,7 @@
 var resolver = new ActionResolver();
 var response = new ActionResponse();
 var request1 = new ActionRequest() {
-    Input = null,
+    Input = "there is a light that never goes out ",
     Action =ActionEnum.Uppercase
 };var request2 = new ActionRequest()
 {
