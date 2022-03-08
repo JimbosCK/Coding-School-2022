@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Session_05 {
+
     internal class ActionResolver : Resolver{
 
         public MessageLogger Logger{ get; set; }
@@ -20,6 +21,9 @@ namespace Session_05 {
 
             switch (request.Action) {
                 case ActionEnum.Convert:
+                    response.Output = DecimalToBinary(request.Input);
+                    LogEvent(request.RequestID, request.Input, response.Output, request.Action, DateTime.Now);
+
                     break;
                 case ActionEnum.Uppercase:
                     response.Output = MakeBiggestWordUpper(request.Input);
@@ -35,6 +39,33 @@ namespace Session_05 {
             }
 
             return response;
+        }
+
+        private string DecimalToBinary(string input)
+        {
+            string outputBinary = null;
+
+            int number;
+            if (Int32.TryParse(input,_style, _culture ,out number))
+            {
+                outputBinary = CalculateBinary(number);
+            }
+            return outputBinary;
+        }
+
+        private string? CalculateBinary(int number)
+        {
+            string result = string.Empty;
+
+            while (number > 1)
+            {
+                int remainder = number % 2;
+                result = Convert.ToString(remainder) + result;
+                number /= 2;
+            }
+            result = Convert.ToString(number) + result;
+
+            return result;
         }
 
         private string ReverseString(string str){

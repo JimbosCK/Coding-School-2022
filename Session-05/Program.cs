@@ -29,4 +29,8 @@ var request1 = new ActionRequest(){
 {
     Input = "This is a great day to go outside my friend! ",
     Action = ActionEnum.Reverse
-};response = resolver.Excecute(request1);response = resolver.Excecute(request2);Console.Write(resolver.Logger.ReadAll());
+};var request3 = new ActionRequest()
+{
+    Input = "5",
+    Action = ActionEnum.Convert
+};response = resolver.Excecute(request1);response = resolver.Excecute(request2);response = resolver.Excecute(request3);Console.Write(resolver.Logger.ReadAll());
