@@ -37,4 +37,4 @@ var request1 = new ActionRequest() {
 {
     Input = "",
     Action = ActionEnum.Bad
-};//response = resolver.Excecute(request1);response = resolver.Excecute(request2);//response = resolver.Excecute(request3);//response = resolver.Excecute(request0);Console.Write(resolver.Logger.ReadAll());
+};//response = resolver.Excecute(request1);//response = resolver.Excecute(request2);response = resolver.Excecute(request3);//response = resolver.Excecute(request0);Console.Write(resolver.Logger.ReadAll());string s = null;

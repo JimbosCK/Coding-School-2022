@@ -24,7 +24,6 @@ namespace Session_05 {
                     response.Output = DecimalToBinary(request.Input);
                     if (response.Output != null) {
                         LogEventMessage(request.RequestID, request.Input, response.Output, request.Action, DateTime.Now);
-
                     }
 
                     break;
@@ -53,14 +52,25 @@ namespace Session_05 {
 
         private string DecimalToBinary(string input)
         {
-            string outputBinary = null;
-
-            int number;
-            if (Int32.TryParse(input,_style, _culture ,out number))
+            try
             {
-                outputBinary = CalculateBinary(number);
+                if(input == null)
+                {
+                    throw new ArgumentException("Parameter cannot be null", nameof(input));
+                }
+                string outputBinary = null;
+                int number;
+                if (Int32.TryParse(input, _style, _culture, out number))
+                {
+                    outputBinary = CalculateBinary(number);
+                }
+                return outputBinary;
             }
-            return outputBinary;
+            catch (Exception ex)
+            {
+                LogEventExceptionConvert(input, ex, DateTime.Now);
+                return null;
+            }
         }
 
         private string? CalculateBinary(int number)
@@ -159,18 +169,23 @@ namespace Session_05 {
 
         private void LogEventExceptionUppercase(string requestInput, Exception exeption, DateTime timeStamp)
         {
-            Logger.Write(new Message()
-            {
-                Text = $"## Exception in Action [Uppercase]: {exeption}. Request inp'{requestInput}'.",
-                Timestamp = timeStamp
-            });
+            LogEventExceptionBasic(requestInput, exeption, timeStamp, ActionEnum.Uppercase);
         }
 
         private void LogEventExceptionReverse(string requestInput, Exception exeption, DateTime timeStamp)
         {
+            LogEventExceptionBasic(requestInput, exeption, timeStamp, ActionEnum.Reverse);
+        }
+
+        private void LogEventExceptionConvert(string requestInput, Exception exeption, DateTime timeStamp)
+        {
+            LogEventExceptionBasic(requestInput, exeption, timeStamp, ActionEnum.Convert);
+        }
+        private void LogEventExceptionBasic(string requestInput, Exception exeption, DateTime timeStamp, ActionEnum action)
+        {
             Logger.Write(new Message()
             {
-                Text = $"## Exception in Action [Reverse]: {exeption}. Request inp'{requestInput}'.",
+                Text = $"## Exception in Action [{action}]: {exeption}. Request inp'{requestInput}'.",
                 Timestamp = timeStamp
             });
         }
