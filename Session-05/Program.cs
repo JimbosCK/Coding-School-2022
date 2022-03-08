@@ -31,7 +31,7 @@ var request1 = new ActionRequest() {
     Action = ActionEnum.Reverse
 };var request3 = new ActionRequest()
 {
-    Input = null,
+    Input = "64",
     Action = ActionEnum.Convert
 };var request0 = new ActionRequest()
 {
