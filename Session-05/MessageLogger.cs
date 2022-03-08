@@ -11,14 +11,23 @@ namespace Session_05 {
 
         public Message[] Messages { get; }
 
-        MessageLogger() { Messages = new Message[_maxMessagesStored]; }
+        public MessageLogger() { Messages = new Message[_maxMessagesStored]; }
 
-        public string ReadAll() {
+        public string ReadAll()
+        {
+            return GenerateLogOutput();
+        }
+
+        private string GenerateLogOutput()
+        {
             string messageLog = String.Empty;
-            foreach (var message in Messages) {
-                messageLog += message.Text + "\n";
+
+            for (int i = 0; i < _numberOfMessagesStored; i++)
+            {
+                messageLog += Messages[i].Text + "\n";
             }
-            return string.Empty;
+
+            return messageLog;
         }
 
         public void Clear() {
