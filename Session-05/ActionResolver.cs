@@ -22,18 +22,28 @@ namespace Session_05 {
             switch (request.Action) {
                 case ActionEnum.Convert:
                     response.Output = DecimalToBinary(request.Input);
-                    LogEvent(request.RequestID, request.Input, response.Output, request.Action, DateTime.Now);
+                    if (response.Output != null) {
+                        LogEventMessage(request.RequestID, request.Input, response.Output, request.Action, DateTime.Now);
+
+                    }
 
                     break;
                 case ActionEnum.Uppercase:
                     response.Output = MakeBiggestWordUpper(request.Input);
-                    LogEvent(request.RequestID, request.Input, response.Output, request.Action, DateTime.Now); 
-
+                    if (response.Output != null)
+                    {
+                        LogEventMessage(request.RequestID, request.Input, response.Output, request.Action, DateTime.Now);
+                    }
                     break;
                 case ActionEnum.Reverse:
                     response.Output = ReverseString(request.Input);
-                    LogEvent(request.RequestID, request.Input, response.Output, request.Action, DateTime.Now);
-
+                    if (response.Output != null) {
+                        LogEventMessage(request.RequestID, request.Input, response.Output, request.Action, DateTime.Now);
+                    }
+                    break;
+                default:
+                    response.Output = null;
+                    LogEventError(request.RequestID, request.Input, request.Action, DateTime.Now);
                     break;
                 
             }
@@ -81,25 +91,39 @@ namespace Session_05 {
             int maxLengthOfWord = 0;
             int? indexOfBiggestWord = null;
             string outputUpper = str;
-
-            string[] words = str.Split(' ');
-                for (int i = 0; i < words.Length; i++){
-                    if (words[i] != String.Empty){
+            
+            try
+            {
+                string[] words = str.Split(' ');
+                for (int i = 0; i < words.Length+1; i++)
+                {
+                    if (words[i] != String.Empty)                    {
                         numOfWords++;
-                        if (words[i].Length > maxLengthOfWord){
+                        if (words[i].Length > maxLengthOfWord)
+                        {
                             maxLengthOfWord = words[i].Length;
                             indexOfBiggestWord = i;
                         }
                     }
                 }
-            if (indexOfBiggestWord != null && numOfWords > 1) {
-                words[(int)indexOfBiggestWord] = words[(int)indexOfBiggestWord].ToUpper();
-                outputUpper = string.Join(' ', words);
+                if (indexOfBiggestWord != null && numOfWords > 1)
+                {
+                    words[(int)indexOfBiggestWord] = words[(int)indexOfBiggestWord].ToUpper();
+                    outputUpper = string.Join(' ', words);
+                }
             }
+            catch (Exception ex)
+            {
+                LogEventExceptionUppercase(str, ex, DateTime.Now);
+                return null;
+                
+            }
+            
+               
             return outputUpper;
         }
 
-        public override void LogEvent(string description, DateTime timeStamp)
+        protected override void LogEventMessage(string description, DateTime timeStamp)
         {
             Logger.Write(new Message()
             {
@@ -108,10 +132,28 @@ namespace Session_05 {
             });
         }
 
-        public override void LogEvent(Guid requestID, string requestInput, string requestOutput,ActionEnum action, DateTime timeStamp)
+        protected override void LogEventMessage(Guid requestID, string requestInput, string requestOutput,ActionEnum action, DateTime timeStamp)
         {
             Logger.Write(new Message(){
-                Text = $"Request [{requestID}] : Attempting {action} on input: '{requestInput}'. Response output: '{requestOutput}' .",
+                Text = $"Request [{requestID}] : Opperation {action} on input: '{requestInput}'. Response output: '{requestOutput}' .",
+                Timestamp = timeStamp
+            });
+        }
+
+        protected override void LogEventError(Guid requestID, string requestInput, ActionEnum action, DateTime timeStamp)
+        {
+            Logger.Write(new Message()
+            {
+                Text = $"## ERROR: Request [{requestID}] : Received Unhandled Action '{action}' with input: '{requestInput}'. Skipping request.",
+                Timestamp = timeStamp
+            });
+        }
+
+        private void LogEventExceptionUppercase(string requestInput, Exception exeption, DateTime timeStamp)
+        {
+            Logger.Write(new Message()
+            {
+                Text = $"## Exception in Action [Uppercase]: {exeption}. Request inp'{requestInput}'.",
                 Timestamp = timeStamp
             });
         }

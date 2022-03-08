@@ -22,15 +22,19 @@
 
 var resolver = new ActionResolver();
 var response = new ActionResponse();
-var request1 = new ActionRequest(){
-    Input ="This is a great day to go outside my friend! ",
+var request1 = new ActionRequest() {
+    Input = null,
     Action =ActionEnum.Uppercase
 };var request2 = new ActionRequest()
 {
-    Input = "This is a great day to go outside my friend! ",
+    Input = "",
     Action = ActionEnum.Reverse
 };var request3 = new ActionRequest()
 {
-    Input = "5",
+    Input = "",
     Action = ActionEnum.Convert
-};response = resolver.Excecute(request1);response = resolver.Excecute(request2);response = resolver.Excecute(request3);Console.Write(resolver.Logger.ReadAll());
+};var request0 = new ActionRequest()
+{
+    Input = "",
+    Action = ActionEnum.Bad
+};response = resolver.Excecute(request1);response = resolver.Excecute(request2);response = resolver.Excecute(request3);response = resolver.Excecute(request0);Console.Write(resolver.Logger.ReadAll());

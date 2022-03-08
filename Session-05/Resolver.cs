@@ -10,7 +10,10 @@ namespace Session_05 {
         protected CultureInfo _culture = CultureInfo.CreateSpecificCulture("en-GB");
         protected NumberStyles _style = NumberStyles.Number | NumberStyles.AllowCurrencySymbol;
 
-        abstract public void LogEvent(string description, DateTime timeStamp);
-        abstract public void LogEvent(Guid requestID, string requestInput, string requestOutput, ActionEnum action,  DateTime timeStamp);
+        abstract protected void LogEventMessage(string description, DateTime timeStamp);
+        abstract protected void LogEventMessage(Guid requestID, string requestInput, string requestOutput, ActionEnum action,  DateTime timeStamp);
+        
+        abstract protected void LogEventError(Guid requestID, string requestInput, ActionEnum action, DateTime timeStamp);
+
     }
 }
