@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Session_05 {
-    internal class ActionResolver {
+    internal class ActionResolver : Resolver{
 
         public MessageLogger Logger{ get; set; }
 
@@ -23,19 +23,13 @@ namespace Session_05 {
                     break;
                 case ActionEnum.Uppercase:
                     response.Output = MakeBiggestWordUpper(request.Input);
-                    Logger.Write( new Message() { 
-                        Text = $"Request [{request.RequestID}] : Attempting Uppercase on input: '{request.Input}'. Response output: '{response.Output}' .",
-                        Timestamp = DateTime.Now
-                    }); 
+                    LogEvent(request.RequestID, request.Input, response.Output, request.Action, DateTime.Now); 
 
                     break;
                 case ActionEnum.Reverse:
                     response.Output = ReverseString(request.Input);
-                    Logger.Write(new Message()
-                    {
-                        Text = $"Request [{request.RequestID}] : Attempting Reverse on input: '{request.Input}'. Response output: '{response.Output}' .",
-                        Timestamp = DateTime.Now
-                    });
+                    LogEvent(request.RequestID, request.Input, response.Output, request.Action, DateTime.Now);
+
                     break;
                 
             }
@@ -74,5 +68,21 @@ namespace Session_05 {
             return outputUpper;
         }
 
+        public override void LogEvent(string description, DateTime timeStamp)
+        {
+            Logger.Write(new Message()
+            {
+                Text = description,
+                Timestamp = timeStamp
+            });
+        }
+
+        public override void LogEvent(Guid requestID, string requestInput, string requestOutput,ActionEnum action, DateTime timeStamp)
+        {
+            Logger.Write(new Message(){
+                Text = $"Request [{requestID}] : Attempting {action} on input: '{requestInput}'. Response output: '{requestOutput}' .",
+                Timestamp = timeStamp
+            });
+        }
     }
 }
