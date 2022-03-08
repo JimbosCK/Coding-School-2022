@@ -24,16 +24,30 @@ namespace Session_05 {
                 case ActionEnum.Uppercase:
                     response.Output = MakeBiggestWordUpper(request.Input);
                     Logger.Write( new Message() { 
-                        Text = $"Request [{request.RequestID}] : Attempting Uppercase on string: '{request.Input}'. Response output: '{response.Output}' .",
+                        Text = $"Request [{request.RequestID}] : Attempting Uppercase on input: '{request.Input}'. Response output: '{response.Output}' .",
                         Timestamp = DateTime.Now
                     }); 
+
                     break;
                 case ActionEnum.Reverse:
+                    response.Output = ReverseString(request.Input);
+                    Logger.Write(new Message()
+                    {
+                        Text = $"Request [{request.RequestID}] : Attempting Reverse on input: '{request.Input}'. Response output: '{response.Output}' .",
+                        Timestamp = DateTime.Now
+                    });
                     break;
                 
             }
 
             return response;
+        }
+
+        private string ReverseString(string str){
+            if (str.Length > 0)
+                return str[str.Length - 1] + ReverseString(str.Substring(0, str.Length - 1));
+            else
+                return str;
         }
 
         //TO DO: [Refactor] MakeBiggestWordUpper

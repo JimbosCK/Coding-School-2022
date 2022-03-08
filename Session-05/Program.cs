@@ -22,7 +22,11 @@
 
 var resolver = new ActionResolver();
 var response = new ActionResponse();
-var request = new ActionRequest(){
+var request1 = new ActionRequest(){
     Input ="This is a great day to go outside my friend! ",
     Action =ActionEnum.Uppercase
-};response = resolver.Excecute(request);Console.Write(resolver.Logger.ReadAll());
+};var request2 = new ActionRequest()
+{
+    Input = "This is a great day to go outside my friend! ",
+    Action = ActionEnum.Reverse
+};response = resolver.Excecute(request1);response = resolver.Excecute(request2);Console.Write(resolver.Logger.ReadAll());
