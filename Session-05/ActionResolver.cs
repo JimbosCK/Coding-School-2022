@@ -21,21 +21,21 @@ namespace Session_05 {
 
             switch (request.Action) {
                 case ActionEnum.Convert:
-                    response.Output = DecimalToBinary(request.Input);
+                    response.Output = DecimalToBinary(request.Input, request.RequestID);
                     if (response.Output != null) {
                         LogEventMessage(request.RequestID, request.Input, response.Output, request.Action, DateTime.Now);
                     }
 
                     break;
                 case ActionEnum.Uppercase:
-                    response.Output = MakeBiggestWordUpper(request.Input);
+                    response.Output = MakeBiggestWordUpper(request.Input, request.RequestID);
                     if (response.Output != null)
                     {
                         LogEventMessage(request.RequestID, request.Input, response.Output, request.Action, DateTime.Now);
                     }
                     break;
                 case ActionEnum.Reverse:
-                    response.Output = ReverseString(request.Input);
+                    response.Output = ReverseString(request.Input, request.RequestID);
                     if (response.Output != null) {
                         LogEventMessage(request.RequestID, request.Input, response.Output, request.Action, DateTime.Now);
                     }
@@ -50,7 +50,7 @@ namespace Session_05 {
             return response;
         }
 
-        private string DecimalToBinary(string input)
+        private string DecimalToBinary(string input, Guid requestID)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace Session_05 {
             }
             catch (Exception ex)
             {
-                LogEventExceptionConvert(input, ex, DateTime.Now);
+                LogEventExceptionConvert(input, ex, DateTime.Now, requestID);
                 return null;
             }
         }
@@ -88,23 +88,30 @@ namespace Session_05 {
             return result;
         }
 
-        private string ReverseString(string str){
+        private string ReverseString(string str, Guid requestID)
+        {
+            return ReverseStringRecursion(str, requestID);
+        }
+
+        private string ReverseStringRecursion(string str, Guid requestID)
+        {
             try
             {
                 if (str.Length > 0)
-                    return str[str.Length - 1] + ReverseString(str.Substring(0, str.Length - 1));
+                    return str[str.Length - 1] + ReverseString(str.Substring(0, str.Length - 1), requestID);
                 else
                     return str;
             }
             catch (Exception ex)
             {
-                LogEventExceptionReverse(str, ex, DateTime.Now);
+                LogEventExceptionReverse(str, ex, DateTime.Now, requestID);
                 return null;
             }
         }
 
         //TO DO: [Refactor] MakeBiggestWordUpper
-        private string MakeBiggestWordUpper(string str){
+        private string MakeBiggestWordUpper(string str, Guid requestID)
+        {
             int numOfWords = 0;
             int maxLengthOfWord = 0;
             int? indexOfBiggestWord = null;
@@ -132,7 +139,7 @@ namespace Session_05 {
             }
             catch (Exception ex)
             {
-                LogEventExceptionUppercase(str, ex, DateTime.Now);
+                LogEventExceptionUppercase(str, ex, DateTime.Now, requestID);
                 return null;
                 
             }
@@ -167,25 +174,25 @@ namespace Session_05 {
             });
         }
 
-        private void LogEventExceptionUppercase(string requestInput, Exception exeption, DateTime timeStamp)
+        private void LogEventExceptionUppercase(string requestInput, Exception exeption, DateTime timeStamp, Guid requestID)
         {
-            LogEventExceptionBasic(requestInput, exeption, timeStamp, ActionEnum.Uppercase);
+            LogEventExceptionBasic(requestInput, exeption, timeStamp, ActionEnum.Uppercase, requestID);
         }
 
-        private void LogEventExceptionReverse(string requestInput, Exception exeption, DateTime timeStamp)
+        private void LogEventExceptionReverse(string requestInput, Exception exeption, DateTime timeStamp, Guid requestID)
         {
-            LogEventExceptionBasic(requestInput, exeption, timeStamp, ActionEnum.Reverse);
+            LogEventExceptionBasic(requestInput, exeption, timeStamp, ActionEnum.Reverse, requestID);
         }
 
-        private void LogEventExceptionConvert(string requestInput, Exception exeption, DateTime timeStamp)
+        private void LogEventExceptionConvert(string requestInput, Exception exeption, DateTime timeStamp, Guid requestID)
         {
-            LogEventExceptionBasic(requestInput, exeption, timeStamp, ActionEnum.Convert);
+            LogEventExceptionBasic(requestInput, exeption, timeStamp, ActionEnum.Convert, requestID);
         }
-        private void LogEventExceptionBasic(string requestInput, Exception exeption, DateTime timeStamp, ActionEnum action)
+        private void LogEventExceptionBasic(string requestInput, Exception exeption, DateTime timeStamp, ActionEnum action, Guid requestID)
         {
             Logger.Write(new Message()
             {
-                Text = $"## Exception in Action [{action}]: {exeption}. Request inp'{requestInput}'.",
+                Text = $"## Request [{requestID}] : Exception in Action [{action}]: {exeption}. Request inp'{requestInput}'.",
                 Timestamp = timeStamp
             });
         }
