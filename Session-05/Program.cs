@@ -27,14 +27,14 @@ var request1 = new ActionRequest() {
     Action =ActionEnum.Uppercase
 };var request2 = new ActionRequest()
 {
-    Input = "",
+    Input = "There is a house in New Orleans",
     Action = ActionEnum.Reverse
 };var request3 = new ActionRequest()
 {
-    Input = "",
+    Input = null,
     Action = ActionEnum.Convert
 };var request0 = new ActionRequest()
 {
     Input = "",
     Action = ActionEnum.Bad
-};response = resolver.Excecute(request1);response = resolver.Excecute(request2);response = resolver.Excecute(request3);response = resolver.Excecute(request0);Console.Write(resolver.Logger.ReadAll());
+};//response = resolver.Excecute(request1);response = resolver.Excecute(request2);//response = resolver.Excecute(request3);//response = resolver.Excecute(request0);Console.Write(resolver.Logger.ReadAll());

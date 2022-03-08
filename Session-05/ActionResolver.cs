@@ -79,10 +79,18 @@ namespace Session_05 {
         }
 
         private string ReverseString(string str){
-            if (str.Length > 0)
-                return str[str.Length - 1] + ReverseString(str.Substring(0, str.Length - 1));
-            else
-                return str;
+            try
+            {
+                if (str.Length > 0)
+                    return str[str.Length - 1] + ReverseString(str.Substring(0, str.Length - 1));
+                else
+                    return str;
+            }
+            catch (Exception ex)
+            {
+                LogEventExceptionReverse(str, ex, DateTime.Now);
+                return null;
+            }
         }
 
         //TO DO: [Refactor] MakeBiggestWordUpper
@@ -154,6 +162,15 @@ namespace Session_05 {
             Logger.Write(new Message()
             {
                 Text = $"## Exception in Action [Uppercase]: {exeption}. Request inp'{requestInput}'.",
+                Timestamp = timeStamp
+            });
+        }
+
+        private void LogEventExceptionReverse(string requestInput, Exception exeption, DateTime timeStamp)
+        {
+            Logger.Write(new Message()
+            {
+                Text = $"## Exception in Action [Reverse]: {exeption}. Request inp'{requestInput}'.",
                 Timestamp = timeStamp
             });
         }
