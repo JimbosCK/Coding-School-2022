@@ -33,6 +33,7 @@
             this.buttonOperationEquals = new System.Windows.Forms.Button();
             this.buttonOperationPlus = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonSymbolComma = new System.Windows.Forms.Button();
             this.buttonNumberSeven = new System.Windows.Forms.Button();
             this.buttonNumberZero = new System.Windows.Forms.Button();
             this.buttonNumberEight = new System.Windows.Forms.Button();
@@ -44,7 +45,6 @@
             this.buttonNumberTwo = new System.Windows.Forms.Button();
             this.buttonNumberThree = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonSymbolComma = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -171,6 +171,17 @@
             this.panel1.Size = new System.Drawing.Size(251, 337);
             this.panel1.TabIndex = 42;
             // 
+            // buttonSymbolComma
+            // 
+            this.buttonSymbolComma.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonSymbolComma.Location = new System.Drawing.Point(185, 270);
+            this.buttonSymbolComma.Name = "buttonSymbolComma";
+            this.buttonSymbolComma.Size = new System.Drawing.Size(66, 67);
+            this.buttonSymbolComma.TabIndex = 51;
+            this.buttonSymbolComma.Text = ",";
+            this.buttonSymbolComma.UseVisualStyleBackColor = true;
+            this.buttonSymbolComma.Click += new System.EventHandler(this.buttonSymbolComma_Click);
+            // 
             // buttonNumberSeven
             // 
             this.buttonNumberSeven.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -289,17 +300,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(405, 472);
             this.panel2.TabIndex = 43;
-            // 
-            // buttonSymbolComma
-            // 
-            this.buttonSymbolComma.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonSymbolComma.Location = new System.Drawing.Point(185, 270);
-            this.buttonSymbolComma.Name = "buttonSymbolComma";
-            this.buttonSymbolComma.Size = new System.Drawing.Size(66, 67);
-            this.buttonSymbolComma.TabIndex = 51;
-            this.buttonSymbolComma.Text = ",";
-            this.buttonSymbolComma.UseVisualStyleBackColor = true;
-            this.buttonSymbolComma.Click += new System.EventHandler(this.buttonSymbolComma_Click);
             // 
             // Form1
             // 

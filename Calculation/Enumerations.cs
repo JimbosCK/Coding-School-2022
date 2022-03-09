@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Session_06 {
-    enum NumbersEnum {
+namespace Calculation {
+    public enum NumbersEnum {
         Zero = 0,
         One = 1,
         Two = 2,
@@ -18,7 +18,7 @@ namespace Session_06 {
         Nine = 9,
     }
 
-    enum OperationsEnum {
+    public enum OperationsEnum {
         Plus = '+',
         Minus = '-',
         Multiplication = 'x',
@@ -27,7 +27,7 @@ namespace Session_06 {
         SquareRoot = 'S'
 
     }
-    enum SymbolsEnum {
+    public enum SymbolsEnum {
         Comma = ','
 
     }

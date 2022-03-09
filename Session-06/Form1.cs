@@ -1,3 +1,5 @@
+using Calculation;
+
 namespace Session_06 {
     public partial class Form1 : Form {
         public Form1() {
@@ -84,10 +86,11 @@ namespace Session_06 {
         }
 
         private void buttonOperationEquals_Click(object sender, EventArgs e) {
-            var calc = new Calculation.Addition();
-            textBoxCalculatorScreen.Text += calc.Execute("2,5", "4");
+            var calc = new Calc();
+            
+            textBoxCalculatorScreen.Text = calc.Calculate(textBoxCalculatorScreen.Text); 
+
+
         }
-
-
     }
 }
