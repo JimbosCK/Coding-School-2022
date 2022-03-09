@@ -7,6 +7,7 @@ namespace Session_06 {
         private void Form1_Load(object sender, EventArgs e) {
 
         }
+        // Button Number Handlers
         private void buttonNumberOne_Click(object sender, EventArgs e) {
             textBoxCalculatorScreen.Text += ((int)Numbers.One).ToString();
 
@@ -17,27 +18,22 @@ namespace Session_06 {
 
         private void buttonNumberThree_Click(object sender, EventArgs e) {
             textBoxCalculatorScreen.Text += ((int)Numbers.Three).ToString();
-
         }
 
         private void buttonNumberFour_Click(object sender, EventArgs e) {
             textBoxCalculatorScreen.Text += ((int)Numbers.Four).ToString();
-
         }
 
         private void buttonNumberFive_Click(object sender, EventArgs e) {
             textBoxCalculatorScreen.Text += ((int)Numbers.Five).ToString();
-
         }
 
         private void buttonNumberSix_Click(object sender, EventArgs e) {
             textBoxCalculatorScreen.Text += ((int)Numbers.Six).ToString();
-
         }
 
         private void buttonNumberSeven_Click(object sender, EventArgs e) {
             textBoxCalculatorScreen.Text += ((int)Numbers.Seven).ToString();
-
         }
 
         private void buttonNumberEight_Click(object sender, EventArgs e) {
@@ -47,16 +43,13 @@ namespace Session_06 {
 
         private void buttonNumberNine_Click(object sender, EventArgs e) {
             textBoxCalculatorScreen.Text += ((int)Numbers.Nine).ToString();
-
         }
 
         private void buttonNumberZero_Click(object sender, EventArgs e) {
             textBoxCalculatorScreen.Text += ((int)Numbers.Zero).ToString();
-
         }
-        private void buttonOperationClear_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text = String.Empty;
-        }
+        
+        // Button Operations Handlers
 
         private void buttonOperationPlus_Click(object sender, EventArgs e) {
             textBoxCalculatorScreen.Text += ((char)Operations.Plus).ToString();
@@ -80,6 +73,9 @@ namespace Session_06 {
 
         private void buttonOperationSquareRoot_Click(object sender, EventArgs e) {
             textBoxCalculatorScreen.Text += ((char)Operations.SquareRoot).ToString();
+        }
+        private void buttonOperationClear_Click(object sender, EventArgs e) {
+            textBoxCalculatorScreen.Text = String.Empty;
         }
     }
 }
