@@ -55,6 +55,7 @@
             this.textBoxCalculatorScreen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxCalculatorScreen.BackColor = System.Drawing.Color.White;
+            this.textBoxCalculatorScreen.Enabled = false;
             this.textBoxCalculatorScreen.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBoxCalculatorScreen.Location = new System.Drawing.Point(26, 34);
             this.textBoxCalculatorScreen.Multiline = true;
