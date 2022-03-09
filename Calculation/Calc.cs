@@ -10,15 +10,17 @@ namespace Calculation {
         }
 
         public string Calculate(string request) {
-            string OperationSymbol = FindOperationSymbol(request);
-            string[] splitRequest = SplitRequest(request);
-            string response = string.Empty;
-            if (splitRequest.Length > 2) {
-                return String.Empty;
-            }
+            MathExpression expression = new MathExpression(request);
+            //string OperationSymbol = FindOperationSymbol(request);
+            //string[] splitRequest = SplitRequest(request);
+            //string response = string.Empty;
+            //if (splitRequest.Length > 2) {
+            //  return String.Empty;
+            //}
+            if (!expression.IsValid()) { return string.Empty; }
             Operation operation = null;
             // TO DO: [Refactor] Change case checks to Enum instead of strings
-            switch (OperationSymbol) {
+            switch (expression.OperationSymbol) {
                 case "+":
                     operation = new Addition();
                     break;
@@ -43,7 +45,7 @@ namespace Calculation {
                     return String.Empty;
             }
 
-            return operation.Execute(splitRequest[0], splitRequest[1]);
+            return operation.Execute(expression);
         }
 
         private static string FindOperationSymbol(string request){

@@ -2,9 +2,9 @@
     internal class SquareRoot : Operation {
         public SquareRoot() { }
 
-        public override string Execute(string operand1, string operand2) {
+        public override string Execute(MathExpression expression) {
             try {
-                double operand2Dec = Convert.ToDouble(operand2);
+                double operand2Dec = Convert.ToDouble(expression.Variables[1]);
                 double result = Math.Sqrt(operand2Dec);
 
                 return result.ToString();

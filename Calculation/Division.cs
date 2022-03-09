@@ -8,10 +8,10 @@ namespace Calculation {
     internal class Division : Operation {
         public Division() { }
 
-        public override string Execute(string operand1, string operand2) {
+        public override string Execute(MathExpression expression) {
             try {
-                decimal operand1Dec = Convert.ToDecimal(operand1);
-                decimal operand2Dec = Convert.ToDecimal(operand2);
+                decimal operand1Dec = Convert.ToDecimal(expression.Variables[0]);
+                decimal operand2Dec = Convert.ToDecimal(expression.Variables[1]);
                 if (operand2Dec == 0) {
                     return "Can not divide by zero.";
                 }

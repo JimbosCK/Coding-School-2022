@@ -45,7 +45,6 @@ namespace Session_06 {
 
         private void buttonNumberEight_Click(object sender, EventArgs e) {
             textBoxCalculatorScreen.Text += ((int)NumbersEnum.Eight).ToString();
-
         }
 
         private void buttonNumberNine_Click(object sender, EventArgs e) {

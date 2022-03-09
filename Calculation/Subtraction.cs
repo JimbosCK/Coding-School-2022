@@ -2,10 +2,10 @@
     internal class Subtraction : Operation {
         public Subtraction() { }
 
-        public override string Execute(string operand1, string operand2) {
+        public override string Execute(MathExpression expression) {
             try {
-                decimal operand1Dec = Convert.ToDecimal(operand1);
-                decimal operand2Dec = Convert.ToDecimal(operand2);
+                decimal operand1Dec = Convert.ToDecimal(expression.Variables[0]);
+                decimal operand2Dec = Convert.ToDecimal(expression.Variables[1]);
                 decimal result = operand1Dec - operand2Dec;
                 return result.ToString();
             }
