@@ -44,6 +44,7 @@
             this.buttonNumberTwo = new System.Windows.Forms.Button();
             this.buttonNumberThree = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonSymbolComma = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -138,6 +139,7 @@
             this.buttonOperationEquals.TabIndex = 39;
             this.buttonOperationEquals.Text = "=";
             this.buttonOperationEquals.UseVisualStyleBackColor = true;
+            this.buttonOperationEquals.Click += new System.EventHandler(this.buttonOperationEquals_Click);
             // 
             // buttonOperationPlus
             // 
@@ -153,6 +155,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel1.Controls.Add(this.buttonSymbolComma);
             this.panel1.Controls.Add(this.buttonNumberSeven);
             this.panel1.Controls.Add(this.buttonNumberZero);
             this.panel1.Controls.Add(this.buttonNumberEight);
@@ -287,6 +290,17 @@
             this.panel2.Size = new System.Drawing.Size(405, 472);
             this.panel2.TabIndex = 43;
             // 
+            // buttonSymbolComma
+            // 
+            this.buttonSymbolComma.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonSymbolComma.Location = new System.Drawing.Point(185, 270);
+            this.buttonSymbolComma.Name = "buttonSymbolComma";
+            this.buttonSymbolComma.Size = new System.Drawing.Size(66, 67);
+            this.buttonSymbolComma.TabIndex = 51;
+            this.buttonSymbolComma.Text = ",";
+            this.buttonSymbolComma.UseVisualStyleBackColor = true;
+            this.buttonSymbolComma.Click += new System.EventHandler(this.buttonSymbolComma_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -334,5 +348,6 @@
         private Button buttonNumberOne;
         private Button buttonNumberTwo;
         private Button buttonNumberThree;
+        private Button buttonSymbolComma;
     }
 }

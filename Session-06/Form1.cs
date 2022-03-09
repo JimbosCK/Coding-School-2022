@@ -7,75 +7,87 @@ namespace Session_06 {
         private void Form1_Load(object sender, EventArgs e) {
 
         }
+        // Button Symbol Handlers
+        private void buttonSymbolComma_Click(object sender, EventArgs e) {
+            textBoxCalculatorScreen.Text += ((char)SymbolsEnum.Comma).ToString();
+        }
+
         // Button Number Handlers
         private void buttonNumberOne_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((int)Numbers.One).ToString();
+            textBoxCalculatorScreen.Text += ((int)NumbersEnum.One).ToString();
 
         }
         private void buttonNumberTwo_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((int)Numbers.Two).ToString();
+            textBoxCalculatorScreen.Text += ((int)NumbersEnum.Two).ToString();
         }
 
         private void buttonNumberThree_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((int)Numbers.Three).ToString();
+            textBoxCalculatorScreen.Text += ((int)NumbersEnum.Three).ToString();
         }
 
         private void buttonNumberFour_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((int)Numbers.Four).ToString();
+            textBoxCalculatorScreen.Text += ((int)NumbersEnum.Four).ToString();
         }
 
         private void buttonNumberFive_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((int)Numbers.Five).ToString();
+            textBoxCalculatorScreen.Text += ((int)NumbersEnum.Five).ToString();
         }
 
         private void buttonNumberSix_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((int)Numbers.Six).ToString();
+            textBoxCalculatorScreen.Text += ((int)NumbersEnum.Six).ToString();
         }
 
         private void buttonNumberSeven_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((int)Numbers.Seven).ToString();
+            textBoxCalculatorScreen.Text += ((int)NumbersEnum.Seven).ToString();
         }
 
         private void buttonNumberEight_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((int)Numbers.Eight).ToString();
+            textBoxCalculatorScreen.Text += ((int)NumbersEnum.Eight).ToString();
 
         }
 
         private void buttonNumberNine_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((int)Numbers.Nine).ToString();
+            textBoxCalculatorScreen.Text += ((int)NumbersEnum.Nine).ToString();
         }
 
         private void buttonNumberZero_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((int)Numbers.Zero).ToString();
+            textBoxCalculatorScreen.Text += ((int)NumbersEnum.Zero).ToString();
         }
         
         // Button Operations Handlers
 
         private void buttonOperationPlus_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((char)Operations.Plus).ToString();
+            textBoxCalculatorScreen.Text += ((char)OperationsEnum.Plus).ToString();
         }
 
         private void buttonOperationMinus_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((char)Operations.Minus).ToString();
+            textBoxCalculatorScreen.Text += ((char)OperationsEnum.Minus).ToString();
         }
 
         private void buttonOperationMultiplication_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((char)Operations.Multiplication).ToString();
+            textBoxCalculatorScreen.Text += ((char)OperationsEnum.Multiplication).ToString();
         }
 
         private void buttonOperationDivision_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((char)Operations.Division).ToString();
+            textBoxCalculatorScreen.Text += ((char)OperationsEnum.Division).ToString();
         }
 
         private void buttonOperationPower_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((char)Operations.Power).ToString();
+            textBoxCalculatorScreen.Text += ((char)OperationsEnum.Power).ToString();
         }
 
         private void buttonOperationSquareRoot_Click(object sender, EventArgs e) {
-            textBoxCalculatorScreen.Text += ((char)Operations.SquareRoot).ToString();
+            textBoxCalculatorScreen.Text += ((char)OperationsEnum.SquareRoot).ToString();
         }
         private void buttonOperationClear_Click(object sender, EventArgs e) {
             textBoxCalculatorScreen.Text = String.Empty;
         }
+
+        private void buttonOperationEquals_Click(object sender, EventArgs e) {
+            var calc = new Calculation.Addition();
+            textBoxCalculatorScreen.Text += calc.Execute("2,5", "4");
+        }
+
+
     }
 }

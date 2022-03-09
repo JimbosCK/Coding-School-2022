@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Session_06 {
-    enum Numbers {
+    enum NumbersEnum {
         Zero = 0,
         One = 1,
         Two = 2,
@@ -18,13 +18,17 @@ namespace Session_06 {
         Nine = 9,
     }
 
-    enum Operations {
+    enum OperationsEnum {
         Plus = '+',
         Minus = '-',
         Multiplication = 'x',
         Division = '/',
         Power = '^',
         SquareRoot = 'S'
+
+    }
+    enum SymbolsEnum {
+        Comma = ','
 
     }
 }
