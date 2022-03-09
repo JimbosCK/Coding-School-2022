@@ -11,12 +11,6 @@ namespace Calculation {
 
         public string Calculate(string request) {
             MathExpression expression = new MathExpression(request);
-            //string OperationSymbol = FindOperationSymbol(request);
-            //string[] splitRequest = SplitRequest(request);
-            //string response = string.Empty;
-            //if (splitRequest.Length > 2) {
-            //  return String.Empty;
-            //}
             if (!expression.IsValid()) { return string.Empty; }
             Operation operation = null;
             // TO DO: [Refactor] Change case checks to Enum instead of strings
