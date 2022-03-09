@@ -42,31 +42,5 @@ namespace Calculation {
             return operation.Execute(expression);
         }
 
-        private static string FindOperationSymbol(string request){
-            int numberOfOperationsFound = 0;
-            string result = string.Empty;
-            foreach (char character in request) {
-                if (System.Enum.IsDefined(typeof(OperationsEnum), (int)(character))) {
-                    result = character.ToString();
-                    numberOfOperationsFound++;
-                }
-            }
-            if (numberOfOperationsFound > _maxPosibleOperations) {
-                return "abort";
-            }
-
-            return result;
-        }
-
-        private static string[] SplitRequest(string request) {
-            var numberOfOperations = Enum.GetNames(typeof(OperationsEnum)).Length;
-            char[] delimiters = new char[numberOfOperations];
-            int j = 0;
-            foreach (int i in Enum.GetValues(typeof(OperationsEnum))) {
-                delimiters[j++] = (char)i;
-            }
-
-            return request.Split(delimiters);
-        }
     }
 }
