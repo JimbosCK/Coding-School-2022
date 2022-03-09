@@ -96,8 +96,6 @@ namespace Session_05 {
                 return null;
             }
         }
-
-        //TO DO: [Refactor] MakeBiggestWordUpper
         private string MakeBiggestWordUpper(string str, Guid requestID) {
             int numOfWords = 0;
             int maxLengthOfWord = 0;
@@ -108,16 +106,11 @@ namespace Session_05 {
                 string[] words = str.Split(' ');
                 for (int i = 0; i < words.Length; i++) {
                     if (words[i] != String.Empty) {
-                        numOfWords++;
-                        if (words[i].Length > maxLengthOfWord) {
-                            maxLengthOfWord = words[i].Length;
-                            indexOfBiggestWord = i;
-                        }
+                        CheckNewWordSize(ref numOfWords, ref maxLengthOfWord, ref indexOfBiggestWord, words, i);
                     }
                 }
                 if (indexOfBiggestWord != null && numOfWords > 1) {
-                    words[(int)indexOfBiggestWord] = words[(int)indexOfBiggestWord].ToUpper();
-                    outputUpper = string.Join(' ', words);
+                    outputUpper = RebuildSplitInput(indexOfBiggestWord, words);
                 }
             }
             catch (Exception ex) {
@@ -127,6 +120,25 @@ namespace Session_05 {
 
 
             return outputUpper;
+        }
+
+        private static string RebuildSplitInput(int? indexOfBiggestWord, string[] words) {
+            string outputUpper;
+            words[(int)indexOfBiggestWord] = words[(int)indexOfBiggestWord].ToUpper();
+            outputUpper = string.Join(' ', words);
+            return outputUpper;
+        }
+
+        private static void CheckNewWordSize(ref int numOfWords, ref int maxLengthOfWord, ref int? indexOfBiggestWord, string[] words, int i) {
+            numOfWords++;
+            if (words[i].Length > maxLengthOfWord) {
+                SwapBiggerWord(out maxLengthOfWord, out indexOfBiggestWord, words, i);
+            }
+        }
+
+        private static void SwapBiggerWord(out int maxLengthOfWord, out int? indexOfBiggestWord, string[] words, int i) {
+            maxLengthOfWord = words[i].Length;
+            indexOfBiggestWord = i;
         }
 
         protected override void LogEventMessage(string description, DateTime timeStamp) {
