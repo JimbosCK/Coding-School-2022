@@ -1,7 +1,4 @@
-﻿
-using System.Linq;
-
-namespace Calculation {
+﻿namespace Calculation {
     public class Calc {
         private static int _maxPosibleOperations = 1;
 
@@ -13,7 +10,7 @@ namespace Calculation {
             MathExpression expression = new MathExpression(request);
             if (!expression.IsValid()) { return string.Empty; }
             Operation operation = null;
-            // TO DO: [Refactor] Change case checks to Enum instead of strings
+            // TODO: [Refactor] Change case checks to Enum instead of strings
             switch (expression.OperationSymbol) {
                 case "+":
                     operation = new Addition();
