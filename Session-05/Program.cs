@@ -31,7 +31,4 @@ var request1 = new ActionRequest() {
 };var request3 = new ActionRequest() {
     Input = "64",
     Action = ActionEnum.Convert
-};var request0 = new ActionRequest() {
-    Input = "",
-    Action = ActionEnum.Bad
-};response = resolver.Excecute(request1);response = resolver.Excecute(request2);response = resolver.Excecute(request3);response = resolver.Excecute(request0);Console.Write(resolver.Logger.ReadAll());string s = null;
+};response = resolver.Excecute(request1);response = resolver.Excecute(request2);response = resolver.Excecute(request3);Console.Write(resolver.Logger.ReadAll());string s = null;

@@ -9,7 +9,6 @@ namespace Session_05 {
     internal enum ActionEnum {
         Convert,
         Uppercase,
-        Reverse,
-        Bad
+        Reverse
     }
 }
