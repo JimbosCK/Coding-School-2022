@@ -92,5 +92,9 @@ namespace Session_06 {
 
 
         }
+
+        private void buttonExit_Click(object sender, EventArgs e) {
+            this.Close();
+        }
     }
 }

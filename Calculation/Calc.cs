@@ -10,8 +10,8 @@ namespace Calculation {
         }
 
         public string Calculate(string request) {
-            string[] splitRequest = SplitRequest(request);
             string OperationSymbol = FindOperationSymbol(request);
+            string[] splitRequest = SplitRequest(request);
             string response = string.Empty;
             if (splitRequest.Length > 2) {
                 return String.Empty;

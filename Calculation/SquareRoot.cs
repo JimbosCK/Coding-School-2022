@@ -11,7 +11,7 @@
             }
             catch (Exception ex) {
 
-                throw;
+                Console.WriteLine(ex);
             }
 
             return _errorInCalculationMessage;
