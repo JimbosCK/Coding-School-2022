@@ -28,7 +28,8 @@ namespace Calculation {
 
     }
     public enum SymbolsEnum {
-        Comma = ','
+        Comma = ',',
+        Equals = '='
 
     }
 }
