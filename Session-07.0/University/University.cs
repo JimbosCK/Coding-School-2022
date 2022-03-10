@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Session_03 {
+namespace UniversitySystem {
     [Serializable]
-    internal class University : Institute{
+    public class University : Institute{
         public Student[] Students;
         public Course[] Courses;
         public Grade[] Grades;
