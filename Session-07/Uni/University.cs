@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 namespace Uni {
     [Serializable]
     public class University : Institute{
-        public Student[] Students;
-        public Course[] Courses;
-        public Grade[] Grades;
-        public Schedule[] ScheduledCourses;
+
+        public Proffesor[] Professors { get; set; }
+        public Student[] Students { get; set; }
+        public Course[] Courses { get; set; }
+        public Schedule[] ScheduledCourses { get; set; }
+        public Grade[] Grades{ get; set; }
 
         public University()
         {
@@ -20,21 +22,5 @@ namespace Uni {
             ScheduledCourses = new Schedule[60];
         }
 
-        public Student[] GetStudents()
-        {
-            return Students;
-        }
-        public Course[] GetCourses()
-        {
-            return  Courses;
-        }
-        public Grade[] GetGrades()
-        {
-            return Grades;
-        }
-        public void SetSchedule(Guid CourseID, Guid ProffessorID, DateTime datetime)
-        {
-            // TODO: University::SetSchedule
-        }
     }
 }

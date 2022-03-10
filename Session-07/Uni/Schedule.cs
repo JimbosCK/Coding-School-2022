@@ -10,5 +10,15 @@ namespace Uni {
         public Guid CourseID { get; }
         public Guid ProffesorID { get; }
         public DateTime Callendar { get; set; }
+
+        public Schedule() { 
+            ID = Guid.NewGuid();
+        }
+        public Schedule(Guid courseID, Guid professorID, DateTime callendar) {
+            ID = Guid.NewGuid();
+            CourseID = courseID;
+            ProffesorID = professorID;
+            Callendar = callendar;
+        }
     }
 }
