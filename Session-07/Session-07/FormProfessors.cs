@@ -10,9 +10,6 @@ using System.Windows.Forms;
 
 namespace Session_07 {
     public partial class FormProfessor : Form {
-        public string ProfessorName { get; set; }
-        public int ProfessorAge { get; set; }
-        public string ProfessorRank { get; set; }
 
         public Uni.Proffesor[] Professors { get; set; }
         public FormProfessor() {

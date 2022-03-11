@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Uni {
-    public class Student {
+    public class Student : Person{
         public int RegistrationNumber { get; set; }
-        public Course[] Courses;
+        public Course[] Courses { get; set; }
 
         public Student(){
             Courses = new Course[20];

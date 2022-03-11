@@ -27,19 +27,19 @@
             this.MenuItemFile = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemFileLoad = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemFileSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemUniversity = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemUniversityEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemProfessors = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemProfessorsEdit = new System.Windows.Forms.ToolStripMenuItem();
-            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
-            this.MenuItemUniversity = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemStudents = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemCourses = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemSchedule = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemGrades = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuItemUniversityEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemStudentsEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemCourses = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemCoursesEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemGrades = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemGradesEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuItemSchedule = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuItemScheduleEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             this.SuspendLayout();
@@ -83,6 +83,21 @@
             this.MenuItemFileSave.Text = "Save";
             this.MenuItemFileSave.Click += new System.EventHandler(this.MenuItemFileSave_Click);
             // 
+            // MenuItemUniversity
+            // 
+            this.MenuItemUniversity.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItemUniversityEdit});
+            this.MenuItemUniversity.Name = "MenuItemUniversity";
+            this.MenuItemUniversity.Size = new System.Drawing.Size(71, 20);
+            this.MenuItemUniversity.Text = "University";
+            // 
+            // MenuItemUniversityEdit
+            // 
+            this.MenuItemUniversityEdit.Name = "MenuItemUniversityEdit";
+            this.MenuItemUniversityEdit.Size = new System.Drawing.Size(103, 22);
+            this.MenuItemUniversityEdit.Text = "Edit...";
+            this.MenuItemUniversityEdit.Click += new System.EventHandler(this.MenuItemUniversityEdit_Click);
+            // 
             // MenuItemProfessors
             // 
             this.MenuItemProfessors.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -94,25 +109,9 @@
             // MenuItemProfessorsEdit
             // 
             this.MenuItemProfessorsEdit.Name = "MenuItemProfessorsEdit";
-            this.MenuItemProfessorsEdit.Size = new System.Drawing.Size(180, 22);
+            this.MenuItemProfessorsEdit.Size = new System.Drawing.Size(103, 22);
             this.MenuItemProfessorsEdit.Text = "Edit...";
             this.MenuItemProfessorsEdit.Click += new System.EventHandler(this.MenuItemProfessorsEdit_Click);
-            // 
-            // memoEdit1
-            // 
-            this.memoEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.memoEdit1.Location = new System.Drawing.Point(0, 24);
-            this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(800, 426);
-            this.memoEdit1.TabIndex = 1;
-            // 
-            // MenuItemUniversity
-            // 
-            this.MenuItemUniversity.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItemUniversityEdit});
-            this.MenuItemUniversity.Name = "MenuItemUniversity";
-            this.MenuItemUniversity.Size = new System.Drawing.Size(71, 20);
-            this.MenuItemUniversity.Text = "University";
             // 
             // MenuItemStudents
             // 
@@ -122,6 +121,13 @@
             this.MenuItemStudents.Size = new System.Drawing.Size(65, 20);
             this.MenuItemStudents.Text = "Students";
             // 
+            // MenuItemStudentsEdit
+            // 
+            this.MenuItemStudentsEdit.Name = "MenuItemStudentsEdit";
+            this.MenuItemStudentsEdit.Size = new System.Drawing.Size(180, 22);
+            this.MenuItemStudentsEdit.Text = "Edit...";
+            this.MenuItemStudentsEdit.Click += new System.EventHandler(this.MenuItemStudentsEdit_Click);
+            // 
             // MenuItemCourses
             // 
             this.MenuItemCourses.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -130,13 +136,11 @@
             this.MenuItemCourses.Size = new System.Drawing.Size(61, 20);
             this.MenuItemCourses.Text = "Courses";
             // 
-            // MenuItemSchedule
+            // MenuItemCoursesEdit
             // 
-            this.MenuItemSchedule.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuItemScheduleEdit});
-            this.MenuItemSchedule.Name = "MenuItemSchedule";
-            this.MenuItemSchedule.Size = new System.Drawing.Size(67, 20);
-            this.MenuItemSchedule.Text = "Schedule";
+            this.MenuItemCoursesEdit.Name = "MenuItemCoursesEdit";
+            this.MenuItemCoursesEdit.Size = new System.Drawing.Size(103, 22);
+            this.MenuItemCoursesEdit.Text = "Edit...";
             // 
             // MenuItemGrades
             // 
@@ -146,36 +150,33 @@
             this.MenuItemGrades.Size = new System.Drawing.Size(55, 20);
             this.MenuItemGrades.Text = "Grades";
             // 
-            // MenuItemUniversityEdit
-            // 
-            this.MenuItemUniversityEdit.Name = "MenuItemUniversityEdit";
-            this.MenuItemUniversityEdit.Size = new System.Drawing.Size(180, 22);
-            this.MenuItemUniversityEdit.Text = "Edit...";
-            this.MenuItemUniversityEdit.Click += new System.EventHandler(this.MenuItemUniversityEdit_Click);
-            // 
-            // MenuItemStudentsEdit
-            // 
-            this.MenuItemStudentsEdit.Name = "MenuItemStudentsEdit";
-            this.MenuItemStudentsEdit.Size = new System.Drawing.Size(180, 22);
-            this.MenuItemStudentsEdit.Text = "Edit...";
-            // 
-            // MenuItemCoursesEdit
-            // 
-            this.MenuItemCoursesEdit.Name = "MenuItemCoursesEdit";
-            this.MenuItemCoursesEdit.Size = new System.Drawing.Size(180, 22);
-            this.MenuItemCoursesEdit.Text = "Edit...";
-            // 
             // MenuItemGradesEdit
             // 
             this.MenuItemGradesEdit.Name = "MenuItemGradesEdit";
-            this.MenuItemGradesEdit.Size = new System.Drawing.Size(180, 22);
+            this.MenuItemGradesEdit.Size = new System.Drawing.Size(103, 22);
             this.MenuItemGradesEdit.Text = "Edit...";
+            // 
+            // MenuItemSchedule
+            // 
+            this.MenuItemSchedule.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuItemScheduleEdit});
+            this.MenuItemSchedule.Name = "MenuItemSchedule";
+            this.MenuItemSchedule.Size = new System.Drawing.Size(67, 20);
+            this.MenuItemSchedule.Text = "Schedule";
             // 
             // MenuItemScheduleEdit
             // 
             this.MenuItemScheduleEdit.Name = "MenuItemScheduleEdit";
-            this.MenuItemScheduleEdit.Size = new System.Drawing.Size(180, 22);
+            this.MenuItemScheduleEdit.Size = new System.Drawing.Size(103, 22);
             this.MenuItemScheduleEdit.Text = "Edit...";
+            // 
+            // memoEdit1
+            // 
+            this.memoEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.memoEdit1.Location = new System.Drawing.Point(0, 24);
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.Size = new System.Drawing.Size(800, 426);
+            this.memoEdit1.TabIndex = 1;
             // 
             // FormHome
             // 

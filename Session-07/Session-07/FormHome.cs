@@ -33,7 +33,10 @@ namespace Session_07 {
         }
         private void MenuItemUniversityEdit_Click(object sender, EventArgs e) {
             OpenFormUniversity();
-        } 
+        }
+        private void MenuItemStudentsEdit_Click(object sender, EventArgs e) {
+            OpenFormStudents();
+        }
         #endregion
 
         private void LoadData() {
@@ -83,7 +86,19 @@ namespace Session_07 {
             };
         }
 
+        private void OpenFormStudents() {
+            _universityHandler.University.Students[0] = new Uni.Student() {
+                Name = "Dimitris",
+                Age = 25,
+                RegistrationNumber = 141209
+            };
 
+            var formStudents = new FormStudents() {
+                Students = _universityHandler.University.Students
+            };
+
+            formStudents.Show();
+        }
 
         private void OpenFormProffesors() {
             _universityHandler.University.Professors[0] = new Uni.Proffesor() {
@@ -92,21 +107,21 @@ namespace Session_07 {
                 Rank = "Phd"
             };
 
-            FormProfessor formProfessors = new FormProfessor() {
+            var formProfessors = new FormProfessor() {
                 Professors = _universityHandler.University.Professors
             };
 
             formProfessors.Show();
         }
 
-
-
         private void OpenFormUniversity() {
-            FormUniversity formUniversity = new FormUniversity() {
+            var formUniversity = new FormUniversity() {
                 UniversityName = _universityHandler.University.Name,
                 UniversityYearsInService = _universityHandler.University.YearsInService
             };
             formUniversity.Show();
         }
+
+
     }
 }
