@@ -8,7 +8,7 @@ namespace Uni {
     [Serializable]
     public class University : Institute{
 
-        public Proffesor[] Professors { get; set; }
+        public Professor[] Professors { get; set; }
         public Student[] Students { get; set; }
         public Course[] Courses { get; set; }
         public Schedule[] ScheduledCourses { get; set; }
@@ -16,7 +16,7 @@ namespace Uni {
 
         public University()
         {
-            Professors = new Proffesor[5];
+            Professors = new Professor[5];
             Students = new Student[30];
             Courses = new Course[20];
             Grades = new Grade[600]; // numOfCourses * numOfStudents

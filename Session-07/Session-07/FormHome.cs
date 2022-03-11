@@ -1,9 +1,10 @@
+using DevExpress.XtraEditors;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace Session_07 {
-    public partial class FormHome : Form {
+    public partial class FormHome : XtraForm {
         private Uni.University _university;
         private Uni.UniversityHandler _universityHandler;
         private string _fileName = "test.json";
@@ -155,10 +156,15 @@ namespace Session_07 {
                 RegistrationNumber = 141209
             };
 
-            _universityHandler.University.Professors[0] = new Uni.Proffesor() {
+            _universityHandler.University.Professors[0] = new Uni.Professor() {
                 Name = "Nick",
                 Age = 33,
                 Rank = "Phd"
+            };
+            _universityHandler.University.Professors[1] = new Uni.Professor() {
+                Name = "George",
+                Age = 45,
+                Rank = "Assistant"
             };
 
             _universityHandler.University.Courses[0] = new Uni.Course() {

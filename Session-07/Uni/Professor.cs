@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Uni {
-    public class Proffesor : Person {
+    public class Professor : Person {
         public string Rank { get; set; }
         public Course[] Courses;
 
-        public Proffesor() {
+        public Professor() {
             Courses = new Course[20];
         }
 
