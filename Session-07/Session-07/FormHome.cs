@@ -7,7 +7,7 @@ namespace Session_07 {
         private Uni.University _university;
         private Uni.UniversityHandler _universityHandler;
         private string _fileName = "test.json";
-        
+
         public FormHome() {
             InitializeComponent();
 
@@ -40,22 +40,22 @@ namespace Session_07 {
         private void MenuItemCoursesEdit_Click(object sender, EventArgs e) {
             OpenFormCourses();
         }
-
+        private void MenuItemGradesEdit_Click(object sender, EventArgs e) {
+            OpenFormGrades();
+        }
         #endregion
 
         private void LoadData() {
-            //_universityHandler = new Uni.UniversityHandler();
-
             string s = File.ReadAllText(_fileName);
-            
+
             _universityHandler.University = (Uni.University)JsonSerializer.Deserialize(s, typeof(Uni.University));
-            if (_universityHandler.University != null) { 
+            if (_universityHandler.University != null) {
                 memoEdit1.Text += "[Loaded University.]" + Environment.NewLine + s + Environment.NewLine;
             }
             else {
                 memoEdit1.Text += "University loaded null." + Environment.NewLine;
             }
-            
+
         }
 
         private void SaveData() {
@@ -74,6 +74,7 @@ namespace Session_07 {
 
         private void InitializeEnviroment() {
             this.Text = _universityHandler.GetUniversityName();
+            DebugUniInit();
         }
         private void InitializeData() {
             _universityHandler = new Uni.UniversityHandler();
@@ -89,14 +90,28 @@ namespace Session_07 {
                 YearsInService = 25
             };
         }
-
-        private void OpenFormStudents() {
+        private void DebugUniInit() {
             _universityHandler.University.Students[0] = new Uni.Student() {
                 Name = "Dimitris",
                 Age = 25,
                 RegistrationNumber = 141209
             };
 
+            _universityHandler.University.Professors[0] = new Uni.Proffesor() {
+                Name = "Nick",
+                Age = 33,
+                Rank = "Phd"
+            };
+
+            _universityHandler.University.Courses[0] = new Uni.Course() {
+                Code = "0000331420",
+                Subject = "Data Structures",
+            };
+
+            _universityHandler.University.Grades[0] = new Uni.Grade(_universityHandler.University.Students[0].ID, _universityHandler.University.Courses[0].ID, 5);
+
+        }
+        private void OpenFormStudents() {
             var formStudents = new FormStudents() {
                 Students = _universityHandler.University.Students
             };
@@ -105,11 +120,6 @@ namespace Session_07 {
         }
 
         private void OpenFormProffesors() {
-            _universityHandler.University.Professors[0] = new Uni.Proffesor() {
-                Name = "Nick",
-                Age = 33,
-                Rank = "Phd"
-            };
 
             var formProfessors = new FormProfessor() {
                 Professors = _universityHandler.University.Professors
@@ -119,10 +129,6 @@ namespace Session_07 {
         }
 
         private void OpenFormCourses() {
-            _universityHandler.University.Courses[0] = new Uni.Course() {
-                Code = "0000331420",
-                Subject = "Data Structures",
-            };
 
             var formCourses = new FormCourses() {
                 Courses = _universityHandler.University.Courses
@@ -130,7 +136,14 @@ namespace Session_07 {
 
             formCourses.Show();
         }
+        private void OpenFormGrades() {
 
+            var formGrades = new FormGrades() {
+                Value = _universityHandler.University.Grades[0].Value
+            };
+
+            formGrades.Show();
+        }
         private void OpenFormUniversity() {
             var formUniversity = new FormUniversity() {
                 UniversityName = _universityHandler.University.Name,
@@ -138,7 +151,6 @@ namespace Session_07 {
             };
             formUniversity.Show();
         }
-
 
     }
 }

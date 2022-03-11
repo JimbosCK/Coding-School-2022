@@ -154,8 +154,9 @@
             // MenuItemGradesEdit
             // 
             this.MenuItemGradesEdit.Name = "MenuItemGradesEdit";
-            this.MenuItemGradesEdit.Size = new System.Drawing.Size(103, 22);
+            this.MenuItemGradesEdit.Size = new System.Drawing.Size(180, 22);
             this.MenuItemGradesEdit.Text = "Edit...";
+            this.MenuItemGradesEdit.Click += new System.EventHandler(this.MenuItemGradesEdit_Click);
             // 
             // MenuItemSchedule
             // 

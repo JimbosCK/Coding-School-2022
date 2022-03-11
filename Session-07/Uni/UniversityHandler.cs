@@ -28,5 +28,23 @@ namespace Uni {
         public void SetCourse(Guid courseID, Guid professorID, DateTime datetime) {
             University.ScheduledCourses[_numberOfSchedules++] = new Schedule(courseID, professorID, datetime);
         }
+
+        public Student? GetStudentById(Guid studentID) {
+            Student student = null;
+            foreach (var st in University.Students) {
+                if (st.ID == studentID) { student = st; }
+            }
+
+            return student;
+        }
+        public Course? GetCourseById(Guid courseID) {
+            Course course = null;
+            foreach (var cr in University.Courses) {
+                if (cr.ID == courseID) { course = cr; }
+            }
+
+            return course;
+        }
+
     }
 }

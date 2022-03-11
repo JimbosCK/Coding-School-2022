@@ -21,5 +21,12 @@ namespace Uni {
             StudentID = studentID; 
             CourseID = courseID;
         }
+
+        public Grade(Guid studentID, Guid courseID, int value) {
+            ID = Guid.NewGuid();
+            StudentID = studentID;
+            CourseID = courseID;
+            Value = value;
+        }
     }
 }
