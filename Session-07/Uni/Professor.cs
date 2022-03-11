@@ -10,7 +10,7 @@ namespace Uni {
         public List<Course> Courses;
 
         public Professor() {
-            
+
         }
 
         public string GetName() {
@@ -33,6 +33,10 @@ namespace Uni {
 
         public void SetGrade(Guid studentID, Guid courseID, Grade grade) {
             // TODO: Proffesor::SetGrade() 
+        }
+
+        public Professor ShallowCopy() {
+            return (Professor)MemberwiseClone();
         }
     }
 }

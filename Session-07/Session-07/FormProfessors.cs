@@ -12,6 +12,7 @@ using System.Windows.Forms;
 namespace Session_07 {
     public partial class FormProfessor : XtraForm {
         private Uni.Professor _selectedProfessor;
+        private Uni.Professor _orignalProfessor;
         private int _selectedIndex;
 
         public List<Uni.Professor> Professors { get; set; }
@@ -24,12 +25,15 @@ namespace Session_07 {
         }
 
         private void ButtonSave_Click(object sender, EventArgs e) {
-            UpdateProfessorList();
+            UpdateProfessor();
             FillList();
         }
 
         private void FillList() {
+            int rrr = ListBoxProfessors.SelectedIndex;
             ListBoxProfessors.Items.Clear();
+            rrr = ListBoxProfessors.SelectedIndex;
+
             foreach (var professor in Professors) {
                 if (professor != null)
                     ListBoxProfessors.Items.Add(string.Format("{0} - {1} ", professor.Name, professor.Rank));
@@ -37,27 +41,38 @@ namespace Session_07 {
         }
 
         private void ListBoxProfessors_SelectedIndexChanged(object sender, EventArgs e) {
-            _selectedIndex = ListBoxProfessors.SelectedIndex;
-            _selectedProfessor = Professors[ListBoxProfessors.SelectedIndex];
-            FillProfessor();
+            if(ListBoxProfessors.SelectedIndex > -1) {
+                SelectProfessor();
+                DisplayProfessor();
+            }
         }
 
-        private void FillProfessor() {
+        private void SelectProfessor() {
+                _selectedProfessor = Professors[ListBoxProfessors.SelectedIndex];
+        }
+        private void DisplayProfessor() {
+
             if (_selectedProfessor != null) {
                 TextEditProfessorName.Text = _selectedProfessor.Name;
                 TextEditProfessorAge.Text = _selectedProfessor.Age.ToString();
                 TextEditProfessorRank.Text = _selectedProfessor.Rank;
             }
+            else {
+                TextEditProfessorName.Text = String.Empty;
+                TextEditProfessorAge.Text = "0";
+                TextEditProfessorRank.Text = String.Empty;
+            }
         }
-        private void UpdateProfessorList() {
+
+        private void UpdateProfessor() {
+
+            //_orignalProfessor = _selectedProfessor.ShallowCopy();
+            
             if (_selectedProfessor != null) {
                 _selectedProfessor.Name = TextEditProfessorName.Text;
                 _selectedProfessor.Age = Convert.ToInt32(TextEditProfessorAge.Text);
                 _selectedProfessor.Rank = TextEditProfessorRank.Text;
-                FillList();
-
             }
-
         }
     }
 }
