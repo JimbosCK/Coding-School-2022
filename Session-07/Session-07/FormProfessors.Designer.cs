@@ -24,6 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.ButtonCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.ButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.ListBoxProfessors = new DevExpress.XtraEditors.ListBoxControl();
             this.TextEditProfessorRank = new DevExpress.XtraEditors.TextEdit();
             this.TextEditProfessorAge = new DevExpress.XtraEditors.TextEdit();
@@ -32,8 +34,9 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.Rank = new DevExpress.XtraLayout.LayoutControlItem();
             this.Age = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.Name = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListBoxProfessors)).BeginInit();
@@ -44,56 +47,79 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Rank)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Age)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Name)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
             // 
             this.layoutControl.Controls.Add(this.ListBoxProfessors);
+            this.layoutControl.Controls.Add(this.ButtonSave);
+            this.layoutControl.Controls.Add(this.ButtonCancel);
             this.layoutControl.Controls.Add(this.TextEditProfessorRank);
             this.layoutControl.Controls.Add(this.TextEditProfessorAge);
             this.layoutControl.Controls.Add(this.TextEditProfessorName);
             this.layoutControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl.Location = new System.Drawing.Point(0, 0);
             this.layoutControl.Name = "layoutControl";
+            this.layoutControl.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(985, 129, 650, 400);
             this.layoutControl.Root = this.Root;
             this.layoutControl.Size = new System.Drawing.Size(686, 390);
             this.layoutControl.TabIndex = 0;
             this.layoutControl.Text = "layoutControl";
             // 
+            // ButtonCancel
+            // 
+            this.ButtonCancel.Location = new System.Drawing.Point(345, 356);
+            this.ButtonCancel.Name = "ButtonCancel";
+            this.ButtonCancel.Size = new System.Drawing.Size(329, 22);
+            this.ButtonCancel.StyleController = this.layoutControl;
+            this.ButtonCancel.TabIndex = 6;
+            this.ButtonCancel.Text = "Cancel";
+            // 
+            // ButtonSave
+            // 
+            this.ButtonSave.Location = new System.Drawing.Point(12, 356);
+            this.ButtonSave.Name = "ButtonSave";
+            this.ButtonSave.Size = new System.Drawing.Size(329, 22);
+            this.ButtonSave.StyleController = this.layoutControl;
+            this.ButtonSave.TabIndex = 5;
+            this.ButtonSave.Text = "Save";
+            this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
+            // 
             // ListBoxProfessors
             // 
             this.ListBoxProfessors.Location = new System.Drawing.Point(12, 12);
             this.ListBoxProfessors.Name = "ListBoxProfessors";
-            this.ListBoxProfessors.Size = new System.Drawing.Size(329, 366);
+            this.ListBoxProfessors.Size = new System.Drawing.Size(218, 44);
             this.ListBoxProfessors.StyleController = this.layoutControl;
             this.ListBoxProfessors.TabIndex = 0;
             this.ListBoxProfessors.SelectedIndexChanged += new System.EventHandler(this.ListBoxProfessors_SelectedIndexChanged);
             // 
             // TextEditProfessorRank
             // 
-            this.TextEditProfessorRank.Location = new System.Drawing.Point(429, 36);
+            this.TextEditProfessorRank.Location = new System.Drawing.Point(273, 36);
             this.TextEditProfessorRank.Name = "TextEditProfessorRank";
-            this.TextEditProfessorRank.Size = new System.Drawing.Size(118, 20);
+            this.TextEditProfessorRank.Size = new System.Drawing.Size(179, 20);
             this.TextEditProfessorRank.StyleController = this.layoutControl;
-            this.TextEditProfessorRank.TabIndex = 2;
+            this.TextEditProfessorRank.TabIndex = 3;
             // 
             // TextEditProfessorAge
             // 
-            this.TextEditProfessorAge.Location = new System.Drawing.Point(590, 36);
+            this.TextEditProfessorAge.Location = new System.Drawing.Point(495, 36);
             this.TextEditProfessorAge.Name = "TextEditProfessorAge";
-            this.TextEditProfessorAge.Size = new System.Drawing.Size(84, 20);
+            this.TextEditProfessorAge.Size = new System.Drawing.Size(179, 20);
             this.TextEditProfessorAge.StyleController = this.layoutControl;
-            this.TextEditProfessorAge.TabIndex = 3;
+            this.TextEditProfessorAge.TabIndex = 4;
             // 
             // TextEditProfessorName
             // 
-            this.TextEditProfessorName.Location = new System.Drawing.Point(429, 12);
+            this.TextEditProfessorName.Location = new System.Drawing.Point(273, 12);
             this.TextEditProfessorName.Name = "TextEditProfessorName";
-            this.TextEditProfessorName.Size = new System.Drawing.Size(245, 20);
+            this.TextEditProfessorName.Size = new System.Drawing.Size(401, 20);
             this.TextEditProfessorName.StyleController = this.layoutControl;
-            this.TextEditProfessorName.TabIndex = 4;
+            this.TextEditProfessorName.TabIndex = 2;
             // 
             // Root
             // 
@@ -103,8 +129,9 @@
             this.layoutControlItem1,
             this.Rank,
             this.Age,
-            this.emptySpaceItem1,
-            this.Name});
+            this.Name,
+            this.layoutControlItem2,
+            this.layoutControlItem3});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(686, 390);
             this.Root.TextVisible = false;
@@ -114,41 +141,53 @@
             this.layoutControlItem1.Control = this.ListBoxProfessors;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(333, 370);
+            this.layoutControlItem1.Size = new System.Drawing.Size(222, 48);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // Rank
             // 
             this.Rank.Control = this.TextEditProfessorRank;
-            this.Rank.Location = new System.Drawing.Point(378, 24);
+            this.Rank.Location = new System.Drawing.Point(222, 24);
             this.Rank.Name = "Rank";
-            this.Rank.Size = new System.Drawing.Size(161, 346);
+            this.Rank.Size = new System.Drawing.Size(222, 24);
             this.Rank.TextSize = new System.Drawing.Size(27, 13);
             // 
             // Age
             // 
             this.Age.Control = this.TextEditProfessorAge;
-            this.Age.Location = new System.Drawing.Point(539, 24);
+            this.Age.Location = new System.Drawing.Point(444, 24);
             this.Age.Name = "Age";
-            this.Age.Size = new System.Drawing.Size(127, 346);
+            this.Age.Size = new System.Drawing.Size(222, 24);
             this.Age.TextSize = new System.Drawing.Size(27, 13);
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(333, 0);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(45, 370);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // Name
             // 
             this.Name.Control = this.TextEditProfessorName;
-            this.Name.Location = new System.Drawing.Point(378, 0);
+            this.Name.Location = new System.Drawing.Point(222, 0);
             this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(288, 24);
+            this.Name.Size = new System.Drawing.Size(444, 24);
             this.Name.TextSize = new System.Drawing.Size(27, 13);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.ContentVertAlignment = DevExpress.Utils.VertAlignment.Bottom;
+            this.layoutControlItem2.Control = this.ButtonCancel;
+            this.layoutControlItem2.Location = new System.Drawing.Point(333, 48);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(333, 322);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
+            // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.ContentVertAlignment = DevExpress.Utils.VertAlignment.Bottom;
+            this.layoutControlItem3.Control = this.ButtonSave;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(333, 322);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
             // 
             // FormProfessor
             // 
@@ -168,8 +207,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Rank)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Age)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Name)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -182,10 +222,13 @@
         private DevExpress.XtraEditors.TextEdit TextEditProfessorName;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlItem Name;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraLayout.LayoutControlItem Age;
         private DevExpress.XtraLayout.LayoutControlItem Rank;
         private DevExpress.XtraEditors.ListBoxControl ListBoxProfessors;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraEditors.SimpleButton ButtonCancel;
+        private DevExpress.XtraEditors.SimpleButton ButtonSave;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,11 +10,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Session_07 {
-    public partial class FormGrades : Form {
+    public partial class FormGrades : XtraForm {
         private string _formName = "Grades";
 
         public int Value { get; set; }
-        public Uni.Grade[] Grades { get; set; }
+        public List<Uni.Grade> Grades { get; set; }
         public FormGrades() {
             InitializeComponent();
         }

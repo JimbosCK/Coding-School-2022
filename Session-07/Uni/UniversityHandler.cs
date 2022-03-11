@@ -16,13 +16,13 @@ namespace Uni {
         public string GetUniversityName() {
             return University.Name;
         }
-        public Student[] GetStudents() {
+        public List<Student> GetStudents() {
             return University.Students;
         }
-        public Course[] GetCourses() {
+        public List<Course> GetCourses() {
             return University.Courses;
         }
-        public Grade[] GetGrades() {
+        public List<Grade> GetGrades() {
             return University.Grades;
         }
         public void SetCourse(Guid courseID, Guid professorID, DateTime datetime) {

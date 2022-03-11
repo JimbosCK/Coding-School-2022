@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,8 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Session_07 {
-    public partial class FormStudents : Form {
-        public Uni.Student[] Students { get; set; }
+    public partial class FormStudents : XtraForm {
+        public List<Uni.Student> Students { get; set; }
         public FormStudents() {
             InitializeComponent();
         }

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Uni {
     public class Professor : Person {
         public string Rank { get; set; }
-        public Course[] Courses;
+        public List<Course> Courses;
 
         public Professor() {
-            Courses = new Course[20];
+            
         }
 
         public string GetName() {

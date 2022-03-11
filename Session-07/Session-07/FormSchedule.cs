@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.XtraEditors;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,10 +10,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Session_07 {
-    public partial class FormSchedule : Form {
+    public partial class FormSchedule : XtraForm {
         private string _formName = "Schedule";
 
-        public Uni.Schedule[] Schedules { get; set; }
+        public List<Uni.Schedule> Schedules { get; set; }
         public FormSchedule() {
             InitializeComponent();
         }
