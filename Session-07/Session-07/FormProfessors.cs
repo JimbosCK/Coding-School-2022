@@ -25,7 +25,7 @@ namespace Session_07 {
         private void FillList() {
             foreach (var professor in Professors) {
                 if(professor != null)
-                    ListBoxProfessors.Items.Add(string.Format("{0} {1} {2}",professor.Name, professor.Age, professor.Rank));
+                    ListBoxProfessors.Items.Add(string.Format("{0} - {1} ",professor.Name, professor.Rank));
             }
         }
 
