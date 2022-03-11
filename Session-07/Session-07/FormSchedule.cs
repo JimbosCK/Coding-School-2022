@@ -9,18 +9,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Session_07 {
-    public partial class FormGrades : Form {
-        private string _formName = "Grades";
+    public partial class FormSchedule : Form {
+        private string _formName = "Schedule";
 
-        public int Value { get; set; }
-        public Uni.Grade[] Grades { get; set; }
-        public FormGrades() {
+        public Uni.Schedule[] Schedules { get; set; }
+        public FormSchedule() {
             InitializeComponent();
         }
 
-        private void FormGrades_Load(object sender, EventArgs e) {
+        private void FormSchedule_Load(object sender, EventArgs e) {
             this.Text = _formName;
-            TextEditGradeValue.Text = Grades[0].Value.ToString();
+            TextEditScheduleDate.Text = Schedules[0].Callendar.ToString();
         }
     }
 }

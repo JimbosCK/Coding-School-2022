@@ -43,6 +43,9 @@ namespace Session_07 {
         private void MenuItemGradesEdit_Click(object sender, EventArgs e) {
             OpenFormGrades();
         }
+        private void MenuItemScheduleEdit_Click(object sender, EventArgs e) {
+            OpenFormSchedule();
+        }
         #endregion
 
         private void LoadData() {
@@ -110,6 +113,7 @@ namespace Session_07 {
 
             _universityHandler.University.Grades[0] = new Uni.Grade(_universityHandler.University.Students[0].ID, _universityHandler.University.Courses[0].ID, 5);
 
+            _universityHandler.University.ScheduledCourses[0] = new Uni.Schedule(_universityHandler.University.Courses[0].ID, _universityHandler.University.Professors[0].ID, DateTime.Now);
         }
         private void OpenFormStudents() {
             var formStudents = new FormStudents() {
@@ -139,11 +143,20 @@ namespace Session_07 {
         private void OpenFormGrades() {
 
             var formGrades = new FormGrades() {
-                Value = _universityHandler.University.Grades[0].Value
+                Grades = _universityHandler.University.Grades
             };
 
             formGrades.Show();
         }
+
+        private void OpenFormSchedule() {
+            var formSchedule = new FormSchedule() {
+                Schedules = _universityHandler.University.ScheduledCourses
+            };
+
+            formSchedule.Show();
+        }
+
         private void OpenFormUniversity() {
             var formUniversity = new FormUniversity() {
                 UniversityName = _universityHandler.University.Name,
@@ -152,5 +165,6 @@ namespace Session_07 {
             formUniversity.Show();
         }
 
+        
     }
 }

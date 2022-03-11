@@ -139,7 +139,7 @@
             // MenuItemCoursesEdit
             // 
             this.MenuItemCoursesEdit.Name = "MenuItemCoursesEdit";
-            this.MenuItemCoursesEdit.Size = new System.Drawing.Size(180, 22);
+            this.MenuItemCoursesEdit.Size = new System.Drawing.Size(103, 22);
             this.MenuItemCoursesEdit.Text = "Edit...";
             this.MenuItemCoursesEdit.Click += new System.EventHandler(this.MenuItemCoursesEdit_Click);
             // 
@@ -169,8 +169,9 @@
             // MenuItemScheduleEdit
             // 
             this.MenuItemScheduleEdit.Name = "MenuItemScheduleEdit";
-            this.MenuItemScheduleEdit.Size = new System.Drawing.Size(103, 22);
+            this.MenuItemScheduleEdit.Size = new System.Drawing.Size(180, 22);
             this.MenuItemScheduleEdit.Text = "Edit...";
+            this.MenuItemScheduleEdit.Click += new System.EventHandler(this.MenuItemScheduleEdit_Click);
             // 
             // memoEdit1
             // 
