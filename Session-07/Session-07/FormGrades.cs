@@ -16,10 +16,6 @@ namespace Session_07 {
         private Uni.Student _selectedStudent;
         private Uni.Grade _selectedGrade;
 
-
-        public List<Uni.Course> Courses { get; set; }
-        public List<Uni.Student> Students { get; set; }
-        public List<Uni.Grade> Grades { get; set; }
         public Uni.UniversityHandler UHandler { get; set; }
         public FormGrades() {
             InitializeComponent();
@@ -36,7 +32,7 @@ namespace Session_07 {
 
         private void ListBoxStudents_SelectedIndexChanged(object sender, EventArgs e) {
             UpdateSelectedStudent();
-            loadGradesByStudent(Students[ListBoxStudents.SelectedIndex]);
+            loadGradesByStudent(UHandler.University.Students[ListBoxStudents.SelectedIndex]);
         }
 
         private void ButtonDelete_Click(object sender, EventArgs e) {
@@ -52,7 +48,7 @@ namespace Session_07 {
 
         private void ButtonSave_Click(object sender, EventArgs e) {
             UpdateGrades();
-            MessageBox.Show("Changes ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Changes Saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void ListBoxCourses_SelectedIndexChanged(object sender, EventArgs e) {
@@ -75,8 +71,8 @@ namespace Session_07 {
         }
         private void FillStudentList() {
             ListBoxStudents.Items.Clear();
-            if (Students != null) {
-                foreach (var std in Students) {
+            if (UHandler.University.Students != null) {
+                foreach (var std in UHandler.University.Students) {
                     if (std != null)
                         ListBoxStudents.Items.Add(string.Format("{0} ", std.Name));
                 }

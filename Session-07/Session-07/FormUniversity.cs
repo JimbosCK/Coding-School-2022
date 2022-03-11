@@ -11,15 +11,30 @@ using System.Windows.Forms;
 
 namespace Session_07 {
     public partial class FormUniversity : XtraForm {
-        public string UniversityName { get; set; }
-        public int UniversityYearsInService { get; set; }
+        private string _formName = "University";
+        public Uni.University University{ get; set; }
         public FormUniversity() {
             InitializeComponent();
         }
 
         private void FormUniversity_Load(object sender, EventArgs e) {
-            TextEditUniversityName.Text = UniversityName;
-            TextEditUniversityYearsInService.Text = UniversityYearsInService.ToString();
+            this.Text = _formName;
+            TextEditUniversityName.Text = University.Name;
+            TextEditUniversityYearsInService.Text = University.YearsInService.ToString();
+        }
+
+        private void ButtonCancel_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
+        private void ButtonSave_Click(object sender, EventArgs e) {
+            UpdateUniversity();
+            MessageBox.Show("Changes Saved.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void UpdateUniversity() {
+            University.Name = TextEditUniversityName.Text;
+            University.YearsInService = Convert.ToInt32(TextEditUniversityYearsInService.Text);
         }
     }
 }

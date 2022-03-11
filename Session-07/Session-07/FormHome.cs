@@ -118,10 +118,7 @@ namespace Session_07 {
         private void OpenFormGrades() {
 
             var formGrades = new FormGrades() {
-                UHandler = _universityHandler,
-                Grades = _universityHandler.University.Grades,
-                Students = _universityHandler.University.Students,
-                Courses = _universityHandler.University.Courses
+                UHandler = _universityHandler
             };
 
             formGrades.ShowDialog();
@@ -137,8 +134,7 @@ namespace Session_07 {
 
         private void OpenFormUniversity() {
             var formUniversity = new FormUniversity() {
-                UniversityName = _universityHandler.University.Name,
-                UniversityYearsInService = _universityHandler.University.YearsInService
+                University = _universityHandler.University
             };
             formUniversity.ShowDialog();
         }

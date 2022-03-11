@@ -27,7 +27,7 @@ namespace Session_07 {
         private void ButtonSave_Click(object sender, EventArgs e) {
             UpdateProfessor();
             FillList();
-            MessageBox.Show("Changes ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Changes Saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void ButtonCancel_Click(object sender, EventArgs e) {
             this.Close();
