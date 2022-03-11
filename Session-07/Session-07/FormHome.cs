@@ -48,6 +48,7 @@ namespace Session_07 {
         }
         #endregion
 
+        #region I/O
         private void LoadData() {
             string s = File.ReadAllText(_fileName);
 
@@ -74,47 +75,9 @@ namespace Session_07 {
             }
 
         }
+        #endregion
 
-        private void InitializeEnviroment() {
-            this.Text = _universityHandler.GetUniversityName();
-            DebugUniInit();
-        }
-        private void InitializeData() {
-            _universityHandler = new Uni.UniversityHandler();
-            LoadData();
-            if (_universityHandler.University.Name == null) {
-                LoadDefaultData();
-            }
-        }
-
-        private void LoadDefaultData() {
-            _universityHandler.University = new Uni.University() {
-                Name = "University",
-                YearsInService = 25
-            };
-        }
-        private void DebugUniInit() {
-            _universityHandler.University.Students[0] = new Uni.Student() {
-                Name = "Dimitris",
-                Age = 25,
-                RegistrationNumber = 141209
-            };
-
-            _universityHandler.University.Professors[0] = new Uni.Proffesor() {
-                Name = "Nick",
-                Age = 33,
-                Rank = "Phd"
-            };
-
-            _universityHandler.University.Courses[0] = new Uni.Course() {
-                Code = "0000331420",
-                Subject = "Data Structures",
-            };
-
-            _universityHandler.University.Grades[0] = new Uni.Grade(_universityHandler.University.Students[0].ID, _universityHandler.University.Courses[0].ID, 5);
-
-            _universityHandler.University.ScheduledCourses[0] = new Uni.Schedule(_universityHandler.University.Courses[0].ID, _universityHandler.University.Professors[0].ID, DateTime.Now);
-        }
+        #region OpenMethods
         private void OpenFormStudents() {
             var formStudents = new FormStudents() {
                 Students = _universityHandler.University.Students
@@ -164,7 +127,50 @@ namespace Session_07 {
             };
             formUniversity.Show();
         }
+        #endregion
 
-        
+        #region INIT
+        private void InitializeEnviroment() {
+            this.Text = _universityHandler.GetUniversityName();
+            DebugUniInit();
+        }
+        private void InitializeData() {
+            _universityHandler = new Uni.UniversityHandler();
+            LoadData();
+            if (_universityHandler.University.Name == null) {
+                LoadDefaultData();
+            }
+        }
+
+        private void LoadDefaultData() {
+            _universityHandler.University = new Uni.University() {
+                Name = "University",
+                YearsInService = 25
+            };
+        }
+        private void DebugUniInit() {
+            _universityHandler.University.Students[0] = new Uni.Student() {
+                Name = "Dimitris",
+                Age = 25,
+                RegistrationNumber = 141209
+            };
+
+            _universityHandler.University.Professors[0] = new Uni.Proffesor() {
+                Name = "Nick",
+                Age = 33,
+                Rank = "Phd"
+            };
+
+            _universityHandler.University.Courses[0] = new Uni.Course() {
+                Code = "0000331420",
+                Subject = "Data Structures",
+            };
+
+            _universityHandler.University.Grades[0] = new Uni.Grade(_universityHandler.University.Students[0].ID, _universityHandler.University.Courses[0].ID, 5);
+
+            _universityHandler.University.ScheduledCourses[0] = new Uni.Schedule(_universityHandler.University.Courses[0].ID, _universityHandler.University.Professors[0].ID, DateTime.Now);
+        }
+        #endregion
+
     }
 }
