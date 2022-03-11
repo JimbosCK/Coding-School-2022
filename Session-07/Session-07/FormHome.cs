@@ -37,6 +37,10 @@ namespace Session_07 {
         private void MenuItemStudentsEdit_Click(object sender, EventArgs e) {
             OpenFormStudents();
         }
+        private void MenuItemCoursesEdit_Click(object sender, EventArgs e) {
+            OpenFormCourses();
+        }
+
         #endregion
 
         private void LoadData() {
@@ -112,6 +116,19 @@ namespace Session_07 {
             };
 
             formProfessors.Show();
+        }
+
+        private void OpenFormCourses() {
+            _universityHandler.University.Courses[0] = new Uni.Course() {
+                Code = "0000331420",
+                Subject = "Data Structures",
+            };
+
+            var formCourses = new FormCourses() {
+                Courses = _universityHandler.University.Courses
+            };
+
+            formCourses.Show();
         }
 
         private void OpenFormUniversity() {

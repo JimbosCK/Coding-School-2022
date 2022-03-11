@@ -124,7 +124,7 @@
             // MenuItemStudentsEdit
             // 
             this.MenuItemStudentsEdit.Name = "MenuItemStudentsEdit";
-            this.MenuItemStudentsEdit.Size = new System.Drawing.Size(180, 22);
+            this.MenuItemStudentsEdit.Size = new System.Drawing.Size(103, 22);
             this.MenuItemStudentsEdit.Text = "Edit...";
             this.MenuItemStudentsEdit.Click += new System.EventHandler(this.MenuItemStudentsEdit_Click);
             // 
@@ -139,8 +139,9 @@
             // MenuItemCoursesEdit
             // 
             this.MenuItemCoursesEdit.Name = "MenuItemCoursesEdit";
-            this.MenuItemCoursesEdit.Size = new System.Drawing.Size(103, 22);
+            this.MenuItemCoursesEdit.Size = new System.Drawing.Size(180, 22);
             this.MenuItemCoursesEdit.Text = "Edit...";
+            this.MenuItemCoursesEdit.Click += new System.EventHandler(this.MenuItemCoursesEdit_Click);
             // 
             // MenuItemGrades
             // 

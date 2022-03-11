@@ -16,6 +16,7 @@ namespace Session_07 {
         }
 
         private void FormStudents_Load(object sender, EventArgs e) {
+            this.Text = "Students";
             TextEditStudentName.Text = Students[0].Name;
             TextEditStudentAge.Text = Students[0].Age.ToString();
             TextEditStudentRegistrationNumber.Text = Students[0].RegistrationNumber.ToString();
