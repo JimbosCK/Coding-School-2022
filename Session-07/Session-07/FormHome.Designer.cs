@@ -56,7 +56,8 @@
             this.MenuItemSchedule});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(686, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip";
             // 
@@ -154,7 +155,7 @@
             // MenuItemGradesEdit
             // 
             this.MenuItemGradesEdit.Name = "MenuItemGradesEdit";
-            this.MenuItemGradesEdit.Size = new System.Drawing.Size(180, 22);
+            this.MenuItemGradesEdit.Size = new System.Drawing.Size(103, 22);
             this.MenuItemGradesEdit.Text = "Edit...";
             this.MenuItemGradesEdit.Click += new System.EventHandler(this.MenuItemGradesEdit_Click);
             // 
@@ -169,7 +170,7 @@
             // MenuItemScheduleEdit
             // 
             this.MenuItemScheduleEdit.Name = "MenuItemScheduleEdit";
-            this.MenuItemScheduleEdit.Size = new System.Drawing.Size(180, 22);
+            this.MenuItemScheduleEdit.Size = new System.Drawing.Size(103, 22);
             this.MenuItemScheduleEdit.Text = "Edit...";
             this.MenuItemScheduleEdit.Click += new System.EventHandler(this.MenuItemScheduleEdit_Click);
             // 
@@ -178,19 +179,20 @@
             this.memoEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.memoEdit1.Location = new System.Drawing.Point(0, 24);
             this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(800, 426);
+            this.memoEdit1.Size = new System.Drawing.Size(686, 366);
             this.memoEdit1.TabIndex = 1;
             // 
             // FormHome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(686, 390);
             this.Controls.Add(this.memoEdit1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormHome";
             this.Text = "University";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormHome_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

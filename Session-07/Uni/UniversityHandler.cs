@@ -12,6 +12,12 @@ namespace Uni {
 
         public UniversityHandler() {
             University = new University();
+            University.Students = new List<Student>();
+            University.Courses = new List<Course>();
+            University.Grades = new List<Grade>();
+            University.Professors = new List<Professor>();
+            University.ScheduledCourses = new List<Schedule>();
+
         }
         public string GetUniversityName() {
             return University.Name;

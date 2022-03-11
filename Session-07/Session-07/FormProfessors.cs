@@ -27,17 +27,24 @@ namespace Session_07 {
         private void ButtonSave_Click(object sender, EventArgs e) {
             UpdateProfessor();
             FillList();
+            MessageBox.Show("Changes have been saved.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void ButtonCancel_Click(object sender, EventArgs e) {
+            this.Close();
         }
 
         private void FillList() {
-            int rrr = ListBoxProfessors.SelectedIndex;
             ListBoxProfessors.Items.Clear();
-            rrr = ListBoxProfessors.SelectedIndex;
-
-            foreach (var professor in Professors) {
-                if (professor != null)
-                    ListBoxProfessors.Items.Add(string.Format("{0} - {1} ", professor.Name, professor.Rank));
+            if (Professors != null) {
+                foreach (var professor in Professors) {
+                    if (professor != null)
+                        ListBoxProfessors.Items.Add(string.Format("{0} - {1} ", professor.Name, professor.Rank));
+                }
             }
+            else {
+                Professors.Add(CreateNewProfessor());
+            }
+
         }
 
         private void ListBoxProfessors_SelectedIndexChanged(object sender, EventArgs e) {
@@ -48,7 +55,8 @@ namespace Session_07 {
         }
 
         private void SelectProfessor() {
-                _selectedProfessor = Professors[ListBoxProfessors.SelectedIndex];
+            int x = ListBoxProfessors.SelectedIndex;
+                _selectedProfessor = Professors[x];
         }
         private void DisplayProfessor() {
 
@@ -59,7 +67,7 @@ namespace Session_07 {
             }
             else {
                 TextEditProfessorName.Text = String.Empty;
-                TextEditProfessorAge.Text = "0";
+                TextEditProfessorAge.Text = String.Empty;
                 TextEditProfessorRank.Text = String.Empty;
             }
         }
@@ -73,6 +81,38 @@ namespace Session_07 {
                 _selectedProfessor.Age = Convert.ToInt32(TextEditProfessorAge.Text);
                 _selectedProfessor.Rank = TextEditProfessorRank.Text;
             }
+        }
+
+        private void ButtonDelete_Click(object sender, EventArgs e) {
+            DeleteProfessor();
+        }
+
+        private void DeleteProfessor() {
+
+            if (_selectedProfessor != null) {
+
+                Professors.Remove(_selectedProfessor);
+
+                _selectedProfessor = null;
+
+                FillList();
+            }
+            DisplayProfessor();
+        }
+
+        private void ButtonNew_Click(object sender, EventArgs e) {
+            Uni.Professor newProfessor = CreateNewProfessor();
+            Professors.Add(newProfessor);
+            ListBoxProfessors.SelectedIndex = Professors.IndexOf(newProfessor);
+
+            FillList();
+
+        }
+        private Uni.Professor CreateNewProfessor() {
+            Uni.Professor prof = new Uni.Professor() {
+                Name = "New..."
+            };
+            return prof;
         }
     }
 }

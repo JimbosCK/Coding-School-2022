@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.layoutControl = new DevExpress.XtraLayout.LayoutControl();
+            this.ButtonDelete = new DevExpress.XtraEditors.SimpleButton();
             this.ListBoxProfessors = new DevExpress.XtraEditors.ListBoxControl();
             this.ButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.ButtonCancel = new DevExpress.XtraEditors.SimpleButton();
@@ -33,14 +34,14 @@
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.Rank = new DevExpress.XtraLayout.LayoutControlItem();
-            this.Age = new DevExpress.XtraLayout.LayoutControlItem();
             this.Name = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.Age = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ButtonNew = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.splitterItem1 = new DevExpress.XtraLayout.SplitterItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).BeginInit();
             this.layoutControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListBoxProfessors)).BeginInit();
@@ -50,18 +51,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Rank)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Age)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Name)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Age)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl
             // 
-            this.layoutControl.Controls.Add(this.simpleButton3);
-            this.layoutControl.Controls.Add(this.simpleButton2);
+            this.layoutControl.Controls.Add(this.ButtonNew);
+            this.layoutControl.Controls.Add(this.ButtonDelete);
             this.layoutControl.Controls.Add(this.ListBoxProfessors);
             this.layoutControl.Controls.Add(this.ButtonSave);
             this.layoutControl.Controls.Add(this.ButtonCancel);
@@ -77,55 +79,68 @@
             this.layoutControl.TabIndex = 0;
             this.layoutControl.Text = "layoutControl";
             // 
+            // ButtonDelete
+            // 
+            this.ButtonDelete.Location = new System.Drawing.Point(178, 356);
+            this.ButtonDelete.Name = "ButtonDelete";
+            this.ButtonDelete.Size = new System.Drawing.Size(162, 22);
+            this.ButtonDelete.StyleController = this.layoutControl;
+            this.ButtonDelete.TabIndex = 8;
+            this.ButtonDelete.Text = "Delete";
+            this.ButtonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
+            // 
             // ListBoxProfessors
             // 
+            this.ListBoxProfessors.ItemAutoHeight = true;
             this.ListBoxProfessors.Location = new System.Drawing.Point(12, 12);
+            this.ListBoxProfessors.MinimumSize = new System.Drawing.Size(0, 300);
             this.ListBoxProfessors.Name = "ListBoxProfessors";
-            this.ListBoxProfessors.Size = new System.Drawing.Size(218, 44);
+            this.ListBoxProfessors.Size = new System.Drawing.Size(328, 340);
             this.ListBoxProfessors.StyleController = this.layoutControl;
             this.ListBoxProfessors.TabIndex = 0;
             this.ListBoxProfessors.SelectedIndexChanged += new System.EventHandler(this.ListBoxProfessors_SelectedIndexChanged);
             // 
             // ButtonSave
             // 
-            this.ButtonSave.Location = new System.Drawing.Point(12, 356);
+            this.ButtonSave.Location = new System.Drawing.Point(354, 356);
             this.ButtonSave.Name = "ButtonSave";
-            this.ButtonSave.Size = new System.Drawing.Size(162, 22);
+            this.ButtonSave.Size = new System.Drawing.Size(158, 22);
             this.ButtonSave.StyleController = this.layoutControl;
-            this.ButtonSave.TabIndex = 6;
+            this.ButtonSave.TabIndex = 5;
             this.ButtonSave.Text = "Save";
             this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
             // ButtonCancel
             // 
-            this.ButtonCancel.Location = new System.Drawing.Point(511, 356);
+            this.ButtonCancel.Location = new System.Drawing.Point(516, 356);
             this.ButtonCancel.Name = "ButtonCancel";
-            this.ButtonCancel.Size = new System.Drawing.Size(163, 22);
+            this.ButtonCancel.Size = new System.Drawing.Size(158, 22);
             this.ButtonCancel.StyleController = this.layoutControl;
-            this.ButtonCancel.TabIndex = 5;
+            this.ButtonCancel.TabIndex = 6;
             this.ButtonCancel.Text = "Cancel";
+            this.ButtonCancel.Click += new System.EventHandler(this.ButtonCancel_Click);
             // 
             // TextEditProfessorRank
             // 
-            this.TextEditProfessorRank.Location = new System.Drawing.Point(273, 36);
+            this.TextEditProfessorRank.Location = new System.Drawing.Point(393, 36);
             this.TextEditProfessorRank.Name = "TextEditProfessorRank";
-            this.TextEditProfessorRank.Size = new System.Drawing.Size(179, 20);
+            this.TextEditProfessorRank.Size = new System.Drawing.Size(119, 20);
             this.TextEditProfessorRank.StyleController = this.layoutControl;
             this.TextEditProfessorRank.TabIndex = 3;
             // 
             // TextEditProfessorAge
             // 
-            this.TextEditProfessorAge.Location = new System.Drawing.Point(495, 36);
+            this.TextEditProfessorAge.Location = new System.Drawing.Point(555, 36);
             this.TextEditProfessorAge.Name = "TextEditProfessorAge";
-            this.TextEditProfessorAge.Size = new System.Drawing.Size(179, 20);
+            this.TextEditProfessorAge.Size = new System.Drawing.Size(119, 20);
             this.TextEditProfessorAge.StyleController = this.layoutControl;
             this.TextEditProfessorAge.TabIndex = 4;
             // 
             // TextEditProfessorName
             // 
-            this.TextEditProfessorName.Location = new System.Drawing.Point(273, 12);
+            this.TextEditProfessorName.Location = new System.Drawing.Point(393, 12);
             this.TextEditProfessorName.Name = "TextEditProfessorName";
-            this.TextEditProfessorName.Size = new System.Drawing.Size(401, 20);
+            this.TextEditProfessorName.Size = new System.Drawing.Size(281, 20);
             this.TextEditProfessorName.StyleController = this.layoutControl;
             this.TextEditProfessorName.TabIndex = 2;
             // 
@@ -137,11 +152,12 @@
             this.layoutControlItem1,
             this.Rank,
             this.Name,
-            this.layoutControlItem3,
             this.layoutControlItem5,
-            this.layoutControlItem6,
             this.layoutControlItem2,
-            this.Age});
+            this.Age,
+            this.layoutControlItem3,
+            this.layoutControlItem4,
+            this.splitterItem1});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(686, 390);
             this.Root.TextVisible = false;
@@ -152,7 +168,7 @@
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.MinSize = new System.Drawing.Size(54, 4);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(222, 48);
+            this.layoutControlItem1.Size = new System.Drawing.Size(332, 344);
             this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
@@ -160,84 +176,83 @@
             // Rank
             // 
             this.Rank.Control = this.TextEditProfessorRank;
-            this.Rank.Location = new System.Drawing.Point(222, 24);
+            this.Rank.Location = new System.Drawing.Point(342, 24);
             this.Rank.Name = "Rank";
-            this.Rank.Size = new System.Drawing.Size(222, 24);
+            this.Rank.Size = new System.Drawing.Size(162, 24);
             this.Rank.TextSize = new System.Drawing.Size(27, 13);
-            // 
-            // Age
-            // 
-            this.Age.Control = this.TextEditProfessorAge;
-            this.Age.Location = new System.Drawing.Point(444, 24);
-            this.Age.Name = "Age";
-            this.Age.Size = new System.Drawing.Size(222, 24);
-            this.Age.TextSize = new System.Drawing.Size(27, 13);
             // 
             // Name
             // 
             this.Name.Control = this.TextEditProfessorName;
-            this.Name.Location = new System.Drawing.Point(222, 0);
+            this.Name.Location = new System.Drawing.Point(342, 0);
             this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(444, 24);
+            this.Name.Size = new System.Drawing.Size(324, 24);
             this.Name.TextSize = new System.Drawing.Size(27, 13);
+            // 
+            // layoutControlItem5
+            // 
+            this.layoutControlItem5.ContentVertAlignment = DevExpress.Utils.VertAlignment.Bottom;
+            this.layoutControlItem5.Control = this.ButtonDelete;
+            this.layoutControlItem5.Location = new System.Drawing.Point(166, 344);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(166, 26);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.ContentVertAlignment = DevExpress.Utils.VertAlignment.Bottom;
             this.layoutControlItem2.Control = this.ButtonCancel;
-            this.layoutControlItem2.Location = new System.Drawing.Point(499, 48);
+            this.layoutControlItem2.Location = new System.Drawing.Point(504, 48);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(167, 322);
+            this.layoutControlItem2.Size = new System.Drawing.Size(162, 322);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
+            // 
+            // Age
+            // 
+            this.Age.Control = this.TextEditProfessorAge;
+            this.Age.Location = new System.Drawing.Point(504, 24);
+            this.Age.Name = "Age";
+            this.Age.Size = new System.Drawing.Size(162, 24);
+            this.Age.TextSize = new System.Drawing.Size(27, 13);
             // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.ContentVertAlignment = DevExpress.Utils.VertAlignment.Bottom;
             this.layoutControlItem3.Control = this.ButtonSave;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 48);
+            this.layoutControlItem3.Location = new System.Drawing.Point(342, 48);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(166, 322);
+            this.layoutControlItem3.Size = new System.Drawing.Size(162, 322);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // simpleButton2
+            // ButtonNew
             // 
-            this.simpleButton2.Location = new System.Drawing.Point(344, 356);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(163, 22);
-            this.simpleButton2.StyleController = this.layoutControl;
-            this.simpleButton2.TabIndex = 8;
-            this.simpleButton2.Text = "simpleButton2";
+            this.ButtonNew.Location = new System.Drawing.Point(12, 356);
+            this.ButtonNew.Name = "ButtonNew";
+            this.ButtonNew.Size = new System.Drawing.Size(162, 22);
+            this.ButtonNew.StyleController = this.layoutControl;
+            this.ButtonNew.TabIndex = 7;
+            this.ButtonNew.Text = "New";
+            this.ButtonNew.Click += new System.EventHandler(this.ButtonNew_Click);
             // 
-            // layoutControlItem5
+            // layoutControlItem4
             // 
-            this.layoutControlItem5.ContentVertAlignment = DevExpress.Utils.VertAlignment.Bottom;
-            this.layoutControlItem5.Control = this.simpleButton2;
-            this.layoutControlItem5.Location = new System.Drawing.Point(332, 48);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(167, 322);
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem5.TextVisible = false;
+            this.layoutControlItem4.ContentVertAlignment = DevExpress.Utils.VertAlignment.Bottom;
+            this.layoutControlItem4.Control = this.ButtonNew;
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 344);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(166, 26);
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem4.TextVisible = false;
             // 
-            // simpleButton3
+            // splitterItem1
             // 
-            this.simpleButton3.Location = new System.Drawing.Point(178, 356);
-            this.simpleButton3.Name = "simpleButton3";
-            this.simpleButton3.Size = new System.Drawing.Size(162, 22);
-            this.simpleButton3.StyleController = this.layoutControl;
-            this.simpleButton3.TabIndex = 7;
-            this.simpleButton3.Text = "simpleButton3";
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.ContentVertAlignment = DevExpress.Utils.VertAlignment.Bottom;
-            this.layoutControlItem6.Control = this.simpleButton3;
-            this.layoutControlItem6.Location = new System.Drawing.Point(166, 48);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(166, 322);
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem6.TextVisible = false;
+            this.splitterItem1.AllowHotTrack = true;
+            this.splitterItem1.Location = new System.Drawing.Point(332, 0);
+            this.splitterItem1.Name = "splitterItem1";
+            this.splitterItem1.Size = new System.Drawing.Size(10, 370);
             // 
             // FormProfessor
             // 
@@ -256,12 +271,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Rank)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Age)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Name)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Age)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -282,9 +298,10 @@
         private DevExpress.XtraEditors.SimpleButton ButtonSave;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton3;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton ButtonDelete;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraEditors.SimpleButton ButtonNew;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraLayout.SplitterItem splitterItem1;
     }
 }

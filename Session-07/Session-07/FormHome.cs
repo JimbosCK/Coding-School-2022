@@ -5,8 +5,8 @@ using System.Text.Json.Serialization;
 
 namespace Session_07 {
     public partial class FormHome : XtraForm {
-        private Uni.University _university;
-        private Uni.UniversityHandler _universityHandler;
+        private Uni.University _university  ;
+        private Uni.UniversityHandler _universityHandler = new Uni.UniversityHandler();
         private string _fileName = "test.json";
 
         public FormHome() {
@@ -47,13 +47,20 @@ namespace Session_07 {
         private void MenuItemScheduleEdit_Click(object sender, EventArgs e) {
             OpenFormSchedule();
         }
+        private void FormHome_FormClosing(object sender, FormClosingEventArgs e) {
+            SaveData();
+        }
         #endregion
 
         #region I/O
         private void LoadData() {
             string s = File.ReadAllText(_fileName);
-
-            _universityHandler.University = (Uni.University)JsonSerializer.Deserialize(s, typeof(Uni.University));
+            try {
+                _universityHandler.University = (Uni.University)JsonSerializer.Deserialize(s, typeof(Uni.University));
+            }
+            catch (Exception) {
+                _universityHandler = new Uni.UniversityHandler();
+            }
             if (_universityHandler.University != null) {
                 memoEdit1.Text += "[Loaded University.]" + Environment.NewLine + s + Environment.NewLine;
             }
@@ -133,10 +140,12 @@ namespace Session_07 {
         #region INIT
         private void InitializeEnviroment() {
             this.Text = _universityHandler.GetUniversityName();
-            DebugUniInit();
+            //DebugUniInit();
         }
         private void InitializeData() {
             _universityHandler = new Uni.UniversityHandler();
+            _universityHandler.University = new Uni.University();
+            _universityHandler.University.Professors = new List<Uni.Professor>();
             LoadData();
             if (_universityHandler.University.Name == null) {
                 LoadDefaultData();
@@ -150,33 +159,34 @@ namespace Session_07 {
             };
         }
         private void DebugUniInit() {
-            _universityHandler.University.Students[0] = new Uni.Student() {
+            _universityHandler.University.Students.Add( new Uni.Student() {
                 Name = "Dimitris",
                 Age = 25,
                 RegistrationNumber = 141209
-            };
+            });
 
-            _universityHandler.University.Professors[0] = new Uni.Professor() {
+            _universityHandler.University.Professors.Add(new Uni.Professor() {
                 Name = "Nick",
                 Age = 33,
                 Rank = "Phd"
-            };
-            _universityHandler.University.Professors[1] = new Uni.Professor() {
+            });
+            _universityHandler.University.Professors.Add( new Uni.Professor() {
                 Name = "George",
                 Age = 45,
                 Rank = "Assistant"
-            };
+            });
 
-            _universityHandler.University.Courses[0] = new Uni.Course() {
+            _universityHandler.University.Courses.Add(new Uni.Course() {
                 Code = "0000331420",
                 Subject = "Data Structures",
-            };
+            });
 
-            _universityHandler.University.Grades[0] = new Uni.Grade(_universityHandler.University.Students[0].ID, _universityHandler.University.Courses[0].ID, 5);
+            _universityHandler.University.Grades.Add(new Uni.Grade(_universityHandler.University.Students[0].ID, _universityHandler.University.Courses[0].ID, 5));
 
-            _universityHandler.University.ScheduledCourses[0] = new Uni.Schedule(_universityHandler.University.Courses[0].ID, _universityHandler.University.Professors[0].ID, DateTime.Now);
+            _universityHandler.University.ScheduledCourses.Add ( new Uni.Schedule(_universityHandler.University.Courses[0].ID, _universityHandler.University.Professors[0].ID, DateTime.Now));
         }
         #endregion
+
 
     }
 }
