@@ -16,7 +16,6 @@ namespace Session_07 {
 
         public Uni.Proffesor[] Professors { get; set; }
         public FormProfessor() {
-            //professors = new Uni.Proffesor[5];
             InitializeComponent();
         }
 

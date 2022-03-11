@@ -10,13 +10,15 @@ namespace Session_07 {
         
         public FormHome() {
             InitializeComponent();
+
         }
+        #region UI
 
         private void Form1_Load(object sender, EventArgs e) {
             InitializeData();
             InitializeEnviroment();
         }
-       
+
         private void MenuItemFileLoad_Click(object sender, EventArgs e) {
             LoadData();
         }
@@ -24,6 +26,15 @@ namespace Session_07 {
         private void MenuItemFileSave_Click(object sender, EventArgs e) {
             SaveData();
         }
+
+        private void MenuItemProfessorsEdit_Click(object sender, EventArgs e) {
+            OpenFormProffesors();
+
+        }
+        private void MenuItemUniversityEdit_Click(object sender, EventArgs e) {
+            OpenFormUniversity();
+        } 
+        #endregion
 
         private void LoadData() {
             //_universityHandler = new Uni.UniversityHandler();
@@ -73,8 +84,8 @@ namespace Session_07 {
         }
 
 
-        private void MenuItemProfessorsEdit_Click(object sender, EventArgs e) {
 
+        private void OpenFormProffesors() {
             _universityHandler.University.Professors[0] = new Uni.Proffesor() {
                 Name = "Nick",
                 Age = 33,
@@ -86,11 +97,16 @@ namespace Session_07 {
             };
 
             formProfessors.Show();
-
         }
 
-        private void MenuItemUniversityEdit_Click(object sender, EventArgs e) {
 
+
+        private void OpenFormUniversity() {
+            FormUniversity formUniversity = new FormUniversity() {
+                UniversityName = _universityHandler.University.Name,
+                UniversityYearsInService = _universityHandler.University.YearsInService
+            };
+            formUniversity.Show();
         }
     }
 }
