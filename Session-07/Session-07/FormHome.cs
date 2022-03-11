@@ -18,6 +18,10 @@ namespace Session_07 {
         private void Form1_Load(object sender, EventArgs e) {
             InitializeData();
             InitializeEnviroment();
+            //_universityHandler.University.Grades[0] = new Uni.Grade(_universityHandler.University.Students[0].ID, _universityHandler.University.Courses[0].ID, 7);
+            //_universityHandler.University.Grades.Add(new Uni.Grade(_universityHandler.University.Students[1].ID, _universityHandler.University.Courses[0].ID, 5));
+            //_universityHandler.University.Grades.Add(new Uni.Grade(_universityHandler.University.Students[0].ID, _universityHandler.University.Courses[1].ID, 5));
+
         }
 
         private void MenuItemFileLoad_Click(object sender, EventArgs e) {
@@ -91,7 +95,7 @@ namespace Session_07 {
                 Students = _universityHandler.University.Students
             };
 
-            formStudents.Show();
+            formStudents.ShowDialog();
         }
 
         private void OpenFormProffesors() {
@@ -100,7 +104,7 @@ namespace Session_07 {
                 Professors = _universityHandler.University.Professors
             };
 
-            formProfessors.Show();
+            formProfessors.ShowDialog();
         }
 
         private void OpenFormCourses() {
@@ -109,15 +113,18 @@ namespace Session_07 {
                 Courses = _universityHandler.University.Courses
             };
 
-            formCourses.Show();
+            formCourses.ShowDialog();
         }
         private void OpenFormGrades() {
 
             var formGrades = new FormGrades() {
-                Grades = _universityHandler.University.Grades
+                UHandler = _universityHandler,
+                Grades = _universityHandler.University.Grades,
+                Students = _universityHandler.University.Students,
+                Courses = _universityHandler.University.Courses
             };
 
-            formGrades.Show();
+            formGrades.ShowDialog();
         }
 
         private void OpenFormSchedule() {
@@ -125,7 +132,7 @@ namespace Session_07 {
                 Schedules = _universityHandler.University.ScheduledCourses
             };
 
-            formSchedule.Show();
+            formSchedule.ShowDialog();
         }
 
         private void OpenFormUniversity() {
@@ -133,7 +140,7 @@ namespace Session_07 {
                 UniversityName = _universityHandler.University.Name,
                 UniversityYearsInService = _universityHandler.University.YearsInService
             };
-            formUniversity.Show();
+            formUniversity.ShowDialog();
         }
         #endregion
 

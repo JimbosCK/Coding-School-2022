@@ -28,5 +28,6 @@ namespace Uni {
             CourseID = courseID;
             Value = value;
         }
+        
     }
 }
