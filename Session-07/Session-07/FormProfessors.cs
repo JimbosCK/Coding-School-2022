@@ -13,14 +13,17 @@ namespace Session_07 {
         public string ProfessorName { get; set; }
         public int ProfessorAge { get; set; }
         public string ProfessorRank { get; set; }
+
+        public Uni.Proffesor[] Professors { get; set; }
         public FormProfessor() {
+            //professors = new Uni.Proffesor[5];
             InitializeComponent();
         }
 
         private void FormProfessors_Load(object sender, EventArgs e) {
-            TextEditProfessorName.Text = ProfessorName;
-            TextEditProfessorAge.Text = ProfessorAge.ToString();
-            TextEditProfessorRank.Text = ProfessorRank;
+            TextEditProfessorName.Text = Professors[0].Name;
+            TextEditProfessorAge.Text = Professors[0].Age.ToString();
+            TextEditProfessorRank.Text = Professors[0].Rank;
         }
     }
 }

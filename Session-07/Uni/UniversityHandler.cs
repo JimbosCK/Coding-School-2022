@@ -5,26 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Uni {
-    internal class UniversityHandler {
+    public class UniversityHandler {
         private int _numberOfSchedules = 0;
 
-        public University Uni{ get; set; }
+        public University University{ get; set; }
 
         public UniversityHandler() {
-            Uni = new University();
+            University = new University();
         }
-
+        public string GetUniversityName() {
+            return University.Name;
+        }
         public Student[] GetStudents() {
-            return Uni.Students;
+            return University.Students;
         }
         public Course[] GetCourses() {
-            return Uni.Courses;
+            return University.Courses;
         }
         public Grade[] GetGrades() {
-            return Uni.Grades;
+            return University.Grades;
         }
         public void SetCourse(Guid courseID, Guid professorID, DateTime datetime) {
-            Uni.ScheduledCourses[_numberOfSchedules++] = new Schedule(courseID, professorID, datetime);
+            University.ScheduledCourses[_numberOfSchedules++] = new Schedule(courseID, professorID, datetime);
         }
     }
 }

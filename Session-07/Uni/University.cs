@@ -16,6 +16,7 @@ namespace Uni {
 
         public University()
         {
+            Professors = new Proffesor[5];
             Students = new Student[30];
             Courses = new Course[20];
             Grades = new Grade[600]; // numOfCourses * numOfStudents
