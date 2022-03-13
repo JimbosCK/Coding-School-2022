@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Uni {
+    [Serializable]
     public class UniversityHandler {
         private int _numberOfSchedules = 0;
 

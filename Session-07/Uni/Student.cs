@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Uni {
+    [Serializable]
     public class Student : Person{
         public int RegistrationNumber { get; set; }
         public List<Course> Courses { get; set; }

@@ -1,16 +1,18 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Uni {
+    [Serializable]
     public class Professor : Person {
-        public string Rank { get; set; }
+        public string? Rank { get; set; }
         public List<Course> Courses;
 
         public Professor() {
-
+            Courses = new List<Course>();
         }
 
         public string GetName() {

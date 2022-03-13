@@ -10,7 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Calculation\Calculation.csproj" />
+    <Reference Include="Calculation">
+      <HintPath>Calculation\obj\Debug\net6.0\Calculation.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

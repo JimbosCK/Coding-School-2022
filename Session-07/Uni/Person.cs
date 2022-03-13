@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Uni {
+    [Serializable]
     public class Person {
 
         public Guid ID { get; }

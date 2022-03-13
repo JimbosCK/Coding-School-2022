@@ -12,7 +12,9 @@ using System.Windows.Forms;
 namespace Session_07 {
     public partial class FormProfessor : XtraForm {
         private Uni.Professor _selectedProfessor;
-        
+        private Uni.Course _selectedGeneralCourse;
+        private Uni.Course _selectedProfessorCourse;
+
         public List<Uni.Course> Courses { get; set; }
         public List<Uni.Professor> Professors { get; set; }
         public FormProfessor() {
@@ -29,20 +31,66 @@ namespace Session_07 {
             FillProfessorList();
             MessageBox.Show("Changes Saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void ButtonDelete_Click(object sender, EventArgs e) {
+            DeleteProfessor();
+        }
+        private void ButtonNew_Click(object sender, EventArgs e) {
+            AddNewProfessor();
+
+            FillProfessorList();
+
+        }
         private void ButtonCancel_Click(object sender, EventArgs e) {
             this.Close();
         }
+        private void ListBoxProfessors_SelectedIndexChanged(object sender, EventArgs e) {
+            if (ListBoxProfessors.SelectedIndex > -1) {
+                UpdateSelectedProfessor();
+                FillProfessorsCoursesList();
+                DisplayProfessor();
+            }
+        }
+        private void ListBoxCourses_SelectedIndexChanged(object sender, EventArgs e) {
+            if (ListBoxCourses.SelectedIndex != -1) {
+                UpdateSelectedCourse();
+            }
+        }
+        private void ListBoxProfessorsCourses_SelectedIndexChanged(object sender, EventArgs e) {
+            if (ListBoxProfessorsCourses.SelectedIndex != -1) {
+                UpdateSelectedProfessorCourse();
+            }
+        }
 
+        private void ButtonAddCourse_Click(object sender, EventArgs e) {
+            AddSelectedCourseToProfessor();
+        }
+        private void ButtonDeleteCourse_Click(object sender, EventArgs e) {
+            RemoveSelectedCourseFromProfessor();
+        }
+        private void RemoveSelectedCourseFromProfessor(){
+            _selectedProfessor.Courses.Remove(_selectedProfessorCourse);
+            FillProfessorsCoursesList();
+        }
+        private void AddNewProfessor() {
+            Uni.Professor newProfessor = CreateNewProfessor();
+
+            Professors.Add(newProfessor);
+            ListBoxProfessors.SelectedIndex = Professors.IndexOf(newProfessor);
+        }
+        private void AddSelectedCourseToProfessor() {
+            _selectedProfessor.Courses.Add(_selectedGeneralCourse);
+            FillProfessorsCoursesList();
+        }
         private void FillProfessorList() {
             ListBoxProfessors.Items.Clear();
             if (Professors != null) {
                 foreach (var professor in Professors) {
                     if (professor != null)
-                        ListBoxProfessors.Items.Add(string.Format("{0} - {1} ", professor.Name, professor.Rank));
+                        ListBoxProfessors.Items.Add(string.Format("{0} - {1} ", professor.GetName(), professor.Rank));
                 }
             }
         }
-
         private void FillCourseList() {
             ListBoxCourses.Items.Clear();
             if (Courses != null) {
@@ -52,17 +100,25 @@ namespace Session_07 {
                 }
             }
         }
-
-        private void ListBoxProfessors_SelectedIndexChanged(object sender, EventArgs e) {
-            if(ListBoxProfessors.SelectedIndex > -1) {
-                SelectProfessor();
-                DisplayProfessor();
+        private void FillProfessorsCoursesList() {
+            ListBoxProfessorsCourses.Items.Clear();
+            if (_selectedProfessor != null && _selectedProfessor.Courses != null) {
+                foreach (var pCourse in _selectedProfessor.Courses) {
+                    if (pCourse != null)
+                        ListBoxProfessorsCourses.Items.Add(string.Format("{0} - {1} ", pCourse.Subject, pCourse.Code));
+                }
             }
         }
 
-        private void SelectProfessor() {
+        private void UpdateSelectedProfessor() {
             int x = ListBoxProfessors.SelectedIndex;
                 _selectedProfessor = Professors[x];
+        }
+        private void UpdateSelectedCourse() {
+            _selectedGeneralCourse = Courses[ListBoxCourses.SelectedIndex];
+        }
+        private void UpdateSelectedProfessorCourse() {
+            _selectedProfessorCourse = _selectedProfessor.Courses[ListBoxProfessorsCourses.SelectedIndex];
         }
         private void DisplayProfessor() {
 
@@ -90,10 +146,6 @@ namespace Session_07 {
             }
         }
 
-        private void ButtonDelete_Click(object sender, EventArgs e) {
-            DeleteProfessor();
-        }
-
         private void DeleteProfessor() {
             if (_selectedProfessor != null) {
                 Professors.Remove(_selectedProfessor);
@@ -103,20 +155,12 @@ namespace Session_07 {
             DisplayProfessor();
         }
 
-        private void ButtonNew_Click(object sender, EventArgs e) {
-            Uni.Professor newProfessor = CreateNewProfessor();
-            
-            Professors.Add(newProfessor);
-            ListBoxProfessors.SelectedIndex = Professors.IndexOf(newProfessor);
-
-            FillProfessorList();
-
-        }
         private Uni.Professor CreateNewProfessor() {
             Uni.Professor prof = new Uni.Professor() {
                 Name = "New..."
             };
             return prof;
         }
+
     }
 }

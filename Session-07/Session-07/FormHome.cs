@@ -1,4 +1,5 @@
 using DevExpress.XtraEditors;
+using Newtonsoft.Json;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -58,7 +59,7 @@ namespace Session_07 {
         private void LoadData() {
             string s = File.ReadAllText(_fileName);
             try {
-                _universityHandler.University = (Uni.University)JsonSerializer.Deserialize(s, typeof(Uni.University));
+                _universityHandler.University = (Uni.University)System.Text.Json.JsonSerializer.Deserialize(s, typeof(Uni.University));
             }
             catch (Exception) {
                 _universityHandler = new Uni.UniversityHandler();
@@ -73,8 +74,9 @@ namespace Session_07 {
         }
 
         private void SaveData() {
+            Console.WriteLine(_universityHandler.University);
 
-            string json = JsonSerializer.Serialize(_universityHandler.University);
+            string json = JsonConvert.SerializeObject(_universityHandler.University);
             File.WriteAllText(_fileName, json);
 
             if (_universityHandler.University != null) {

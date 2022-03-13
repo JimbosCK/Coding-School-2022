@@ -38,14 +38,18 @@
             this.ButtonSaveProfessor = new DevExpress.XtraEditors.SimpleButton();
             this.ButtonNewProfessor = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.ListBoxCourses = new DevExpress.XtraEditors.ListBoxControl();
             this.ListBoxProfessorsCourses = new DevExpress.XtraEditors.ListBoxControl();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
+            this.ButtonDeleteCourse = new DevExpress.XtraEditors.SimpleButton();
+            this.ButtonAddCourse = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.ListBoxProfessors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -59,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListBoxCourses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListBoxProfessorsCourses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
@@ -66,7 +71,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // ListBoxProfessors
@@ -215,23 +221,35 @@
             this.layoutControlGroup1.Size = new System.Drawing.Size(671, 48);
             this.layoutControlGroup1.TextVisible = false;
             // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 0);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(651, 28);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // ListBoxCourses
             // 
             this.ListBoxCourses.Location = new System.Drawing.Point(12, 146);
             this.ListBoxCourses.Name = "ListBoxCourses";
             this.ListBoxCourses.Size = new System.Drawing.Size(168, 152);
             this.ListBoxCourses.TabIndex = 3;
+            this.ListBoxCourses.SelectedIndexChanged += new System.EventHandler(this.ListBoxCourses_SelectedIndexChanged);
             // 
             // ListBoxProfessorsCourses
             // 
             this.ListBoxProfessorsCourses.Location = new System.Drawing.Point(12, 29);
             this.ListBoxProfessorsCourses.Name = "ListBoxProfessorsCourses";
-            this.ListBoxProfessorsCourses.Size = new System.Drawing.Size(374, 154);
+            this.ListBoxProfessorsCourses.Size = new System.Drawing.Size(374, 128);
             this.ListBoxProfessorsCourses.StyleController = this.layoutControl3;
             this.ListBoxProfessorsCourses.TabIndex = 4;
+            this.ListBoxProfessorsCourses.SelectedIndexChanged += new System.EventHandler(this.ListBoxProfessorsCourses_SelectedIndexChanged);
             // 
             // layoutControl3
             // 
+            this.layoutControl3.Controls.Add(this.ButtonDeleteCourse);
+            this.layoutControl3.Controls.Add(this.ButtonAddCourse);
             this.layoutControl3.Controls.Add(this.labelControl1);
             this.layoutControl3.Controls.Add(this.ListBoxProfessorsCourses);
             this.layoutControl3.Location = new System.Drawing.Point(266, 107);
@@ -240,6 +258,26 @@
             this.layoutControl3.Size = new System.Drawing.Size(398, 195);
             this.layoutControl3.TabIndex = 5;
             this.layoutControl3.Text = "layoutControl3";
+            // 
+            // ButtonDeleteCourse
+            // 
+            this.ButtonDeleteCourse.Location = new System.Drawing.Point(201, 161);
+            this.ButtonDeleteCourse.Name = "ButtonDeleteCourse";
+            this.ButtonDeleteCourse.Size = new System.Drawing.Size(185, 22);
+            this.ButtonDeleteCourse.StyleController = this.layoutControl3;
+            this.ButtonDeleteCourse.TabIndex = 7;
+            this.ButtonDeleteCourse.Text = "Delete Course";
+            this.ButtonDeleteCourse.Click += new System.EventHandler(this.ButtonDeleteCourse_Click);
+            // 
+            // ButtonAddCourse
+            // 
+            this.ButtonAddCourse.Location = new System.Drawing.Point(12, 161);
+            this.ButtonAddCourse.Name = "ButtonAddCourse";
+            this.ButtonAddCourse.Size = new System.Drawing.Size(185, 22);
+            this.ButtonAddCourse.StyleController = this.layoutControl3;
+            this.ButtonAddCourse.TabIndex = 6;
+            this.ButtonAddCourse.Text = "Add Course";
+            this.ButtonAddCourse.Click += new System.EventHandler(this.ButtonAddCourse_Click);
             // 
             // labelControl1
             // 
@@ -256,7 +294,9 @@
             this.layoutControlGroup2.GroupBordersVisible = false;
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem8,
-            this.layoutControlItem9});
+            this.layoutControlItem9,
+            this.layoutControlItem1,
+            this.layoutControlItem2});
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(398, 195);
             this.layoutControlGroup2.TextVisible = false;
@@ -266,7 +306,7 @@
             this.layoutControlItem8.Control = this.ListBoxProfessorsCourses;
             this.layoutControlItem8.Location = new System.Drawing.Point(0, 17);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(378, 158);
+            this.layoutControlItem8.Size = new System.Drawing.Size(378, 132);
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
             // 
@@ -279,13 +319,23 @@
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
-            // emptySpaceItem2
+            // layoutControlItem1
             // 
-            this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(0, 0);
-            this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(651, 28);
-            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.Control = this.ButtonAddCourse;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 149);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(189, 26);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.ButtonDeleteCourse;
+            this.layoutControlItem2.Location = new System.Drawing.Point(189, 149);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(189, 26);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
             // 
             // FormProfessor
             // 
@@ -313,6 +363,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListBoxCourses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListBoxProfessorsCourses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
@@ -320,7 +371,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -350,5 +402,9 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private DevExpress.XtraEditors.SimpleButton ButtonDeleteCourse;
+        private DevExpress.XtraEditors.SimpleButton ButtonAddCourse;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
     }
 }
