@@ -37,9 +37,6 @@ namespace Session_07 {
         }
         private void ButtonNew_Click(object sender, EventArgs e) {
             AddNewProfessor();
-
-            FillProfessorList();
-
         }
         private void ButtonCancel_Click(object sender, EventArgs e) {
             this.Close();
@@ -77,6 +74,7 @@ namespace Session_07 {
 
             Professors.Add(newProfessor);
             ListBoxProfessors.SelectedIndex = Professors.IndexOf(newProfessor);
+            FillProfessorList(newProfessor);
         }
         private void AddSelectedCourseToProfessor() {
             _selectedProfessor.Courses.Add(_selectedGeneralCourse);
@@ -89,6 +87,16 @@ namespace Session_07 {
                     if (professor != null)
                         ListBoxProfessors.Items.Add(string.Format("{0} - {1} ", professor.GetName(), professor.Rank));
                 }
+            }
+        }
+        private void FillProfessorList(Uni.Professor newProfessor) {
+            ListBoxProfessors.Items.Clear();
+            if (Professors != null) {
+                foreach (var professor in Professors) {
+                    if (professor != null)
+                        ListBoxProfessors.Items.Add(string.Format("{0} - {1} ", professor.GetName(), professor.Rank));
+                }
+                ListBoxProfessors.SelectedIndex = Professors.IndexOf(newProfessor);
             }
         }
         private void FillCourseList() {
