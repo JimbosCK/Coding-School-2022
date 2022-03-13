@@ -51,16 +51,12 @@ namespace Session_07 {
         }
 
         private void UpdateStudent() {
-
-            //_orignalStudent = _selectedStudent.ShallowCopy();
-
             if (_selectedStudent != null) {
                 _selectedStudent.Name = TextEditStudentName.Text;
                 _selectedStudent.Age = Convert.ToInt32(TextEditStudentAge.Text);
                 _selectedStudent.RegistrationNumber = Convert.ToInt32(TextEditStudentRegistrationNumber.Text);
             }
         }
-
         private void ButtonDelete_Click(object sender, EventArgs e) {
             DeleteStudent();
         }
@@ -69,22 +65,15 @@ namespace Session_07 {
             if (Students != null) {
                 foreach (var professor in Students) {
                     if (professor != null)
-                        ListBoxStudents.Items.Add(string.Format("{0} - {1} ", professor.Name, professor.RegistrationNumber));
+                        ListBoxStudents.Items.Add(string.Format("{0} - {1}", professor.Name, professor.RegistrationNumber));
                 }
             }
-            else {
-                Students.Add(CreateNewStudent());
-            }
-
         }
         private void DeleteStudent() {
 
             if (_selectedStudent != null) {
-
                 Students.Remove(_selectedStudent);
-
                 _selectedStudent = null;
-
                 FillList();
             }
             DisplayStudent();
@@ -96,7 +85,6 @@ namespace Session_07 {
             ListBoxStudents.SelectedIndex = Students.IndexOf(newStudent);
 
             FillList();
-
         }
         private Uni.Student CreateNewStudent() {
             Uni.Student prof = new Uni.Student() {
