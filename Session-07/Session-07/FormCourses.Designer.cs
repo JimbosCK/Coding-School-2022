@@ -141,18 +141,18 @@
             this.layoutControl2.Controls.Add(this.ButtonCancel);
             this.layoutControl2.Controls.Add(this.ButtonSave);
             this.layoutControl2.Controls.Add(this.ButtonNew);
-            this.layoutControl2.Location = new System.Drawing.Point(190, 324);
+            this.layoutControl2.Location = new System.Drawing.Point(193, 337);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.Root = this.layoutControlGroup1;
-            this.layoutControl2.Size = new System.Drawing.Size(503, 54);
+            this.layoutControl2.Size = new System.Drawing.Size(490, 58);
             this.layoutControl2.TabIndex = 2;
             this.layoutControl2.Text = "layoutControl2";
             // 
             // ButtonDelete
             // 
-            this.ButtonDelete.Location = new System.Drawing.Point(128, 12);
+            this.ButtonDelete.Location = new System.Drawing.Point(129, 12);
             this.ButtonDelete.Name = "ButtonDelete";
-            this.ButtonDelete.Size = new System.Drawing.Size(112, 22);
+            this.ButtonDelete.Size = new System.Drawing.Size(113, 22);
             this.ButtonDelete.StyleController = this.layoutControl2;
             this.ButtonDelete.TabIndex = 7;
             this.ButtonDelete.Text = "Delete";
@@ -160,9 +160,9 @@
             // 
             // ButtonCancel
             // 
-            this.ButtonCancel.Location = new System.Drawing.Point(361, 12);
+            this.ButtonCancel.Location = new System.Drawing.Point(364, 12);
             this.ButtonCancel.Name = "ButtonCancel";
-            this.ButtonCancel.Size = new System.Drawing.Size(113, 22);
+            this.ButtonCancel.Size = new System.Drawing.Size(114, 22);
             this.ButtonCancel.StyleController = this.layoutControl2;
             this.ButtonCancel.TabIndex = 6;
             this.ButtonCancel.Text = "Cancel";
@@ -170,9 +170,9 @@
             // 
             // ButtonSave
             // 
-            this.ButtonSave.Location = new System.Drawing.Point(244, 12);
+            this.ButtonSave.Location = new System.Drawing.Point(246, 12);
             this.ButtonSave.Name = "ButtonSave";
-            this.ButtonSave.Size = new System.Drawing.Size(113, 22);
+            this.ButtonSave.Size = new System.Drawing.Size(114, 22);
             this.ButtonSave.StyleController = this.layoutControl2;
             this.ButtonSave.TabIndex = 5;
             this.ButtonSave.Text = "Save";
@@ -182,7 +182,7 @@
             // 
             this.ButtonNew.Location = new System.Drawing.Point(12, 12);
             this.ButtonNew.Name = "ButtonNew";
-            this.ButtonNew.Size = new System.Drawing.Size(112, 22);
+            this.ButtonNew.Size = new System.Drawing.Size(113, 22);
             this.ButtonNew.StyleController = this.layoutControl2;
             this.ButtonNew.TabIndex = 4;
             this.ButtonNew.Text = "New";
@@ -199,7 +199,7 @@
             this.layoutControlItem5,
             this.layoutControlItem6});
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(486, 56);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(490, 58);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem3
@@ -207,7 +207,7 @@
             this.layoutControlItem3.Control = this.ButtonNew;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(116, 26);
+            this.layoutControlItem3.Size = new System.Drawing.Size(117, 26);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -216,33 +216,33 @@
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(0, 26);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(466, 10);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(470, 12);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.ButtonSave;
-            this.layoutControlItem4.Location = new System.Drawing.Point(232, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(234, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(117, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(118, 26);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.ButtonCancel;
-            this.layoutControlItem5.Location = new System.Drawing.Point(349, 0);
+            this.layoutControlItem5.Location = new System.Drawing.Point(352, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(117, 26);
+            this.layoutControlItem5.Size = new System.Drawing.Size(118, 26);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.ButtonDelete;
-            this.layoutControlItem6.Location = new System.Drawing.Point(116, 0);
+            this.layoutControlItem6.Location = new System.Drawing.Point(117, 0);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(116, 26);
+            this.layoutControlItem6.Size = new System.Drawing.Size(117, 26);
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
