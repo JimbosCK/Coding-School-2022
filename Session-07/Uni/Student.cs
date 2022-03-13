@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Uni {
     public class Student : Person{
         public int RegistrationNumber { get; set; }
-        public Course[] Courses { get; set; }
+        public List<Course> Courses { get; set; }
 
         public Student(){
-            Courses = new Course[20];
+            Courses = new List<Course>();
         }
 
         public void Attend(Course course, DateTime datetime){
