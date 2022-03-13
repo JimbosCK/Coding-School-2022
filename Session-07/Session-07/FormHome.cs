@@ -2,6 +2,7 @@ using DevExpress.XtraEditors;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Uni;
 
 namespace Session_07 {
     public partial class FormHome : XtraForm {
@@ -98,7 +99,8 @@ namespace Session_07 {
         private void OpenFormProffesors() {
 
             var formProfessors = new FormProfessor() {
-                Professors = _universityHandler.University.Professors
+                Professors = _universityHandler.University.Professors,
+                Courses = _universityHandler.University.Courses
             };
 
             formProfessors.ShowDialog();

@@ -12,31 +12,43 @@ using System.Windows.Forms;
 namespace Session_07 {
     public partial class FormProfessor : XtraForm {
         private Uni.Professor _selectedProfessor;
-
+        
+        public List<Uni.Course> Courses { get; set; }
         public List<Uni.Professor> Professors { get; set; }
         public FormProfessor() {
             InitializeComponent();
         }
 
         private void FormProfessors_Load(object sender, EventArgs e) {
-            FillList();
+            FillProfessorList();
+            FillCourseList();
         }
 
         private void ButtonSave_Click(object sender, EventArgs e) {
             UpdateProfessor();
-            FillList();
+            FillProfessorList();
             MessageBox.Show("Changes Saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         private void ButtonCancel_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void FillList() {
+        private void FillProfessorList() {
             ListBoxProfessors.Items.Clear();
             if (Professors != null) {
                 foreach (var professor in Professors) {
                     if (professor != null)
                         ListBoxProfessors.Items.Add(string.Format("{0} - {1} ", professor.Name, professor.Rank));
+                }
+            }
+        }
+
+        private void FillCourseList() {
+            ListBoxCourses.Items.Clear();
+            if (Courses != null) {
+                foreach (var course in Courses) {
+                    if (course != null)
+                        ListBoxCourses.Items.Add(string.Format("{0} - {1} ", course.Subject, course.Code));
                 }
             }
         }
@@ -60,14 +72,17 @@ namespace Session_07 {
                 TextEditProfessorRank.Text = _selectedProfessor.Rank;
             }
             else {
-                TextEditProfessorName.Text = String.Empty;
-                TextEditProfessorAge.Text = String.Empty;
-                TextEditProfessorRank.Text = String.Empty;
+                ResetTextEdits();
             }
         }
 
+        private void ResetTextEdits() {
+            TextEditProfessorName.Text = String.Empty;
+            TextEditProfessorAge.Text = String.Empty;
+            TextEditProfessorRank.Text = String.Empty;
+        }
+
         private void UpdateProfessor() {
-            //_orignalProfessor = _selectedProfessor.ShallowCopy();   
             if (_selectedProfessor != null) {
                 _selectedProfessor.Name = TextEditProfessorName.Text;
                 _selectedProfessor.Age = Convert.ToInt32(TextEditProfessorAge.Text);
@@ -83,7 +98,7 @@ namespace Session_07 {
             if (_selectedProfessor != null) {
                 Professors.Remove(_selectedProfessor);
                 _selectedProfessor = null;
-                FillList();
+                FillProfessorList();
             }
             DisplayProfessor();
         }
@@ -94,7 +109,7 @@ namespace Session_07 {
             Professors.Add(newProfessor);
             ListBoxProfessors.SelectedIndex = Professors.IndexOf(newProfessor);
 
-            FillList();
+            FillProfessorList();
 
         }
         private Uni.Professor CreateNewProfessor() {
