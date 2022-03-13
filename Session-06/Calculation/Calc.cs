@@ -10,28 +10,28 @@
             MathExpression expression = new MathExpression(request);
             if (!expression.IsValid()) { return string.Empty; }
             Operation operation = null;
-            // TODO: [Refactor] Change case checks to Enum instead of strings
-            switch (expression.OperationSymbol) {
-                case "+":
+
+            var op = (OperationsEnum)Convert.ToChar(expression.OperationSymbol);
+
+            switch (op) {
+                case OperationsEnum.Plus:
                     operation = new Addition();
                     break;
-                case "-":
+                case OperationsEnum.Minus:
                     operation = new Subtraction();
                     break;
-                case "x":
+                case OperationsEnum.Multiplication:
                     operation = new Multiplication();
                     break;
-                case "/":
+                case OperationsEnum.Division:
                     operation = new Division();
                     break;
-                case "^":
+                case OperationsEnum.Power:
                     operation = new Power();
                     break;
-                case "S":
+                case OperationsEnum.SquareRoot:
                     operation = new SquareRoot();
                     break;
-                case "abort":
-                    return String.Empty;
                 default:
                     return String.Empty;
             }

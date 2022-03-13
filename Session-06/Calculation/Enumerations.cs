@@ -19,12 +19,12 @@ namespace Calculation {
     }
 
     public enum OperationsEnum {
-        Plus = '+',
-        Minus = '-',
-        Multiplication = 'x',
-        Division = '/',
-        Power = '^',
-        SquareRoot = 'S'
+        Plus = 43,
+        Minus = 45,
+        Multiplication = 120,
+        Division = 47,
+        Power = 94,
+        SquareRoot = 83
 
     }
     public enum SymbolsEnum {
