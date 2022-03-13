@@ -18,9 +18,6 @@ namespace Session_07 {
         private void Form1_Load(object sender, EventArgs e) {
             InitializeData();
             InitializeEnviroment();
-            //_universityHandler.University.Grades[0] = new Uni.Grade(_universityHandler.University.Students[0].ID, _universityHandler.University.Courses[0].ID, 7);
-            //_universityHandler.University.Grades.Add(new Uni.Grade(_universityHandler.University.Students[1].ID, _universityHandler.University.Courses[0].ID, 5));
-            //_universityHandler.University.Grades.Add(new Uni.Grade(_universityHandler.University.Students[0].ID, _universityHandler.University.Courses[1].ID, 5));
 
         }
 

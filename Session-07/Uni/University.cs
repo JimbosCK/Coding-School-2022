@@ -14,7 +14,13 @@ namespace Uni {
         public List<Schedule> ScheduledCourses { get; set; }
         public List<Grade> Grades { get; set; }
 
-        public University() { }
+        public University() {
+            Students = new List<Student>();
+            Courses = new List<Course>();
+            Grades = new List<Grade>();
+            Professors = new List<Professor>();
+            ScheduledCourses = new List<Schedule>();
+        }
 
     }
 }

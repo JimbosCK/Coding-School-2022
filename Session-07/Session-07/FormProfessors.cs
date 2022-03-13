@@ -12,8 +12,6 @@ using System.Windows.Forms;
 namespace Session_07 {
     public partial class FormProfessor : XtraForm {
         private Uni.Professor _selectedProfessor;
-        private Uni.Professor _orignalProfessor;
-        private int _selectedIndex;
 
         public List<Uni.Professor> Professors { get; set; }
         public FormProfessor() {
@@ -41,10 +39,6 @@ namespace Session_07 {
                         ListBoxProfessors.Items.Add(string.Format("{0} - {1} ", professor.Name, professor.Rank));
                 }
             }
-            else {
-                Professors.Add(CreateNewProfessor());
-            }
-
         }
 
         private void ListBoxProfessors_SelectedIndexChanged(object sender, EventArgs e) {
@@ -73,9 +67,7 @@ namespace Session_07 {
         }
 
         private void UpdateProfessor() {
-
-            //_orignalProfessor = _selectedProfessor.ShallowCopy();
-            
+            //_orignalProfessor = _selectedProfessor.ShallowCopy();   
             if (_selectedProfessor != null) {
                 _selectedProfessor.Name = TextEditProfessorName.Text;
                 _selectedProfessor.Age = Convert.ToInt32(TextEditProfessorAge.Text);
@@ -88,13 +80,9 @@ namespace Session_07 {
         }
 
         private void DeleteProfessor() {
-
             if (_selectedProfessor != null) {
-
                 Professors.Remove(_selectedProfessor);
-
                 _selectedProfessor = null;
-
                 FillList();
             }
             DisplayProfessor();
@@ -102,6 +90,7 @@ namespace Session_07 {
 
         private void ButtonNew_Click(object sender, EventArgs e) {
             Uni.Professor newProfessor = CreateNewProfessor();
+            
             Professors.Add(newProfessor);
             ListBoxProfessors.SelectedIndex = Professors.IndexOf(newProfessor);
 
