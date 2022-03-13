@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calculation {
     public abstract class Operation {
-
-        abstract public string Execute(string operand1, string operand2);
+        protected string _errorInCalculationMessage = "Error while calculating operation.";
+        abstract public string Execute(MathExpression expression);
     }
 }
