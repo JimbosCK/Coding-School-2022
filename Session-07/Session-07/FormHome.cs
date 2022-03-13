@@ -158,33 +158,7 @@ namespace Session_07 {
                 YearsInService = 25
             };
         }
-        private void DebugUniInit() {
-            _universityHandler.University.Students.Add( new Uni.Student() {
-                Name = "Dimitris",
-                Age = 25,
-                RegistrationNumber = 141209
-            });
 
-            _universityHandler.University.Professors.Add(new Uni.Professor() {
-                Name = "Nick",
-                Age = 33,
-                Rank = "Phd"
-            });
-            _universityHandler.University.Professors.Add( new Uni.Professor() {
-                Name = "George",
-                Age = 45,
-                Rank = "Assistant"
-            });
-
-            _universityHandler.University.Courses.Add(new Uni.Course() {
-                Code = "0000331420",
-                Subject = "Data Structures",
-            });
-
-            _universityHandler.University.Grades.Add(new Uni.Grade(_universityHandler.University.Students[0].ID, _universityHandler.University.Courses[0].ID, 5));
-
-            _universityHandler.University.ScheduledCourses.Add ( new Uni.Schedule(_universityHandler.University.Courses[0].ID, _universityHandler.University.Professors[0].ID, DateTime.Now));
-        }
         #endregion
 
 
