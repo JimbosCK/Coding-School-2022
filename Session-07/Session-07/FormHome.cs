@@ -92,7 +92,8 @@ namespace Session_07 {
         #region OpenMethods
         private void OpenFormStudents() {
             var formStudents = new FormStudents() {
-                Students = _universityHandler.University.Students
+                Students = _universityHandler.University.Students,
+                Courses = _universityHandler.University.Courses
             };
 
             formStudents.ShowDialog();

@@ -20,18 +20,15 @@ namespace Session_07 {
         public FormProfessor() {
             InitializeComponent();
         }
-
         private void FormProfessors_Load(object sender, EventArgs e) {
             FillProfessorList();
             FillCourseList();
         }
-
         private void ButtonSave_Click(object sender, EventArgs e) {
             UpdateProfessor();
             FillProfessorList();
             MessageBox.Show("Changes Saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
         private void ButtonDelete_Click(object sender, EventArgs e) {
             DeleteProfessor();
         }
@@ -58,7 +55,6 @@ namespace Session_07 {
                 UpdateSelectedProfessorCourse();
             }
         }
-
         private void ButtonAddCourse_Click(object sender, EventArgs e) {
             AddSelectedCourseToProfessor();
         }
@@ -117,7 +113,6 @@ namespace Session_07 {
                 }
             }
         }
-
         private void UpdateSelectedProfessor() {
             int x = ListBoxProfessors.SelectedIndex;
                 _selectedProfessor = Professors[x];
@@ -129,7 +124,6 @@ namespace Session_07 {
             _selectedProfessorCourse = _selectedProfessor.Courses[ListBoxProfessorsCourses.SelectedIndex];
         }
         private void DisplayProfessor() {
-
             if (_selectedProfessor != null) {
                 TextEditProfessorName.Text = _selectedProfessor.Name;
                 TextEditProfessorAge.Text = _selectedProfessor.Age.ToString();
@@ -139,7 +133,6 @@ namespace Session_07 {
                 ResetTextEdits();
             }
         }
-
         private void ResetTextEdits() {
             TextEditProfessorName.Text = String.Empty;
             TextEditProfessorAge.Text = String.Empty;
@@ -153,7 +146,6 @@ namespace Session_07 {
                 _selectedProfessor.Rank = TextEditProfessorRank.Text;
             }
         }
-
         private void DeleteProfessor() {
             if (_selectedProfessor != null) {
                 Professors.Remove(_selectedProfessor);
@@ -162,7 +154,6 @@ namespace Session_07 {
             }
             DisplayProfessor();
         }
-
         private Uni.Professor CreateNewProfessor() {
             Uni.Professor prof = new Uni.Professor() {
                 Name = "New..."
