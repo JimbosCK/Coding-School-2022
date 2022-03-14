@@ -27,14 +27,7 @@ namespace Session_07 {
             this.Text = "Students";
             
         }
-        private void ListBoxStudents_SelectedIndexChanged(object sender, EventArgs e) {
-            if (ListBoxStudents.SelectedIndex > -1) {
-                SelectStudent();
-                FillStudentsCoursesList();
-                DisplayStudent();
-            }
-
-        }
+        #region Buttons
         private void ButtonDelete_Click(object sender, EventArgs e) {
             DeleteStudent();
         }
@@ -60,11 +53,27 @@ namespace Session_07 {
         private void ButtonAddCourse_Click(object sender, EventArgs e) {
             AddSelectedCourseToStudent();
         }
+        #endregion
+
+        #region ListBoxIndexChanged
+        private void ListBoxStudents_SelectedIndexChanged(object sender, EventArgs e) {
+            if (ListBoxStudents.SelectedIndex > -1) {
+                SelectStudent();
+                FillStudentsCoursesList();
+                DisplayStudent();
+            }
+        }
         private void ListBoxCourses_SelectedIndexChanged(object sender, EventArgs e) {
             if (ListBoxCourses.SelectedIndex != -1) {
                 UpdateSelectedCourse();
             }
         }
+        private void ListBoxStudentsCourses_SelectedIndexChanged(object sender, EventArgs e) {
+            UpdateSelectedStudentsCourse();
+        }
+        #endregion
+
+        #region Student Methods
         private void SelectStudent() {
             int x = ListBoxStudents.SelectedIndex;
             _selectedStudent = Students[x];
@@ -81,6 +90,21 @@ namespace Session_07 {
                 TextEditStudentAge.Text = String.Empty;
                 TextEditStudentRegistrationNumber.Text = String.Empty;
             }
+        }
+        private void DeleteStudent() {
+
+            if (_selectedStudent != null) {
+                Students.Remove(_selectedStudent);
+                _selectedStudent = null;
+                FillListStudents();
+            }
+            DisplayStudent();
+        }
+        private Uni.Student CreateNewStudent() {
+            Uni.Student student = new Uni.Student() {
+                Name = "New..."
+            };
+            return student;
         }
         private void UpdateStudent() {
             if (_selectedStudent != null) {
@@ -108,6 +132,9 @@ namespace Session_07 {
                 ListBoxStudents.SelectedIndex = Students.IndexOf(newStudent);
             }
         }
+        #endregion
+
+        #region Courses
         private void FillCourseList() {
             ListBoxCourses.Items.Clear();
             if (Courses != null) {
@@ -117,30 +144,27 @@ namespace Session_07 {
                 }
             }
         }
-        private void DeleteStudent() {
-
-            if (_selectedStudent != null) {
-                Students.Remove(_selectedStudent);
-                _selectedStudent = null;
-                FillListStudents();
-            }
-            DisplayStudent();
-        }
-        private Uni.Student CreateNewStudent() {
-            Uni.Student student = new Uni.Student() {
-                Name = "New..."
-            };
-            return student;
-        }
-
         private void UpdateSelectedCourse() {
-            if(ListBoxCourses.SelectedIndex != -1) {
+            if (ListBoxCourses.SelectedIndex != -1) {
                 _selectedGeneralCourse = Courses[ListBoxCourses.SelectedIndex];
             }
         }
         private void AddSelectedCourseToStudent() {
             _selectedStudent.Courses.Add(_selectedGeneralCourse);
             FillStudentsCoursesList(_selectedGeneralCourse);
+        }
+
+        private void RemoveSelectedCourseFromStudent() {
+            _selectedStudent.Courses.Remove(_selectedStudentCourse);
+            FillStudentsCoursesList();
+        }
+        #endregion
+
+        #region Students Courses
+        private void UpdateSelectedStudentsCourse() {
+            if (ListBoxStudentsCourses.SelectedIndex != -1) {
+                _selectedStudentCourse = _selectedStudent.Courses[ListBoxStudentsCourses.SelectedIndex];
+            }
         }
         private void FillStudentsCoursesList() {
             ListBoxStudentsCourses.Items.Clear();
@@ -161,18 +185,6 @@ namespace Session_07 {
                 ListBoxStudentsCourses.SelectedIndex = Courses.IndexOf(newCourse);
             }
         }
-        private void RemoveSelectedCourseFromStudent() {
-            _selectedStudent.Courses.Remove(_selectedStudentCourse);
-            FillStudentsCoursesList();
-        }
-
-        private void ListBoxStudentsCourses_SelectedIndexChanged(object sender, EventArgs e) {
-            UpdateSelectedStudentsCourse();
-        }
-        private void UpdateSelectedStudentsCourse() {
-            if (ListBoxStudentsCourses.SelectedIndex != -1) {
-                _selectedStudentCourse = _selectedStudent.Courses[ListBoxStudentsCourses.SelectedIndex];
-            }
-        }
+        #endregion
     }
 }
