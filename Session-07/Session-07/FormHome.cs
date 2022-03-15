@@ -7,22 +7,20 @@ using Uni;
 
 namespace Session_07 {
     public partial class FormHome : XtraForm{
-        private Uni.University _university  ;
-        private Uni.UniversityHandler _universityHandler = new Uni.UniversityHandler();
+        private UniversityHandler _universityHandler;
         private string _fileName = "test.json";
 
         public FormHome() {
             InitializeComponent();
 
         }
-        #region UI
-
         private void Form1_Load(object sender, EventArgs e) {
             InitializeData();
             InitializeEnviroment();
 
         }
 
+        #region UI
         private void MenuItemFileLoad_Click(object sender, EventArgs e) {
             LoadData();
         }
@@ -57,15 +55,15 @@ namespace Session_07 {
 
         #region I/O
         private void LoadData() {
-            string s = File.ReadAllText(_fileName);
+            string ipnutJSON = File.ReadAllText(_fileName);
             try {
-                _universityHandler.University = (Uni.University)System.Text.Json.JsonSerializer.Deserialize(s, typeof(Uni.University));
+                _universityHandler.University = (University)System.Text.Json.JsonSerializer.Deserialize(ipnutJSON, typeof(University));
             }
             catch (Exception) {
-                _universityHandler = new Uni.UniversityHandler();
+                _universityHandler = new UniversityHandler();
             }
             if (_universityHandler.University != null) {
-                memoEdit1.Text += "[Loaded University.]" + Environment.NewLine + s + Environment.NewLine;
+                memoEdit1.Text += "[Loaded University.]" + Environment.NewLine + ipnutJSON + Environment.NewLine;
             }
             else {
                 memoEdit1.Text += "University loaded null." + Environment.NewLine;
@@ -76,11 +74,11 @@ namespace Session_07 {
         private void SaveData() {
             Console.WriteLine(_universityHandler.University);
 
-            string json = JsonConvert.SerializeObject(_universityHandler.University);
-            File.WriteAllText(_fileName, json);
+            string outputJSON = JsonConvert.SerializeObject(_universityHandler.University);
+            File.WriteAllText(_fileName, outputJSON);
 
             if (_universityHandler.University != null) {
-                memoEdit1.Text += "[Saved University.]" + Environment.NewLine + json + Environment.NewLine;
+                memoEdit1.Text += "[Saved University.]" + Environment.NewLine + outputJSON + Environment.NewLine;
             }
             else {
                 memoEdit1.Text += "Saved loaded null." + Environment.NewLine;
@@ -150,9 +148,9 @@ namespace Session_07 {
             //DebugUniInit();
         }
         private void InitializeData() {
-            _universityHandler = new Uni.UniversityHandler();
-            _universityHandler.University = new Uni.University();
-            _universityHandler.University.Professors = new List<Uni.Professor>();
+            _universityHandler = new UniversityHandler();
+            _universityHandler.University = new University();
+            _universityHandler.University.Professors = new List<Professor>();
             LoadData();
             if (_universityHandler.University.Name == null) {
                 LoadDefaultData();

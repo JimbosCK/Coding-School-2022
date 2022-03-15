@@ -8,12 +8,12 @@ namespace Uni {
     [Serializable]
     public class Person {
 
-        public Guid ID { get; }
+        public string ID { get; }
         public string Name { get; set; }
         public int Age { get; set; }
 
         public Person() {
-            ID = Guid.NewGuid();
+            ID = Guid.NewGuid().ToString();
         }
     }
 }

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 namespace Uni {
     [Serializable]
     public class Course {
-        public Guid ID { get; }
+        public string ID { get; }
         public string Code { get; set; }
 
         public string Subject { get; set; }
 
         public Course() {
-            ID = Guid.NewGuid();    
+            ID = Guid.NewGuid().ToString();    
         }
     }
 }

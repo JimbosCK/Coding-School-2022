@@ -36,52 +36,5 @@ namespace Uni {
             University.ScheduledCourses[_numberOfSchedules++] = new Schedule(courseID, professorID, datetime);
         }
 
-        public Student? GetStudentById(Guid studentID) {
-            Student student = null;
-            foreach (var st in University.Students) {
-                if (st.ID == studentID) { student = st; }
-            }
-
-            return student;
-        }
-        public Course? GetCourseById(Guid courseID) {
-            Course course = null;
-            foreach (var cr in University.Courses) {
-                if (cr.ID == courseID) { course = cr; }
-            }
-
-            return course;
-        }
-
-        public List<Grade> GetGradesByStudentID(Guid stdudentID) {
-            List<Grade> grades = new List<Grade>();
-
-            foreach (var gr in University.Grades) {
-                if (gr.StudentID == stdudentID)
-                    grades.Add(gr);
-            }
-
-            return grades;
-        }
-        public string GetSubjectCodeByID(Guid courseID) {
-            string subject = string.Empty;
-            foreach (var cr in University.Courses) {
-                if (cr.ID == courseID)
-                    subject = cr.Subject;
-            }
-
-            return subject;
-        }
-
-        public Course GetCourseByCode(string code) {
-            Course course = null ;
-            foreach (var item in University.Courses) {
-                if(item.Code == code) {
-                    course = item;
-                }
-            }
-            return course;
-        }
-
     }
 }

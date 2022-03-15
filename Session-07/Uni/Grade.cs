@@ -6,24 +6,24 @@ using System.Threading.Tasks;
 
 namespace Uni {
     public class Grade {
-        public Guid ID { get; }
-        public Guid StudentID { get;  }
-        public Guid CourseID { get; }
+        public string ID { get; }
+        public string StudentID { get;  }
+        public string CourseID { get; }
         public int Value { get; set; } //Grade
 
         public Grade()
         {
-            ID = Guid.NewGuid();
+            ID = Guid.NewGuid().ToString();
         }
-        public Grade( Guid studentID, Guid courseID)
+        public Grade( string studentID, string courseID)
         {
-            ID = Guid.NewGuid();
+            ID = Guid.NewGuid().ToString();
             StudentID = studentID; 
             CourseID = courseID;
         }
 
-        public Grade(Guid studentID, Guid courseID, int value) {
-            ID = Guid.NewGuid();
+        public Grade(string studentID, string courseID, int value) {
+            ID = Guid.NewGuid().ToString();
             StudentID = studentID;
             CourseID = courseID;
             Value = value;
