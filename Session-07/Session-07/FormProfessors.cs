@@ -1,22 +1,14 @@
 ﻿using DevExpress.XtraEditors;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using Uni;
 
 namespace Session_07 {
     public partial class FormProfessor : XtraForm {
-        private Uni.Professor _selectedProfessor;
-        private Uni.Course _selectedGeneralCourse;
-        private Uni.Course _selectedProfessorCourse;
+        private Professor _selectedProfessor;
+        private Course _selectedGeneralCourse;
+        private Course _selectedProfessorCourse;
 
-        public List<Uni.Course> Courses { get; set; }
-        public List<Uni.Professor> Professors { get; set; }
+        public List<Course> Courses { get; set; }
+        public List<Professor> Professors { get; set; }
         public FormProfessor() {
             InitializeComponent();
         }
@@ -66,7 +58,7 @@ namespace Session_07 {
             FillProfessorsCoursesList();
         }
         private void AddNewProfessor() {
-            Uni.Professor newProfessor = CreateNewProfessor();
+            Professor newProfessor = CreateNewProfessor();
 
             Professors.Add(newProfessor);
             ListBoxProfessors.SelectedIndex = Professors.IndexOf(newProfessor);
@@ -85,7 +77,7 @@ namespace Session_07 {
                 }
             }
         }
-        private void FillProfessorList(Uni.Professor newProfessor) {
+        private void FillProfessorList(Professor newProfessor) {
             ListBoxProfessors.Items.Clear();
             if (Professors != null) {
                 foreach (var professor in Professors) {
@@ -154,8 +146,8 @@ namespace Session_07 {
             }
             DisplayProfessor();
         }
-        private Uni.Professor CreateNewProfessor() {
-            Uni.Professor prof = new Uni.Professor() {
+        private Professor CreateNewProfessor() {
+            Professor prof = new Professor() {
                 Name = "New..."
             };
             return prof;
