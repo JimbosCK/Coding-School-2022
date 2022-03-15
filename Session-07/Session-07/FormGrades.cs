@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// TODO: REWRITE the entire form.
 namespace Session_07 {
     public partial class FormGrades : XtraForm {
         private string _formName = "Grades";
@@ -24,6 +25,8 @@ namespace Session_07 {
         private void FormGrades_Load(object sender, EventArgs e) {
             this.Text = _formName;
             FillStudentList();
+            FillCourses();
+            loadGradesByStudent(_selectedStudent);
         }
 
         private void ButtonCancel_Click(object sender, EventArgs e) {
@@ -32,7 +35,9 @@ namespace Session_07 {
 
         private void ListBoxStudents_SelectedIndexChanged(object sender, EventArgs e) {
             UpdateSelectedStudent();
-            loadGradesByStudent(UHandler.University.Students[ListBoxStudents.SelectedIndex]);
+            if(ListBoxStudents.SelectedIndex != -1)
+                loadGradesByStudent(UHandler.University.Students[ListBoxStudents.SelectedIndex]);
+            
         }
 
         private void ButtonDelete_Click(object sender, EventArgs e) {
@@ -48,6 +53,7 @@ namespace Session_07 {
 
         private void ButtonSave_Click(object sender, EventArgs e) {
             UpdateGrades();
+            loadGradesByStudent(UHandler.University.Students[ListBoxStudents.SelectedIndex]);
             MessageBox.Show("Changes Saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -57,7 +63,9 @@ namespace Session_07 {
 
 
         private void UpdateSelectedCourse() {
-            _selectedCourse = UHandler.University.Courses[ListBoxCourses.SelectedIndex];
+            if(ListBoxCourses.SelectedIndex != -1) {
+                _selectedCourse = UHandler.University.Courses[ListBoxCourses.SelectedIndex];
+            }
         }
         private void UpdateSelectedGrade() {
             if (ListBoxGrades.SelectedIndex > -1) {
@@ -81,17 +89,20 @@ namespace Session_07 {
 
         void loadGradesByStudent(Uni.Student currentStudent) {
             ListBoxGrades.Items.Clear();
-            List<Uni.Grade> studentGrades = UHandler.GetGradesByStudentID(currentStudent.ID);
-            string courseCode;
-            if (studentGrades != null) {
-                foreach (var gr in studentGrades) {
-                    if (gr != null) {
-                        courseCode = UHandler.GetSubjectCodeByID(gr.CourseID);
-                        ListBoxGrades.Items.Add(string.Format("{0}: {1} ", courseCode, gr.Value));
-                    }
+            if (currentStudent != null) {
+                List<Uni.Grade> studentGrades = UHandler.GetGradesByStudentID(currentStudent.ID);
+                string courseCode;
+                if (studentGrades != null) {
+                    foreach (var gr in studentGrades) {
+                        if (gr != null) {
+                            courseCode = UHandler.GetSubjectCodeByID(gr.CourseID);
+                            ListBoxGrades.Items.Add(string.Format("{0}: {1} ", courseCode, gr.Value));
+                        }
 
+                    }
                 }
             }
+
         }
 
         private void deleteGrade() {
@@ -99,6 +110,7 @@ namespace Session_07 {
             FillStudentList();
         }
         private void FillCourses() {
+            ListBoxCourses.Items.Clear();
             foreach (var course in UHandler.University.Courses) {
                 ListBoxCourses.Items.Add(string.Format("{0} - {1} ", course.Subject, course.Code));
             }

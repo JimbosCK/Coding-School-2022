@@ -63,7 +63,7 @@
             // 
             // ListBoxGrades
             // 
-            this.ListBoxGrades.Location = new System.Drawing.Point(315, 12);
+            this.ListBoxGrades.Location = new System.Drawing.Point(323, 12);
             this.ListBoxGrades.Name = "ListBoxGrades";
             this.ListBoxGrades.Size = new System.Drawing.Size(336, 244);
             this.ListBoxGrades.TabIndex = 1;
