@@ -24,14 +24,11 @@ namespace Session_07 {
         private void MenuItemFileLoad_Click(object sender, EventArgs e) {
             LoadData();
         }
-
         private void MenuItemFileSave_Click(object sender, EventArgs e) {
             SaveData();
         }
-
         private void MenuItemProfessorsEdit_Click(object sender, EventArgs e) {
             OpenFormProffesors();
-
         }
         private void MenuItemUniversityEdit_Click(object sender, EventArgs e) {
             OpenFormUniversity();
@@ -96,7 +93,6 @@ namespace Session_07 {
 
             formStudents.ShowDialog();
         }
-
         private void OpenFormProffesors() {
 
             var formProfessors = new FormProfessor() {
@@ -106,7 +102,6 @@ namespace Session_07 {
 
             formProfessors.ShowDialog();
         }
-
         private void OpenFormCourses() {
 
             var formCourses = new FormCourses() {
@@ -125,7 +120,6 @@ namespace Session_07 {
 
             formGrades.ShowDialog();
         }
-
         private void OpenFormSchedule() {
             var formSchedule = new FormSchedule() {
                 Schedules = _universityHandler.University.ScheduledCourses
@@ -133,7 +127,6 @@ namespace Session_07 {
 
             formSchedule.ShowDialog();
         }
-
         private void OpenFormUniversity() {
             var formUniversity = new FormUniversity() {
                 University = _universityHandler.University
@@ -156,7 +149,6 @@ namespace Session_07 {
                 LoadDefaultData();
             }
         }
-
         private void LoadDefaultData() {
             _universityHandler.University = new Uni.University() {
                 Name = "University",
