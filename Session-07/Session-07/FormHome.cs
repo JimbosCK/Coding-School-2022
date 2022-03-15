@@ -1,8 +1,6 @@
 using DevExpress.XtraEditors;
 using Newtonsoft.Json;
 using System.IO;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Uni;
 
 namespace Session_07 {
@@ -65,9 +63,7 @@ namespace Session_07 {
             else {
                 memoEdit1.Text += "University loaded null." + Environment.NewLine;
             }
-
         }
-
         private void SaveData() {
             Console.WriteLine(_universityHandler.University);
 
@@ -80,7 +76,6 @@ namespace Session_07 {
             else {
                 memoEdit1.Text += "Saved loaded null." + Environment.NewLine;
             }
-
         }
         #endregion
 
