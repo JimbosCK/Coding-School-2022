@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 using Uni;
 
 namespace Session_07 {
-    public partial class FormHome : XtraForm {
+    public partial class FormHome : XtraForm{
         private Uni.University _university  ;
         private Uni.UniversityHandler _universityHandler = new Uni.UniversityHandler();
         private string _fileName = "test.json";
@@ -120,7 +120,9 @@ namespace Session_07 {
         private void OpenFormGrades() {
 
             var formGrades = new FormGrades() {
-                UHandler = _universityHandler
+                Grades = _universityHandler.University.Grades,
+                Students = _universityHandler.University.Students,
+                Courses = _universityHandler.University.Courses
             };
 
             formGrades.ShowDialog();

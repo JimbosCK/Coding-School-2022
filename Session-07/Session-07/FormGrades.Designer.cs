@@ -30,27 +30,24 @@
             this.ButtonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.ButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.ButtonDelete = new DevExpress.XtraEditors.SimpleButton();
-            this.ButtonAdd = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.TextEditGradeIN = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.spinEditGrade = new DevExpress.XtraEditors.SpinEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ListBoxStudents)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListBoxGrades)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ListBoxCourses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TextEditGradeIN.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEditGrade.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // ListBoxStudents
@@ -82,7 +79,6 @@
             this.layoutControl1.Controls.Add(this.ButtonCancel);
             this.layoutControl1.Controls.Add(this.ButtonSave);
             this.layoutControl1.Controls.Add(this.ButtonDelete);
-            this.layoutControl1.Controls.Add(this.ButtonAdd);
             this.layoutControl1.Location = new System.Drawing.Point(323, 287);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
@@ -112,31 +108,20 @@
             // 
             // ButtonDelete
             // 
-            this.ButtonDelete.Location = new System.Drawing.Point(167, 12);
+            this.ButtonDelete.Location = new System.Drawing.Point(12, 12);
             this.ButtonDelete.Name = "ButtonDelete";
             this.ButtonDelete.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
-            this.ButtonDelete.Size = new System.Drawing.Size(148, 22);
+            this.ButtonDelete.Size = new System.Drawing.Size(303, 22);
             this.ButtonDelete.StyleController = this.layoutControl1;
             this.ButtonDelete.TabIndex = 2;
             this.ButtonDelete.Text = "Delete Grade";
             this.ButtonDelete.Click += new System.EventHandler(this.ButtonDelete_Click);
-            // 
-            // ButtonAdd
-            // 
-            this.ButtonAdd.Location = new System.Drawing.Point(12, 12);
-            this.ButtonAdd.Name = "ButtonAdd";
-            this.ButtonAdd.Size = new System.Drawing.Size(151, 22);
-            this.ButtonAdd.StyleController = this.layoutControl1;
-            this.ButtonAdd.TabIndex = 0;
-            this.ButtonAdd.Text = "New Grade";
-            this.ButtonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.Root.GroupBordersVisible = false;
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1,
             this.emptySpaceItem1,
             this.layoutControlItem2,
             this.layoutControlItem3,
@@ -144,15 +129,6 @@
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(327, 94);
             this.Root.TextVisible = false;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.ButtonAdd;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(155, 26);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
@@ -165,9 +141,9 @@
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.ButtonDelete;
-            this.layoutControlItem2.Location = new System.Drawing.Point(155, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(152, 26);
+            this.layoutControlItem2.Size = new System.Drawing.Size(307, 26);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -189,13 +165,6 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
-            // TextEditGradeIN
-            // 
-            this.TextEditGradeIN.Location = new System.Drawing.Point(243, 327);
-            this.TextEditGradeIN.Name = "TextEditGradeIN";
-            this.TextEditGradeIN.Size = new System.Drawing.Size(74, 20);
-            this.TextEditGradeIN.TabIndex = 4;
-            // 
             // labelControl1
             // 
             this.labelControl1.Location = new System.Drawing.Point(243, 308);
@@ -204,13 +173,29 @@
             this.labelControl1.TabIndex = 5;
             this.labelControl1.Text = "Grade";
             // 
+            // spinEditGrade
+            // 
+            this.spinEditGrade.EditValue = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.spinEditGrade.Location = new System.Drawing.Point(243, 327);
+            this.spinEditGrade.Name = "spinEditGrade";
+            this.spinEditGrade.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinEditGrade.Properties.IsFloatValue = false;
+            this.spinEditGrade.Properties.MaskSettings.Set("mask", "N00");
+            this.spinEditGrade.Size = new System.Drawing.Size(70, 20);
+            this.spinEditGrade.TabIndex = 6;
+            // 
             // FormGrades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 390);
+            this.Controls.Add(this.spinEditGrade);
             this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.TextEditGradeIN);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.ListBoxGrades);
             this.Controls.Add(this.ListBoxCourses);
@@ -224,12 +209,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TextEditGradeIN.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEditGrade.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -244,14 +228,12 @@
         private DevExpress.XtraEditors.SimpleButton ButtonCancel;
         private DevExpress.XtraEditors.SimpleButton ButtonSave;
         private DevExpress.XtraEditors.SimpleButton ButtonDelete;
-        private DevExpress.XtraEditors.SimpleButton ButtonAdd;
         private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private DevExpress.XtraEditors.TextEdit TextEditGradeIN;
         private DevExpress.XtraEditors.LabelControl labelControl1;
+        private DevExpress.XtraEditors.SpinEdit spinEditGrade;
     }
 }

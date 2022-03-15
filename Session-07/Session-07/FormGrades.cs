@@ -8,121 +8,120 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Uni;
 
-// TODO: REWRITE the entire form.
 namespace Session_07 {
     public partial class FormGrades : XtraForm {
         private string _formName = "Grades";
-        private Uni.Course _selectedCourse;
-        private Uni.Student _selectedStudent;
-        private Uni.Grade _selectedGrade;
+        private Course _selectedCourse;
+        private Student _selectedStudent;
+        private Grade _selectedGrade;
 
-        public Uni.UniversityHandler UHandler { get; set; }
+        public UniversityHandler UHandler { get; set; }
+        public List<Student> Students { get; set; }
+        public List<Course> Courses { get; set; }
+        public List<Grade> Grades { get; set; }
         public FormGrades() {
             InitializeComponent();
         }
 
         private void FormGrades_Load(object sender, EventArgs e) {
-            this.Text = _formName;
+            InitWindow();
             FillStudentList();
-            FillCourses();
-            loadGradesByStudent(_selectedStudent);
+            FillCourseList();
+            FillGradeList();
         }
 
+        #region Buttons
+        private void ButtonDelete_Click(object sender, EventArgs e) {
+            RemoveSelectedGrade();
+            FillGradeList();
+        }
+        private void ButtonSave_Click(object sender, EventArgs e) {
+            AddNewGrade();
+            FillGradeList();
+        }
         private void ButtonCancel_Click(object sender, EventArgs e) {
             this.Close();
         }
+        #endregion
 
+        #region Handlers
         private void ListBoxStudents_SelectedIndexChanged(object sender, EventArgs e) {
-            UpdateSelectedStudent();
-            if(ListBoxStudents.SelectedIndex != -1)
-                loadGradesByStudent(UHandler.University.Students[ListBoxStudents.SelectedIndex]);
-            
+            UpdateSelectedStudent(); 
         }
 
-        private void ButtonDelete_Click(object sender, EventArgs e) {
-            deleteGrade();
-        }
-        private void ButtonAdd_Click(object sender, EventArgs e) {
-            FillCourses();
-            ResetGradeIN();
-        }
         private void ListBoxGrades_SelectedIndexChanged(object sender, EventArgs e) {
             UpdateSelectedGrade();
         }
-
-        private void ButtonSave_Click(object sender, EventArgs e) {
-            UpdateGrades();
-            loadGradesByStudent(UHandler.University.Students[ListBoxStudents.SelectedIndex]);
-            MessageBox.Show("Changes Saved", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
         private void ListBoxCourses_SelectedIndexChanged(object sender, EventArgs e) {
             UpdateSelectedCourse();
         }
+        #endregion
 
+        #region Methods
+        private void InitWindow() {
+            this.Text = _formName;
+        }
+        private void FillStudentList() {
+            ListBoxStudents.Items.Clear();
 
-        private void UpdateSelectedCourse() {
-            if(ListBoxCourses.SelectedIndex != -1) {
-                _selectedCourse = UHandler.University.Courses[ListBoxCourses.SelectedIndex];
+            if (Students != null) {
+                foreach (var student in Students) {
+                    ListBoxStudents.Items.Add($"{student.Name}");
+                }
             }
         }
-        private void UpdateSelectedGrade() {
-            if (ListBoxGrades.SelectedIndex > -1) {
-                _selectedGrade = UHandler.University.Grades[ListBoxGrades.SelectedIndex];
+        private void FillCourseList() {
+            if (Courses != null) {
+                foreach (var course in Courses) {
+                    ListBoxCourses.Items.Add($"{course.Subject}");
+                }
+            }
+        }
+        private void FillGradeList() {
+            ListBoxGrades.Items.Clear();
+            if (Grades != null) {
+                foreach (var grade in Grades) {
+                    ListBoxGrades.Items.Add($"{grade.StudentID} - {grade.CourseID} : {grade.Value}");
+                }
             }
         }
         private void UpdateSelectedStudent() {
             if (ListBoxStudents.SelectedIndex != -1) {
-                _selectedStudent = UHandler.University.Students[ListBoxStudents.SelectedIndex];
+                _selectedStudent = Students[ListBoxStudents.SelectedIndex];
             }
         }
-        private void FillStudentList() {
-            ListBoxStudents.Items.Clear();
-            if (UHandler.University.Students != null) {
-                foreach (var std in UHandler.University.Students) {
-                    if (std != null)
-                        ListBoxStudents.Items.Add(string.Format("{0} ", std.Name));
-                }
+        private void UpdateSelectedCourse() {
+            if (ListBoxCourses.SelectedIndex != -1) {
+                _selectedCourse = Courses[ListBoxCourses.SelectedIndex];
             }
         }
-
-        void loadGradesByStudent(Uni.Student currentStudent) {
-            ListBoxGrades.Items.Clear();
-            if (currentStudent != null) {
-                List<Uni.Grade> studentGrades = UHandler.GetGradesByStudentID(currentStudent.ID);
-                string courseCode;
-                if (studentGrades != null) {
-                    foreach (var gr in studentGrades) {
-                        if (gr != null) {
-                            courseCode = UHandler.GetSubjectCodeByID(gr.CourseID);
-                            ListBoxGrades.Items.Add(string.Format("{0}: {1} ", courseCode, gr.Value));
-                        }
-
-                    }
-                }
-            }
-
-        }
-
-        private void deleteGrade() {
-            UHandler.University.Grades.Remove(_selectedGrade);
-            FillStudentList();
-        }
-        private void FillCourses() {
-            ListBoxCourses.Items.Clear();
-            foreach (var course in UHandler.University.Courses) {
-                ListBoxCourses.Items.Add(string.Format("{0} - {1} ", course.Subject, course.Code));
+        private void UpdateSelectedGrade() {
+            if (ListBoxGrades.SelectedIndex != -1) {
+                _selectedGrade = Grades[ListBoxGrades.SelectedIndex];
             }
         }
-        private void ResetGradeIN() {
-            TextEditGradeIN.Text = "0";
+        private void RemoveSelectedGrade() {
+            Grades.Remove(_selectedGrade);
         }
-        private void UpdateGrades() {
-            var newGrade = new Uni.Grade(_selectedCourse.ID, _selectedStudent.ID, Convert.ToInt32(TextEditGradeIN.Text));
-            UHandler.University.Grades.Add(newGrade);
-            FillStudentList();
+        private void AddNewGrade() {
+            if (CanAddNewGrade()) {
+                var newGrade = new Grade(_selectedStudent.ID, _selectedCourse.ID, Convert.ToInt32(spinEditGrade.Text));
+                Grades.Add(newGrade);
+                SetActiveGrade(newGrade);
+            }
         }
+        private bool CanAddNewGrade() {
+            if (_selectedStudent != null && _selectedCourse != null && spinEditGrade.Text != null)
+                return true;
+            return false;
+        }
+        private void SetActiveGrade(Grade activeGrade) {
+            if (activeGrade != null)
+                ListBoxGrades.SelectedIndex = Grades.IndexOf(activeGrade);
+        }
+        #endregion
 
 
     }

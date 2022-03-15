@@ -13,7 +13,7 @@ namespace Uni {
 
         public Grade()
         {
-
+            ID = Guid.NewGuid();
         }
         public Grade( Guid studentID, Guid courseID)
         {
