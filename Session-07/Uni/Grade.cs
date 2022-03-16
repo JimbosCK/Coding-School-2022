@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Uni {
     public class Grade {
-        public string ID { get; }
-        public string StudentID { get;  }
-        public string CourseID { get; }
+        public string ID { get; set;  }
+        public string StudentID { get; set; }
+        public string CourseID { get; set; }
         public int Value { get; set; } //Grade
 
         public Grade()
