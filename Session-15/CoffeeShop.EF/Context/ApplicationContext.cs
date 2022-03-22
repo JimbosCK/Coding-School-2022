@@ -10,6 +10,7 @@ namespace CoffeeShop.EF.Context {
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<Transaction> Transactions{ get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);
@@ -17,6 +18,7 @@ namespace CoffeeShop.EF.Context {
             modelBuilder.ApplyConfiguration(new EmployeeConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
             modelBuilder.ApplyConfiguration(new ProductCategoryConfiguration());
+            modelBuilder.ApplyConfiguration(new TransactionConfiguration());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {

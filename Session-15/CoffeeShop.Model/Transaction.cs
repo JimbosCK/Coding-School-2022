@@ -1,4 +1,6 @@
 ﻿
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace CoffeeShop.Model;
 public class Transaction : BaseEntity {
     public DateTime Date { get; set; }
@@ -6,7 +8,9 @@ public class Transaction : BaseEntity {
     public Guid CustomerID { get; set; }
     public List<TransactionLine> TransactionLines { get; set; }
     public PaymentMethod PaymentMethod { get; set; }
+    [Column(TypeName = "decimal(6,2)")]
     public decimal TotalPrice { get; set; }
+    [Column(TypeName = "decimal(6,2)")]
     public decimal TotalCost { get; set; }
     public string EmployeeName { get; set; }
     public Transaction() {
