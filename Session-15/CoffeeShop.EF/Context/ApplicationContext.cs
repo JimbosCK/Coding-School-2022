@@ -7,7 +7,7 @@ namespace CoffeeShop.EF.Context {
     public class ApplicationContext : DbContext {
 
         public DbSet<Customer> Customers { get; set; }
-        //public DbSet<Employee> Employees { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             base.OnModelCreating(modelBuilder);

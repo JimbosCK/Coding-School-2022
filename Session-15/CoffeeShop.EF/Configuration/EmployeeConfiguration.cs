@@ -12,7 +12,7 @@ namespace CoffeeShop.EF.Configuration {
             builder.Property(emp => emp.Name).HasMaxLength(20);
             builder.Property(emp => emp.Surname).HasMaxLength(20);
             builder.Property(emp => emp.EmployeeType).HasMaxLength(20);
-            builder.Property(emp => emp.SalaryPerMonth).HasColumnType("Decimal(6,2)");
+            builder.Property(emp => emp.SalaryPerMonth).HasColumnType("decimal(6,2)").HasPrecision(6,2);
 
         }
     }

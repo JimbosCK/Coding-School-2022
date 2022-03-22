@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace CoffeeShop.Model {
     public class Employee : BaseEntity {
@@ -7,7 +8,7 @@ namespace CoffeeShop.Model {
         public string Surname { get; set; }
 
         public EmployeeType EmployeeType { get; set; }
-
+        [Column(TypeName = "decimal(18,4)")]
         public decimal SalaryPerMonth { get; set; }
 
         public Employee() {
