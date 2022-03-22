@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoffeeShop.EF.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220322150028_Products")]
+    [Migration("20220322150330_Products")]
     partial class Products
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
