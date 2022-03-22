@@ -1,5 +1,5 @@
 ﻿
-namespace CafeNoir.Core;
+namespace CoffeeShop.Model;
 public class TransactionLine {
     public Guid ID { get; set; }
     public Guid ProductID { get; set; }
@@ -15,6 +15,6 @@ public class TransactionLine {
 
     public TransactionLine() {
         ID = Guid.NewGuid();
-        
+
     }
 }

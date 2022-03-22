@@ -1,7 +1,7 @@
 ﻿
-namespace CafeNoir.Core;
+namespace CoffeeShop.Model;
 public class Transaction {
-    public Guid ID { get; set;  }
+    public Guid ID { get; set; }
     public DateTime Date { get; set; }
     public Guid EmployeeID { get; set; }
     public Guid CustomerID { get; set; }
@@ -18,7 +18,7 @@ public class Transaction {
         ID = Guid.NewGuid();
         EmployeeID = employeeID;
         CustomerID = customerID;
-       
+
 
     }
 

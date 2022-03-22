@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace CafeNoir.Core;
+namespace CoffeeShop.Model;
 
 internal sealed class EmployeeCollection : Collection<Employee>
 {

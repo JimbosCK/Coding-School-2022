@@ -1,11 +1,7 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace CafeNoir.Core
-{
-    public class Employee
-    {
-        public Guid ID { get; } = Guid.NewGuid();
-
+namespace CoffeeShop.Model {
+    public class Employee : BaseEntity {
         public string Name { get; set; }
 
         public string Surname { get; set; }
@@ -14,8 +10,8 @@ namespace CafeNoir.Core
 
         public decimal SalaryPerMonth { get; set; }
 
-        public Employee()
-        {
+        public Employee() {
+            ID = Guid.NewGuid();
         }
 
         public Employee ShallowCopy() => (Employee)MemberwiseClone();

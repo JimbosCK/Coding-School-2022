@@ -1,5 +1,5 @@
 ﻿
-namespace CafeNoir.Core;
+namespace CoffeeShop.Model;
 public class TransactionHandler {
     private decimal discountPerCent = 0.15m;
     private decimal discountThreshold = 10m;
@@ -35,13 +35,13 @@ public class TransactionHandler {
         }
         transaction.TotalPrice = transaction.TransactionLines.Sum(x => x.TotalPrice - x.Discount);
     }
-    public void AddDiscountToLines(Transaction transaction){
+    public void AddDiscountToLines(Transaction transaction) {
         foreach (var line in transaction.TransactionLines) {
-            if(line.Discount == 0) {
+            if (line.Discount == 0) {
                 line.Discount = line.TotalPrice * discountPerCent;
                 SetDisplayPrice(line);
             }
-        }    
+        }
     }
     public void RemoveDiscountFromLines(Transaction transaction) {
         foreach (var line in transaction.TransactionLines) {
@@ -56,7 +56,7 @@ public class TransactionHandler {
     }
 
     public string FinalizeTransaction(Transaction transaction) {
-        if (transaction.TransactionLines.Count == 0) 
+        if (transaction.TransactionLines.Count == 0)
             return "No items added!";
         if (transaction.TotalPrice > 50 && transaction.PaymentMethod == PaymentMethod.CreditCard)
             return "Cannot pay with credit card if price is more than 50 Euros";

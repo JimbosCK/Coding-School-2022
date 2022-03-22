@@ -1,7 +1,6 @@
-﻿namespace CafeNoir.Core;
+﻿namespace CoffeeShop.Model;
 
-public sealed class CoffeeShopLimits
-{
+public sealed class CoffeeShopLimits {
     public uint MinManagers { get; init; } = 1;
     public uint MaxManagers { get; init; } = 1;
     public uint MinCashiers { get; init; } = 1;
@@ -13,8 +12,7 @@ public sealed class CoffeeShopLimits
 
     public uint MinEmployees => MinManagers + MinCashiers + MinBaristas + MinWaiters;
 
-    public (uint Min, uint Max) GetLimitsForType(EmployeeType type) => type switch
-    {
+    public (uint Min, uint Max) GetLimitsForType(EmployeeType type) => type switch {
         EmployeeType.Manager => (MinManagers, MaxManagers),
         EmployeeType.Cashier => (MinCashiers, MaxCashiers),
         EmployeeType.Barista => (MinBaristas, MaxBaristas),
@@ -24,7 +22,6 @@ public sealed class CoffeeShopLimits
 
     public static CoffeeShopLimits Default { get; } = new();
 
-    public CoffeeShopLimits()
-    {
+    public CoffeeShopLimits() {
     }
 }

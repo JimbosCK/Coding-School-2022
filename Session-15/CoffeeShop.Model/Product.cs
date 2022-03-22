@@ -1,4 +1,4 @@
-﻿namespace CafeNoir.Core;
+﻿namespace CoffeeShop.Model;
 
 public class Product {
     public Guid ID { get; set; } = Guid.NewGuid();

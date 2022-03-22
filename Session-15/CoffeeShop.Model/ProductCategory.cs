@@ -1,5 +1,5 @@
 ﻿
-namespace CafeNoir.Core;
+namespace CoffeeShop.Model;
 
 public class ProductCategory {
     public Guid ID { get; } = Guid.NewGuid();

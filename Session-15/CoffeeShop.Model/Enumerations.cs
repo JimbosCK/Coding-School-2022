@@ -1,4 +1,4 @@
-﻿namespace CafeNoir.Core;
+﻿namespace CoffeeShop.Model;
 
 public enum ProductType {
     Coffee,
