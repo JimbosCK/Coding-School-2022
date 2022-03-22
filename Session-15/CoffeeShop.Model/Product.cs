@@ -1,7 +1,6 @@
 ﻿namespace CoffeeShop.Model;
 
-public class Product {
-    public Guid ID { get; set; } = Guid.NewGuid();
+public class Product : BaseEntity {
     public string Code { get; set; }
     public string Description { get; set; }
     public Guid ProductCategoryID { get; set; }
@@ -9,14 +8,14 @@ public class Product {
     public decimal Cost { get; set; }
 
     public Product() {
-
+        ID = Guid.NewGuid();
     }
+    public Product(Guid productCategoryID) : this() {
+        ProductCategoryID = productCategoryID;
+    }
+
 
     public Product ShallowCopy() {
         return (Product)MemberwiseClone();
-    }
-
-    public Product(Guid productCategoryID) {
-        ProductCategoryID = productCategoryID;
     }
 }

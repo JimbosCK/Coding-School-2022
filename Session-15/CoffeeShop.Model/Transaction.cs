@@ -1,7 +1,6 @@
 ﻿
 namespace CoffeeShop.Model;
-public class Transaction {
-    public Guid ID { get; set; }
+public class Transaction : BaseEntity {
     public DateTime Date { get; set; }
     public Guid EmployeeID { get; set; }
     public Guid CustomerID { get; set; }
@@ -14,12 +13,8 @@ public class Transaction {
         ID = Guid.NewGuid();
         TransactionLines = new List<TransactionLine>();
     }
-    public Transaction(Guid employeeID, Guid customerID) {
-        ID = Guid.NewGuid();
+    public Transaction(Guid employeeID, Guid customerID) : this() {
         EmployeeID = employeeID;
         CustomerID = customerID;
-
-
     }
-
 }
