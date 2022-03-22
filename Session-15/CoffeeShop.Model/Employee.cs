@@ -8,7 +8,7 @@ namespace CoffeeShop.Model {
         public string Surname { get; set; }
 
         public EmployeeType EmployeeType { get; set; }
-        [Column(TypeName = "decimal(18,4)")]
+        [Column(TypeName = "decimal(6,2)")]
         public decimal SalaryPerMonth { get; set; }
 
         public Employee() {

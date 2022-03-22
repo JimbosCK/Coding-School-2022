@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoffeeShop.EF.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220322143645_Employees")]
-    partial class Employees
+    [Migration("20220322150028_Products")]
+    partial class Products
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -52,22 +52,58 @@ namespace CoffeeShop.EF.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("EmployeeType")
+                        .HasMaxLength(20)
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<decimal>("SalaryPerMonth")
-                        .HasColumnType("decimal(18,4)");
+                        .HasPrecision(6, 2)
+                        .HasColumnType("decimal(6,2)");
 
                     b.Property<string>("Surname")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("ID");
 
-                    b.ToTable("Employees");
+                    b.ToTable("Employees", (string)null);
+                });
+
+            modelBuilder.Entity("CoffeeShop.Model.Product", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<decimal>("Cost")
+                        .HasPrecision(6, 2)
+                        .HasColumnType("decimal(6,2)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<decimal>("Price")
+                        .HasPrecision(6, 2)
+                        .HasColumnType("decimal(6,2)");
+
+                    b.Property<Guid>("ProductCategoryID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Products", (string)null);
                 });
 #pragma warning restore 612, 618
         }
