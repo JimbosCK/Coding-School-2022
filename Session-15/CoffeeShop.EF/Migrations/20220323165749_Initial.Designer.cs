@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoffeeShop.EF.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220323135357_CoffeeShopMain")]
-    partial class CoffeeShopMain
+    [Migration("20220323165749_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,20 +24,10 @@ namespace CoffeeShop.EF.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("CoffeeShop.Model.CoffeeShopMain", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("CoffeeShop", (string)null);
-                });
-
             modelBuilder.Entity("CoffeeShop.Model.Customer", b =>
                 {
                     b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Code")
@@ -58,6 +48,7 @@ namespace CoffeeShop.EF.Migrations
             modelBuilder.Entity("CoffeeShop.Model.Employee", b =>
                 {
                     b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("EmployeeType")
@@ -117,6 +108,7 @@ namespace CoffeeShop.EF.Migrations
             modelBuilder.Entity("CoffeeShop.Model.ProductCategory", b =>
                 {
                     b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Code")
@@ -173,16 +165,21 @@ namespace CoffeeShop.EF.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Discount")
+                        .HasPrecision(6, 2)
                         .HasColumnType("decimal(6,2)");
 
                     b.Property<decimal>("DiscountPerCent")
+                        .HasMaxLength(30)
                         .HasColumnType("decimal(6,2)");
 
                     b.Property<decimal>("DisplayPrice")
+                        .HasPrecision(6, 2)
                         .HasColumnType("decimal(6,2)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(6,2)");
+                        .HasPrecision(6, 2)
+                        .HasColumnType("decimal(6,2)")
+                        .HasColumnName("TransactionLine_Price");
 
                     b.Property<Guid>("ProductID")
                         .HasColumnType("uniqueidentifier");
@@ -191,9 +188,11 @@ namespace CoffeeShop.EF.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("TotalCost")
+                        .HasPrecision(6, 2)
                         .HasColumnType("decimal(6,2)");
 
                     b.Property<decimal>("TotalPrice")
+                        .HasPrecision(6, 2)
                         .HasColumnType("decimal(6,2)");
 
                     b.Property<Guid>("TransactionID")
@@ -201,39 +200,11 @@ namespace CoffeeShop.EF.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("TransactionLine");
-                });
-
-            modelBuilder.Entity("CoffeeShop.Model.Customer", b =>
-                {
-                    b.HasOne("CoffeeShop.Model.CoffeeShopMain", "Shop")
-                        .WithMany("Customers")
-                        .HasForeignKey("ID")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Shop");
-                });
-
-            modelBuilder.Entity("CoffeeShop.Model.Employee", b =>
-                {
-                    b.HasOne("CoffeeShop.Model.CoffeeShopMain", "Shop")
-                        .WithMany("Employees")
-                        .HasForeignKey("ID")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Shop");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("CoffeeShop.Model.Product", b =>
                 {
-                    b.HasOne("CoffeeShop.Model.CoffeeShopMain", "Shop")
-                        .WithMany("Products")
-                        .HasForeignKey("ID")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.HasOne("CoffeeShop.Model.ProductCategory", "ProductCategory")
                         .WithOne("Product")
                         .HasForeignKey("CoffeeShop.Model.Product", "ID")
@@ -241,29 +212,10 @@ namespace CoffeeShop.EF.Migrations
                         .IsRequired();
 
                     b.Navigation("ProductCategory");
-
-                    b.Navigation("Shop");
-                });
-
-            modelBuilder.Entity("CoffeeShop.Model.ProductCategory", b =>
-                {
-                    b.HasOne("CoffeeShop.Model.CoffeeShopMain", "Shop")
-                        .WithMany("ProductCats")
-                        .HasForeignKey("ID")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Shop");
                 });
 
             modelBuilder.Entity("CoffeeShop.Model.Transaction", b =>
                 {
-                    b.HasOne("CoffeeShop.Model.CoffeeShopMain", "Shop")
-                        .WithMany("Transactions")
-                        .HasForeignKey("ID")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.HasOne("CoffeeShop.Model.Customer", "Customer")
                         .WithOne("Transaction")
                         .HasForeignKey("CoffeeShop.Model.Transaction", "ID")
@@ -279,8 +231,6 @@ namespace CoffeeShop.EF.Migrations
                     b.Navigation("Customer");
 
                     b.Navigation("Employee");
-
-                    b.Navigation("Shop");
                 });
 
             modelBuilder.Entity("CoffeeShop.Model.TransactionLine", b =>
@@ -300,19 +250,6 @@ namespace CoffeeShop.EF.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("Transaction");
-                });
-
-            modelBuilder.Entity("CoffeeShop.Model.CoffeeShopMain", b =>
-                {
-                    b.Navigation("Customers");
-
-                    b.Navigation("Employees");
-
-                    b.Navigation("ProductCats");
-
-                    b.Navigation("Products");
-
-                    b.Navigation("Transactions");
                 });
 
             modelBuilder.Entity("CoffeeShop.Model.Customer", b =>

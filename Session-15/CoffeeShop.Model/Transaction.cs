@@ -13,7 +13,6 @@ public class Transaction : BaseEntity {
     [Column(TypeName = "decimal(6,2)")]
     public decimal TotalCost { get; set; }
 
-    public CoffeeShopMain Shop { get; set; }
     public Employee Employee { get; set; }
     public Customer Customer { get; set; }
     public Transaction() {

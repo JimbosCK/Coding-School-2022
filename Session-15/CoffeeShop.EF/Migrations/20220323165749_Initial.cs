@@ -89,7 +89,16 @@ namespace CoffeeShop.EF.Migrations
                     Description = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     ProductCategoryID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(6,2)", precision: 6, scale: 2, nullable: false),
-                    Cost = table.Column<decimal>(type: "decimal(6,2)", precision: 6, scale: 2, nullable: false)
+                    Cost = table.Column<decimal>(type: "decimal(6,2)", precision: 6, scale: 2, nullable: false),
+                    ProductID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    TransactionID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    TransactionLine_Price = table.Column<decimal>(type: "decimal(6,2)", precision: 6, scale: 2, nullable: false),
+                    DiscountPerCent = table.Column<decimal>(type: "decimal(6,2)", maxLength: 30, nullable: false),
+                    Discount = table.Column<decimal>(type: "decimal(6,2)", precision: 6, scale: 2, nullable: false),
+                    DisplayPrice = table.Column<decimal>(type: "decimal(6,2)", precision: 6, scale: 2, nullable: false),
+                    TotalPrice = table.Column<decimal>(type: "decimal(6,2)", precision: 6, scale: 2, nullable: false),
+                    TotalCost = table.Column<decimal>(type: "decimal(6,2)", precision: 6, scale: 2, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -100,34 +109,8 @@ namespace CoffeeShop.EF.Migrations
                         principalTable: "ProductCategories",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TransactionLine",
-                columns: table => new
-                {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ProductID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TransactionID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
-                    DiscountPerCent = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
-                    Discount = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
-                    DisplayPrice = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
-                    TotalPrice = table.Column<decimal>(type: "decimal(6,2)", nullable: false),
-                    TotalCost = table.Column<decimal>(type: "decimal(6,2)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TransactionLine", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_TransactionLine_Products_ID",
-                        column: x => x.ID,
-                        principalTable: "Products",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_TransactionLine_Transactions_ID",
+                        name: "FK_Products_Transactions_ID",
                         column: x => x.ID,
                         principalTable: "Transactions",
                         principalColumn: "ID",
@@ -138,16 +121,13 @@ namespace CoffeeShop.EF.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "TransactionLine");
-
-            migrationBuilder.DropTable(
                 name: "Products");
 
             migrationBuilder.DropTable(
-                name: "Transactions");
+                name: "ProductCategories");
 
             migrationBuilder.DropTable(
-                name: "ProductCategories");
+                name: "Transactions");
 
             migrationBuilder.DropTable(
                 name: "Customers");

@@ -10,7 +10,6 @@ public class Customer : BaseEntity {
     public string Code { get; set; }
     public string Description { get; set; } = string.Empty;
 
-    public CoffeeShopMain Shop { get; set; }
     public Transaction Transaction { get; set; }
     public Customer() {
         ID = Guid.NewGuid();

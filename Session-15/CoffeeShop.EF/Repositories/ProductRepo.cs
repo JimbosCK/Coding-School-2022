@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace CoffeeShop.EF.Repositories {
     public class ProductRepo : IEntityRepo<Product> {
+        //private List<Product> _products = new List<Product>() { new Product() { Cost = 5m, Description = "Kafes?", Price = 10m }, 
+        //    new Product() { Cost = 3m, Description = "krouasan?", Price = 6m } };
         public async Task Create(Product entity) {
             using var context = new ApplicationContext();
             context.Products.Add(entity);
@@ -28,6 +30,7 @@ namespace CoffeeShop.EF.Repositories {
         public List<Product> GetAll() {
             using var context = new ApplicationContext();
             return context.Products.ToList();
+            //return _products;
         }
 
         public Product? GetById(Guid id) {

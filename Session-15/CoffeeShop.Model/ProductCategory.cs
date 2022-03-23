@@ -8,7 +8,6 @@ public class ProductCategory : BaseEntity{
     public ProductCategory() {
         ID = Guid.NewGuid();
     }
-    public CoffeeShopMain Shop { get; set; }
     public Product Product { get; set; }
     public ProductCategory ShallowCopy() {
         return (ProductCategory)MemberwiseClone();
