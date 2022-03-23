@@ -4,13 +4,11 @@ using System.Text.Json.Serialization;
 namespace CoffeeShop.Model {
     public class Employee : BaseEntity {
         public string Name { get; set; }
-
         public string Surname { get; set; }
-
         public EmployeeType EmployeeType { get; set; }
         [Column(TypeName = "decimal(6,2)")]
         public decimal SalaryPerMonth { get; set; }
-
+        public CoffeeShopMain Shop { get; set; }
         public Transaction Transaction { get; set; }
         public Employee() {
             ID = Guid.NewGuid();

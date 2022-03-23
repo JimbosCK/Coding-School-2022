@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace CoffeeShop.Model {
-    public class CoffeeShop {
+    public class CoffeeShopMain : BaseEntity {
         public List<Customer> Customers { get; set; } = new();
         public List<Product> Products { get; set; } = new();
         public List<ProductCategory> ProductCats { get; set; } = new();
