@@ -40,7 +40,7 @@ namespace CoffeeShop.EF.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Custmoers", (string)null);
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("CoffeeShop.Model.Employee", b =>
@@ -75,7 +75,6 @@ namespace CoffeeShop.EF.Migrations
             modelBuilder.Entity("CoffeeShop.Model.Product", b =>
                 {
                     b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Code")
@@ -131,7 +130,6 @@ namespace CoffeeShop.EF.Migrations
             modelBuilder.Entity("CoffeeShop.Model.Transaction", b =>
                 {
                     b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("CustomerID")
@@ -142,10 +140,6 @@ namespace CoffeeShop.EF.Migrations
 
                     b.Property<Guid>("EmployeeID")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("EmployeeName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PaymentMethod")
                         .HasColumnType("int");
@@ -166,7 +160,6 @@ namespace CoffeeShop.EF.Migrations
             modelBuilder.Entity("CoffeeShop.Model.TransactionLine", b =>
                 {
                     b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Discount")
@@ -198,17 +191,79 @@ namespace CoffeeShop.EF.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("TransactionID");
-
                     b.ToTable("TransactionLine");
+                });
+
+            modelBuilder.Entity("CoffeeShop.Model.Product", b =>
+                {
+                    b.HasOne("CoffeeShop.Model.ProductCategory", "ProductCategory")
+                        .WithOne("Product")
+                        .HasForeignKey("CoffeeShop.Model.Product", "ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProductCategory");
+                });
+
+            modelBuilder.Entity("CoffeeShop.Model.Transaction", b =>
+                {
+                    b.HasOne("CoffeeShop.Model.Customer", "Customer")
+                        .WithOne("Transaction")
+                        .HasForeignKey("CoffeeShop.Model.Transaction", "ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CoffeeShop.Model.Employee", "Employee")
+                        .WithOne("Transaction")
+                        .HasForeignKey("CoffeeShop.Model.Transaction", "ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("CoffeeShop.Model.TransactionLine", b =>
                 {
-                    b.HasOne("CoffeeShop.Model.Transaction", null)
-                        .WithMany("TransactionLines")
-                        .HasForeignKey("TransactionID")
+                    b.HasOne("CoffeeShop.Model.Product", "Product")
+                        .WithOne("TransactionLine")
+                        .HasForeignKey("CoffeeShop.Model.TransactionLine", "ID")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CoffeeShop.Model.Transaction", "Transaction")
+                        .WithMany("TransactionLines")
+                        .HasForeignKey("ID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Transaction");
+                });
+
+            modelBuilder.Entity("CoffeeShop.Model.Customer", b =>
+                {
+                    b.Navigation("Transaction")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CoffeeShop.Model.Employee", b =>
+                {
+                    b.Navigation("Transaction")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CoffeeShop.Model.Product", b =>
+                {
+                    b.Navigation("TransactionLine")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CoffeeShop.Model.ProductCategory", b =>
+                {
+                    b.Navigation("Product")
                         .IsRequired();
                 });
 

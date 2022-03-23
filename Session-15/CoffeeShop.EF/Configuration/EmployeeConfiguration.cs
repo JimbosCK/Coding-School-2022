@@ -14,6 +14,9 @@ namespace CoffeeShop.EF.Configuration {
             builder.Property(emp => emp.EmployeeType).HasMaxLength(20);
             builder.Property(emp => emp.SalaryPerMonth).HasColumnType("decimal(6,2)").HasPrecision(6,2);
 
+
+            builder.HasOne(employee => employee.Transaction).WithOne(transaction => transaction.Employee).HasForeignKey<Transaction>(transaction => transaction.ID);
+
         }
     }
 }

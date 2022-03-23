@@ -11,6 +11,7 @@ namespace CoffeeShop.Model {
         [Column(TypeName = "decimal(6,2)")]
         public decimal SalaryPerMonth { get; set; }
 
+        public Transaction Transaction { get; set; }
         public Employee() {
             ID = Guid.NewGuid();
         }

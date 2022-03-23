@@ -13,6 +13,8 @@ namespace CoffeeShop.EF.Configuration {
             builder.Property(pCat => pCat.Description).HasMaxLength(30);
             builder.Property(pCat => pCat.ProductType);
 
+
+            builder.HasOne(prodCat => prodCat.Product).WithOne(prod => prod.ProductCategory).HasForeignKey<Product>(prod => prod.ID);
         }
     }
 }

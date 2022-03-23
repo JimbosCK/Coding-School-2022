@@ -12,13 +12,15 @@ namespace CoffeeShop.EF.Configuration {
 
             builder.Property(prod => prod.Code).HasMaxLength(20);
             builder.Property(prod => prod.Description).HasMaxLength(30);
-            //TODO: Add foreign key
             builder.Property(prod => prod.ProductCategoryID);
 
             builder.Property(prod => prod.Price).HasColumnType("decimal(6,2)").HasPrecision(6, 2);
             builder.Property(prod => prod.Cost).HasColumnType("decimal(6,2)").HasPrecision(6, 2);
+            
+            builder.HasOne(prod => prod.ProductCategory).WithOne(prodCat => prodCat.Product).HasForeignKey<Product>(prod => prod.ID);
 
 
+            builder.HasOne(product => product.TransactionLine).WithOne(transLine => transLine.Product).HasForeignKey<TransactionLine>(transactionLine => transactionLine.ID);
         }
     }
 }

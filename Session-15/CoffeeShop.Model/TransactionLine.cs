@@ -19,6 +19,9 @@ public class TransactionLine : BaseEntity{
     [Column(TypeName = "decimal(6,2)")] 
     public decimal TotalCost { get; set; }
 
+    public Transaction Transaction { get; set; }
+    public Product Product { get; set; }
+
     public TransactionLine() {
         ID = Guid.NewGuid();
 

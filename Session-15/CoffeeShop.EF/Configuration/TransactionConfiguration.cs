@@ -11,19 +11,20 @@ namespace CoffeeShop.EF.Configuration {
             builder.HasKey(transaction => transaction.ID);
 
             builder.Property(transaction => transaction.Date);
-            // TODO: add foreign keys
-            builder.Property(transaction => transaction.EmployeeID);
-            builder.Property(transaction => transaction.CustomerID);
-
-            // TODO: What happens with lists 
 
             builder.Property(transaction => transaction.TotalPrice).HasColumnType("decimal(6,2)").HasPrecision(6, 2);
             builder.Property(transaction => transaction.TotalCost).HasColumnType("decimal(6,2)").HasPrecision(6, 2);
 
-            builder.Property(transaction => transaction.PaymentMethod);
+            builder.Property(transaction => transaction.PaymentMethod).IsRequired();
+
+            //Constraints
+
+            builder.HasOne(transaction => transaction.Employee).WithOne(employee => employee.Transaction).HasForeignKey<Transaction>(transaction => transaction.ID);
+            builder.HasOne(transaction => transaction.Customer).WithOne(customer => customer.Transaction).HasForeignKey<Transaction>(transaction => transaction.ID);
+
+            builder.HasMany(transaction => transaction.TransactionLines).WithOne(transactionLine => transactionLine.Transaction).HasForeignKey(transactionLine => transactionLine.ID);
 
 
         }
-
     }
 }
