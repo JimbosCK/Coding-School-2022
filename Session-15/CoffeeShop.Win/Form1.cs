@@ -1,8 +1,9 @@
 using CoffeeShop.EF.Repositories;
 using CoffeeShop.Model;
+using DevExpress.XtraEditors;
 
 namespace CoffeeShop.Win {
-    public partial class Form1 : Form {
+    public partial class Form1 : XtraForm {
         private IEntityRepo<ProductCategory> _productCatsRepo;
 
         private List<ProductCategory> _productsCats = new List<ProductCategory>();
@@ -14,18 +15,16 @@ namespace CoffeeShop.Win {
 
         private void Form1_Load(object sender, EventArgs e) {
             this.Text = "Product Categories";
-            RefreshProducts();
+            RefreshList();
         }
-        private void RefreshProducts() {
+        private void RefreshList() {
             _productsCats = _productCatsRepo.GetAll();
-            gridControl1.DataSource = null;
-            gridControl1.DataSource = _productsCats;
-            
-            //dataGridView1.DataSource = _products;
-            gridControl1.Refresh();
-            gridControl1.Update();
-            //dataGridView1.Refresh();
-            //dataGridView1.Update();
+            dataGridView1.DataSource = null;
+            dataGridView1.DataSource = _productsCats;
+
+            dataGridView1.Refresh();
+            dataGridView1.Update();
+
         }
 
         private void simpleButton1_Click(object sender, EventArgs e) {
@@ -38,7 +37,31 @@ namespace CoffeeShop.Win {
                 ProductType = ProductType.Food
             };
             _productCatsRepo.Create(newProd);
-            RefreshProducts();
+            RefreshList();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e) {
+            if (dataGridView1.SelectedRows.Count > 0) {
+                var selectedRow = dataGridView1.SelectedRows[0];
+                var selectedProductCat = selectedRow.DataBoundItem as ProductCategory;
+                if (selectedProductCat is not null) {
+                    selectedProductCat.ProductType = ProductType.Beverages;
+                    _productCatsRepo.Update(selectedProductCat.ID, selectedProductCat);
+                    RefreshList();
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e) {
+            if (dataGridView1.SelectedRows.Count > 0) {
+                var selectedRow = dataGridView1.SelectedRows[0];
+                var selectedProductCat = selectedRow.DataBoundItem as ProductCategory;
+                if (selectedProductCat is not null) {
+                    
+                    _productCatsRepo.Delete(selectedProductCat.ID);
+                    RefreshList();
+                }
+            }
         }
     }
 }
