@@ -5,6 +5,38 @@
     <title>Document</title>
 </head>
 <body>
+    <div>
+        <label for="input-text">Input:</label>
+        <input id="input-text" type="text" onkeyup="ChangeReversedInput()" value="Mark"> </input>
+        <label for="reversed-text">Reversed:</label>
+        <span id="reversed-text"></span>    
+    </div>
     
 </body>
+<script type="text/javascript">
+// ---- Excersise 1 ----
+window.addEventListener('load', ChangeReversedInput());
+
+function ChangeReversedInput(){
+    CheckInputChanges();
+    let input = document.getElementById('input-text').value;
+
+    document.getElementById('reversed-text').textContent = ReverseString(input);
+}
+
+function CheckInputChanges(){
+    document.getElementById('input-text').blur;
+    document.getElementById('input-text').focus;
+}
+
+function ReverseString(str) {
+  if (str === "") 
+    return "";
+
+    return ReverseString(str.substr(1)) + str.charAt(0);
+}
+
+
+
+</script>
 </html>
