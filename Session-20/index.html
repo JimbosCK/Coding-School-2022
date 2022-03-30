@@ -3,13 +3,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .row{
+            margin: 0px 0px 15px 0px;
+        }
+        #input-palindrome{
+            background-color: lightgray;
+        }
+    </style>
 </head>
 <body>
-    <div>
+    <div class="row" id="ex-first">
+        <strong>String Reverser</strong> <br>
         <label for="input-text">Input:</label>
         <input id="input-text" type="text" onkeyup="ChangeReversedInput()" value="Mark"> </input>
         <label for="reversed-text">Reversed:</label>
         <span id="reversed-text"></span>    
+    </div>
+
+    <div class="row" id="ex-second">
+        <strong>Palindrome Checker</strong><br>
+        <label for="input-palindrome">Input:</label>
+        <input id="input-palindrome" type="text" onkeyup="ChangePalindromeColor()"> </input>   
     </div>
     
 </body>
@@ -36,6 +51,21 @@ function ReverseString(str) {
     return ReverseString(str.substr(1)) + str.charAt(0);
 }
 
+function ChangePalindromeColor(){
+    let inputElement=document.getElementById('input-palindrome');
+    let input = inputElement.value
+    if(input === ''){
+        inputElement.style.backgroundColor='lightgray';
+        return;
+    } 
+    let reversedInput = ReverseString(input);
+    if(input.localeCompare(reversedInput) == 0){
+        inputElement.style.backgroundColor='lightgreen';
+    }
+    else{
+        inputElement.style.backgroundColor='red';
+    }
+}
 
 
 </script>
