@@ -214,5 +214,44 @@ function multiply(a, b){
     return a * b;
 }
 
+// ---- Excersise 5 ----
+function IncrementString(str){
+    if(!HasNumberAtTheEnd(str)){
+        return str + '1';
+    }
+    return IncrimentLastDigit(str);
+} 
+
+function HasNumberAtTheEnd(str){
+    if(str.length < 1)
+        return false;
+    
+    return !(isNaN(str.charAt(str.length - 1))) ;
+}
+
+
+function IncrimentLastDigit(str){
+    if(!HasNumberAtTheEnd(str)){
+        return str;
+    }
+
+    if(+str.charAt(str.length - 1) == 9){
+        slicedStr = str.slice(0, -1);
+        if(HasNumberAtTheEnd(slicedStr)){
+            str = IncrimentLastDigit( str.slice(0, -1));
+            str += "0";
+        }else{
+            return slicedStr + '10';
+        }
+    }else{
+        let tmp = +str.charAt(str.length-1);
+        str = str.slice(0,-1);
+        tmp ++;
+        str += tmp
+    }
+
+    return str;
+} 
+
 </script>
 </html>
