@@ -10,7 +10,7 @@ namespace FuelStation.Model
         public decimal Cost { get; set; }
 
         //Relations
-        public List<TransactionLine> TransactionLines { get; set; }
+        public List<TransactionLine> TransactionLines { get; set; } = new();
 
     }
 }
