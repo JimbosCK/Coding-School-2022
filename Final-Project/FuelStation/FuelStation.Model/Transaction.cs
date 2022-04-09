@@ -8,5 +8,6 @@ namespace FuelStation.Model
         public Guid CustomerID { get; set; }
         public PaymentMethodEnum PaymentMethod { get; set; }
         public decimal TotalValue { get; set; }
+        public List<TransactionLine> TransactionLines { get; set; } = new List<TransactionLine>();
     }
 }
