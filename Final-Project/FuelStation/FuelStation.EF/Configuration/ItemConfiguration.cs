@@ -19,6 +19,9 @@ namespace FuelStation.EF.Context
             builder.Property(item => item.Price).HasPrecision(7,2);
             builder.Property(item => item.Cost).HasPrecision(7, 2);
 
+            builder.HasIndex(item => item.Code).IsUnique();
+
+
             builder.HasMany(item => item.TransactionLines).WithOne(transactionLine => transactionLine.Item).HasForeignKey(transactionLine => transactionLine.ItemID);
 
         }
