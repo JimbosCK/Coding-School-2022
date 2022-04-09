@@ -10,7 +10,7 @@ namespace FuelStation.EF.Context
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<TransactionLine> TransactionsLine { get; set; }
+        public DbSet<TransactionLine> TransactionLines { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
