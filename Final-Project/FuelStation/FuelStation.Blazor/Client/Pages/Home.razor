@@ -3,9 +3,14 @@
 @inject AppState AppState
 
 <PageTitle>Home</PageTitle>
+@if (!AppState.LoggedIn)
+{
+    <FuelStation.Blazor.Client.Components.AccessDenied />
+}
+else
+{
+    <h1>Hello, @AppState.EmployeeType</h1>
 
-<h1>Hello, @AppState.EmployeeType</h1>
+   <span>Welcome to your new app.</span> 
+}
 
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />

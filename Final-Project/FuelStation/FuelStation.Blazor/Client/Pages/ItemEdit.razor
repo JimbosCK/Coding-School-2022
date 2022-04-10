@@ -1,0 +1,138 @@
+﻿@page "/items/edit/{id:guid?}"
+@using FuelStation.Blazor.Shared.ViewModels
+@using FuelStation.Model
+@inject AppState AppState
+@inject NavigationManager navigationManager
+@inject HttpClient httpClient
+
+@if (!IsAuthorized())
+{
+    @AppState.EmployeeType
+    <FuelStation.Blazor.Client.Components.AccessDenied />
+
+}
+else
+{
+    <h3>Item Managment</h3>
+    @if (isLoading)
+    {
+        <span>Loading...</span>
+    }
+    else
+    {
+        <EditForm Model="@item" OnValidSubmit="@OnSave">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="row">
+                @if (codeAlreadyExists)
+                {
+                    <span style="color:red">Code already exists.</span>
+                }
+                @if (itemDoesNotExist)
+                {
+                    <span style="color:red">Item was not found.</span>
+                }
+                @if (databaseError)
+                {
+                    <span style="color:red">Database error.</span>
+
+                }
+
+                <div class="col-md-6">
+                    <label class="form-label">Code</label>
+                    <InputText class="form-control" id="code" @bind-Value="item.Code" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Description</label>
+                    <InputText class="form-control" id="description" @bind-Value="item.Description" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Price</label>
+                    <InputNumber class="form-control" id="price" @bind-Value="item.Price" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Cost</label>
+                    <InputNumber class="form-control" id="cost" @bind-Value="item.Cost" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label mt-2">Item Type</label>
+                    <select class="form-select" @bind="@item.ItemType">
+                        @foreach (var type in Enum.GetValues(typeof(ItemTypeEnum)))
+                        {
+                            <option value="@type">@type</option>
+                        }
+                    </select>
+                </div>
+
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <button class="btn btn-success" type="submit">Save</button>
+                    <button class="btn btn-danger" @onclick="OnCancel">Cancel</button>
+                </div>
+            </div>
+        </EditForm>
+    }
+}
+
+@code {
+    [Parameter] public Guid? id { get; set; }
+    private bool isLoading = true;
+    private ItemListViewModel? item = new();
+    private bool codeAlreadyExists = false;
+    private bool itemDoesNotExist = false;
+    private bool databaseError = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadItemsFromServer();
+        isLoading = false;
+    }
+
+    private async Task LoadItemsFromServer()
+    {
+        if (id.HasValue)
+            item = await httpClient.GetFromJsonAsync<ItemListViewModel>($"item/{id}");
+    }
+
+    private void OnCancel()
+    {
+        navigationManager.NavigateTo("Items");
+    }
+
+    private async Task OnSave()
+    {
+        HttpResponseMessage response;
+        try
+        {
+            if (id == Guid.Empty || id== null)
+            {
+                response = await httpClient.PostAsJsonAsync("item", item);
+            }
+            else
+            {
+                response = await httpClient.PutAsJsonAsync("item", item);
+            }
+
+            if ((int)response.StatusCode == 422) codeAlreadyExists = true;
+            if ((int)response.StatusCode == 404) itemDoesNotExist = true;
+            response.EnsureSuccessStatusCode();
+            if ((int)response.StatusCode == 200) navigationManager.NavigateTo("items");
+        }
+        catch (Exception e)
+        {
+            databaseError = true;
+        }
+
+
+    }
+    private bool IsAuthorized()
+    {
+        return AppState.LoggedIn &&
+    (AppState.EmployeeType == Model.EmployeeTypeEnum.Administrator ||
+    AppState.EmployeeType == Model.EmployeeTypeEnum.Manager ||
+    AppState.EmployeeType == Model.EmployeeTypeEnum.Staff);
+    }
+
+        }
+

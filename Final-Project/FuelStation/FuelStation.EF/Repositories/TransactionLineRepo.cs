@@ -55,6 +55,8 @@ namespace FuelStation.EF.Repositories
             dbProd.DiscountPercent = entity.DiscountPercent;
             dbProd.DiscountValue = entity.DiscountValue;
             dbProd.TotalValue = entity.TotalValue;
+            await context.SaveChangesAsync();
+
         }
     }
 }

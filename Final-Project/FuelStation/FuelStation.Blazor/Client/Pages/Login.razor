@@ -16,13 +16,13 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
     <div class="row">
-        <div class="col-md-6">
-            <InputText id="username" @bind-Value="login.Username" placeholder="Username" /> <br>
+        <div class="col-md-2">
+            <InputText class="form-control" id="username" @bind-Value="login.Username" placeholder="Username" /> <br>
         </div>
     </div>
-    <div class="row" style="margin-top:5px">
-        <div class="col-md-6">
-            <InputText id="password" @bind-Value="login.Password" placeholder="Password" type="password" />
+    <div class="row">
+        <div class="col-md-2">
+            <InputText class="form-control" id="password" @bind-Value="login.Password" placeholder="Password" type="password" />
         </div>
     </div>
     <div class="row mt-2">

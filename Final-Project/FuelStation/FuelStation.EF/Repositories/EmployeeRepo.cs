@@ -57,6 +57,8 @@ namespace FuelStation.EF.Repositories
             dbProd.EmployeeType = entity.EmployeeType;
             dbProd.Username = entity.Username;
             dbProd.Password = entity.Password;
+            await context.SaveChangesAsync();
+
         }
     }
 }

@@ -4,6 +4,10 @@ using FuelStation.EF.Context;
 using FuelStation.EF.Repositories;
 using FuelStation.Model;
 
+using FuelStation.EF.Context;
+using FuelStation.EF.Repositories;
+using FuelStation.Model;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -20,7 +24,7 @@ builder.Services.AddScoped<IEntityRepo<Transaction>, TransactionRepo>();
 builder.Services.AddScoped<IEntityRepo<TransactionLine>, TransactionLineRepo>();
 
 builder.Services.AddScoped<LoginHandler>();
-builder.Services.AddSingleton<AppState>();
+//builder.Services.AddScoped<AppState>();
 
 
 

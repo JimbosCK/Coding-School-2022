@@ -12,4 +12,8 @@
     <PackageReference Include="devexpress.win.design" Version="21.2.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\FuelStation.Blazor\Shared\FuelStation.Blazor.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,5 +1,4 @@
-﻿using FuelStation.Blazor.Client.Shared;
-using FuelStation.Blazor.Shared.Services;
+﻿using FuelStation.Blazor.Shared.Services;
 using FuelStation.Blazor.Shared.ViewModels;
 using FuelStation.EF.Repositories;
 using FuelStation.Model;

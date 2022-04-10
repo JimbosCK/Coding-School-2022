@@ -53,6 +53,7 @@ namespace FuelStation.EF.Repositories
             dbProd.ItemType = entity.ItemType;
             dbProd.Price = entity.Price;
             dbProd.Cost = entity.Cost;
+            await context.SaveChangesAsync();
         }
     }
 }

@@ -51,6 +51,9 @@ namespace FuelStation.EF.Repositories
             dbProd.Name = entity.Name;
             dbProd.Surname = entity.Surname;
             dbProd.CardNumber = entity.CardNumber;
+
+            await context.SaveChangesAsync();
+
         }
     }
 }

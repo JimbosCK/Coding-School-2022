@@ -54,6 +54,9 @@ namespace FuelStation.EF.Repositories
             dbProd.PaymentMethod = entity.PaymentMethod;
             dbProd.TotalValue = entity.TotalValue;
             dbProd.TransactionLines = entity.TransactionLines;
+
+            await context.SaveChangesAsync();
+
         }
     }
 }
