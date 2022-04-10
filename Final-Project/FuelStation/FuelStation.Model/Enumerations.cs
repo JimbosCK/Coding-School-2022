@@ -5,7 +5,8 @@ namespace FuelStation.Model
     {
         Manager,
         Staff,
-        Cashier
+        Cashier,
+        Administrator
     }
 
     public enum PaymentMethodEnum

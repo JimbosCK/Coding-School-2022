@@ -1,10 +1,28 @@
 
+using FuelStation.Blazor.Shared.Services;
+using FuelStation.EF.Context;
+using FuelStation.EF.Repositories;
+using FuelStation.Model;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
+builder.Services.AddDbContext<ApplicationContext>();
+
+builder.Services.AddScoped<IEntityRepo<Item>, ItemRepo>();
+builder.Services.AddScoped<IEntityRepo<Employee>, EmployeeRepo>();
+builder.Services.AddScoped<IEntityRepo<Customer>, CustomerRepo>();
+builder.Services.AddScoped<IEntityRepo<Transaction>, TransactionRepo>();
+builder.Services.AddScoped<IEntityRepo<TransactionLine>, TransactionLineRepo>();
+
+builder.Services.AddScoped<LoginHandler>();
+builder.Services.AddSingleton<AppState>();
+
+
 
 var app = builder.Build();
 

@@ -1,0 +1,13 @@
+﻿@page "/logout"
+@using FuelStation.Blazor.Shared.Services
+@inject NavigationManager navigationManager
+@inject AppState AppState
+
+@code {
+    [Parameter] public string? employeetype { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        AppState.LoggedIn = false;
+        navigationManager.NavigateTo("/");
+    }
+}
