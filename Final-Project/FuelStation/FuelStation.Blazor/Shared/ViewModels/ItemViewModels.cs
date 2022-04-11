@@ -8,7 +8,7 @@ namespace FuelStation.Blazor.Shared.ViewModels
     {
         public Guid ID { get; set; }
         [Required]
-        [MaxLength(6, ErrorMessage = "Code max length is 30 characters")]
+        [MaxLength(6, ErrorMessage = "Code max length is 6 characters")]
         public string Code { get; set; }
         [Required]
         [MaxLength(30, ErrorMessage = "Descritpion max length is 30 characters")]
