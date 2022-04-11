@@ -16,10 +16,10 @@ namespace FuelStation.Blazor.Shared.ViewModels
         [Required]
         public ItemTypeEnum ItemType { get; set; }
         [Required]
-        [Range(0, 99999.99, ErrorMessage = "Invalid Price;[0-99999.99]")]
+        [Range(0, 99999.99, ErrorMessage = "Invalid Price [0-99999.99]")]
         public decimal Price { get; set; }
         [Required]
-        [Range(0, 99999.99, ErrorMessage = "Invalid Cost;[0-99999.99]")]
+        [Range(0, 99999.99, ErrorMessage = "Invalid Cost [0-99999.99]")]
         public decimal Cost { get; set; }
     }
 }
