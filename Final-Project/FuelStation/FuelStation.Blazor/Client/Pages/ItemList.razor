@@ -8,13 +8,15 @@
 
 @if (IsAuthorized())
 {
-    <h3>Items</h3>
     @if (isLoading)
     {
         <span>Loading...</span>
     }
     else
     {
+         <h3 style="margin-top:5px">
+           <span>Items (@{@itemList.Count();})</span>
+        </h3>
         <button class="btn btn-primary" @onclick="AddNewItem">New Item</button>
 
         <table class="table table-striped table-hover">
