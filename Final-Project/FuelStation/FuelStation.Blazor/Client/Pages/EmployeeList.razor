@@ -7,14 +7,29 @@
 
 @if (IsAuthorized())
 {
-    <h3>Employees (@{activeEmployeeList.Count()})</h3>
+
     @if (isLoading)
     {
         <span>Loading...</span>
     }
     else
     {
+        <h3>
+           <span>Employees (@{@activeEmployeeList.Count();})</span>
+        </h3>
+
         <button class="btn btn-primary" @onclick="AddNewEmployee">New Employee</button>
+        <button class="btn btn-info" @onclick="ToggleTerminatedEmployees">
+            @if (showTerminatedEmployees)
+            {
+                <span>Hide Termintaed Employees</span>
+            }
+            else
+            {
+                <span>Show Termintaed Employees</span>
+            }
+        </button>
+
 
         <table class="table table-striped table-hover">
             <thead>
@@ -45,6 +60,39 @@
                 }
             </tbody>
         </table>
+        @if (showTerminatedEmployees)
+        {
+            <table class="table table-striped table-hover" style="margin-top 5px">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Employee Type</th>
+                        <th>Hire Date</th>
+                        <td>Termination Date</td>
+                        <th>Salary per month</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in terminatedEmployeeList)
+                    {
+                        <tr>
+                            <td>@employee.FullName</td>
+                            <td>@employee.Username</td>
+                            <td>@employee.EmployeeType</td>
+                            <td>@employee.HireDateStart</td>
+                            <td>@employee.HireDateEnd</td>
+                            <td>@employee.SallaryPerMonth</td>
+                            <td>
+                                <button class="btn btn-warning" @onclick="() => UndoTermination(employee)">Undo Termination</button>
+                                <button class="btn btn-danger" @onclick="() => DeleteEmployee(employee)">Delete</button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
     }
 }
 else
@@ -55,6 +103,7 @@ else
 
 @code {
     private bool isLoading = true;
+    private bool showTerminatedEmployees = false;
     private List<EmployeeListViewModel> employeeList = new();
     private List<EmployeeListViewModel> activeEmployeeList = new();
     private List<EmployeeListViewModel> terminatedEmployeeList = new();
@@ -93,6 +142,17 @@ else
     private async Task TerminateEmployee(EmployeeListViewModel employee)
     {
         var response = await httpClient.PutAsJsonAsync("employee/terminate", employee);
+        response.EnsureSuccessStatusCode();
+        await LoadItemsFromServer();
+    }
+    private async Task ToggleTerminatedEmployees()
+    {
+        showTerminatedEmployees = (!showTerminatedEmployees);
+        await LoadItemsFromServer();
+    }
+    private async Task UndoTermination(EmployeeListViewModel employee)
+    {
+        var response = await httpClient.PutAsJsonAsync("employee/undoterminate", employee);
         response.EnsureSuccessStatusCode();
         await LoadItemsFromServer();
     }

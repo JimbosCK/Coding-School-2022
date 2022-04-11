@@ -155,7 +155,7 @@ namespace FuelStation.Blazor.Server.Controllers
         }
 
         [HttpPut("terminate")]
-        public async Task<ActionResult> Put(EmployeeListViewModel employee)
+        public async Task<ActionResult> PutTerminate(EmployeeListViewModel employee)
         {
             try
             {
@@ -180,6 +180,43 @@ namespace FuelStation.Blazor.Server.Controllers
                     Username = employeeToUpdate.Username,
                     Password = employeeToUpdate.Password
                 });
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                   "Error processing data: " + e.ToString());
+            }
+
+        }
+
+        [HttpPut("undoterminate")]
+        public async Task<ActionResult> PutUndoTerminate(EmployeeListViewModel employee)
+        {
+            try
+            {
+                var employeeToUpdate = await _employeeRepo.GetByIdAsync(employee.ID);
+
+                if (employeeToUpdate is null) return NotFound($"Employee with Id = {employee.ID} not found");
+
+                //if (!_employeeHandler.HasValidData(employee))
+                //{
+                //    return StatusCode(StatusCodes.Status422UnprocessableEntity,
+                //        "The request was well-formed but was unable to be followed due to semantic errors. Check format of 'Name', 'Surname' and 'CardNumber'.");
+                //}
+
+                await _employeeRepo.UpdateAsync(employee.ID, new Employee()
+                {
+                    Name = employeeToUpdate.Name,
+                    Surname = employeeToUpdate.Surname,
+                    EmployeeType = employeeToUpdate.EmployeeType,
+                    HireDateStart = employeeToUpdate.HireDateStart,
+                    HireDateEnd = null,
+                    SallaryPerMonth = employeeToUpdate.SallaryPerMonth,
+                    Username = employeeToUpdate.Username,
+                    Password = employeeToUpdate.Password
+                }); ;
 
                 return Ok();
             }
