@@ -134,7 +134,7 @@ else
 
     private async Task DeleteEmployee(EmployeeListViewModel employee)
     {
-        var response = await httpClient.DeleteAsync($"emloyee/{employee.ID}");
+        var response = await httpClient.DeleteAsync($"employee/{employee.ID}");
         response.EnsureSuccessStatusCode();
         await LoadItemsFromServer();
     }
