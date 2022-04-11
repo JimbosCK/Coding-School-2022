@@ -22,7 +22,7 @@ namespace FuelStation.Blazor.Shared.ViewModels
         [MaxLength(20, ErrorMessage = "Surname has max length 20 characters.")]
         public string Surname { get; set; }
         [Required]
-        [RegularExpression(@"^A[a-zA-Z-0-9]{2,19}$", 
+        [RegularExpression(@"^A[a-zA-Z-0-9]{1,19}$", 
             ErrorMessage = "Card number should start with the Letter 'A' and has max length 20 characters.")]
         public string CardNumber { get; set; }
     }
