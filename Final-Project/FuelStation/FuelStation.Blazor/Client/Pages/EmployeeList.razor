@@ -7,7 +7,7 @@
 
 @if (IsAuthorized())
 {
-    <h3>Employees</h3>
+    <h3>Employees (@{activeEmployeeList.Count()})</h3>
     @if (isLoading)
     {
         <span>Loading...</span>
