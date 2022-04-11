@@ -3,34 +3,47 @@ using FuelStation.Blazor.Shared.ViewModels;
 
 namespace FuelStation.Blazor.Shared.Services
 {
-    public class CustomerHandler
+    public class EmployeeHandler
     {
         private int _nameMaxLength = 20;
         private int _surnameMaxLength = 20;
-        private int _cardNumberMaxLength = 20;
+        private int _usernameMaxLength = 20;
+        private int _passwordMaxLength = 256;
 
         private int _nameMinLength = 1;
         private int _surnameMinLength = 1;
-        private int _cardNumberMinLength = 2;
+        private int _usernameMinLength = 1;
+        private int _passwordMinLength = 1;
 
-        private char _firstCardNumberCharacter = 'A';
-
-        public bool HasValidData(CustomerViewModel customer)
+        public bool HasValidData(EmployeeViewModel employee)
         {
             return
-                IsValidName(customer.Name) &&
-                IsValidSurname(customer.Surname) &&
-                IsValidCardNumber(customer.CardNumber);
-
+                IsValidName(employee.Name) &&
+                IsValidSurname(employee.Surname) &&
+                IsValidUsername(employee.Username) &&
+                IsValidPassword(employee.Password) &&
+                IsValidSallary(employee.SallaryPerMonth) &&
+                IsValidHireDateStart(employee.HireDateStart);
         }
-
-        private bool IsValidCardNumber(string cardNumber)
+        private bool IsValidSallary(decimal sallary)
         {
-            if (cardNumber == null) return false;
-            if (cardNumber.Length < _cardNumberMinLength) return false;
+            if (sallary < 0) return false;
 
-            return cardNumber.Length <= _cardNumberMaxLength &&
-                cardNumber[0] == _firstCardNumberCharacter;
+            return true;
+        }
+        private bool IsValidUsername(string username)
+        {
+            if (username == null) return false;
+            if (username.Length < _usernameMinLength) return false;
+
+            return username.Length <= _usernameMaxLength;
+        }
+        private bool IsValidPassword(string pasword)
+        {
+            if (pasword == null) return false;
+            if (pasword.Length < _passwordMinLength) return false;
+
+            return pasword.Length <= _passwordMaxLength;
         }
         private bool IsValidName(string name)
         {
@@ -46,6 +59,13 @@ namespace FuelStation.Blazor.Shared.Services
             if (surname.Length < _surnameMinLength) return false;
 
             return surname.Length <= _surnameMaxLength;
+        }
+        private bool IsValidHireDateStart(DateTime date)
+        {
+            if (date == null) return false;
+            if (date > DateTime.Now) return false;
+
+            return true;
         }
     }
 }
