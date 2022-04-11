@@ -1,0 +1,100 @@
+﻿@page "/employees"
+@using FuelStation.Blazor.Shared.ViewModels
+@inject AppState AppState
+@inject NavigationManager navigationManager
+@inject HttpClient httpClient
+@inject AccessHandler accessHandler
+
+@if (IsAuthorized())
+{
+    <h3>Employees</h3>
+    @if (isLoading)
+    {
+        <span>Loading...</span>
+    }
+    else
+    {
+        <button class="btn btn-primary" @onclick="AddNewEmployee">New Employee</button>
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Employee Type</th>
+                    <th>Hire Date</th>
+                    <th>Salary per month</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in employeeList)
+                {
+                    <tr>
+                        <td>@employee.FullName</td>
+                        <td>@employee.EmployeeType</td>
+                        <td>@employee.Username</td>
+                        <td>@employee.HireDateStart</td>
+                        <td>@employee.SallaryPerMonth</td>
+                        <td>
+                            <button class="btn btn-primary" @onclick="() => EditEmployee(employee)">Edit</button>
+                            <button class="btn btn-warning" @onclick="() => TerminateEmployee(employee)">Terminate</button>
+                            <button class="btn btn-danger" @onclick="() => DeleteEmployee(employee)">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+else
+{
+    <FuelStation.Blazor.Client.Components.AccessDenied />
+}
+
+
+@code {
+    private bool isLoading = true;
+    private List<EmployeeListViewModel> employeeList = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadItemsFromServer();
+        isLoading = false;
+    }
+
+    private async Task LoadItemsFromServer()
+    {
+        employeeList = await httpClient.GetFromJsonAsync<List<EmployeeListViewModel>>("employee");
+    }
+
+    private async Task EditEmployee(EmployeeListViewModel employee)
+    {
+        navigationManager.NavigateTo($"/employees/Edit/{employee.ID}");
+
+    }
+
+    private async Task AddNewEmployee()
+    {
+        navigationManager.NavigateTo("/employees/edit");
+    }
+
+    private async Task DeleteEmployee(EmployeeListViewModel employee)
+    {
+        var response = await httpClient.DeleteAsync($"emloyee/{employee.ID}");
+        response.EnsureSuccessStatusCode();
+        await LoadItemsFromServer();
+    }
+
+    private async Task TerminateEmployee(EmployeeListViewModel employee)
+    {
+        var response = await httpClient.PutAsJsonAsync("emloyee/terminate", employee);
+        response.EnsureSuccessStatusCode();
+        await LoadItemsFromServer();
+    }
+    private bool IsAuthorized()
+    {
+        return accessHandler.HasAccessToEmployees(AppState);
+    }
+
+}

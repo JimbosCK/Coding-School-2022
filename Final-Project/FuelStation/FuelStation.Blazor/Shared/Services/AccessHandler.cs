@@ -19,9 +19,18 @@ namespace FuelStation.Blazor.Shared.Services
         {
             return appState.LoggedIn &&
             (
-                appState.EmployeeType == Model.EmployeeTypeEnum.Administrator ||
-                appState.EmployeeType == Model.EmployeeTypeEnum.Manager ||
-                appState.EmployeeType == Model.EmployeeTypeEnum.Cashier
+                appState.EmployeeType == EmployeeTypeEnum.Administrator ||
+                appState.EmployeeType == EmployeeTypeEnum.Manager ||
+                appState.EmployeeType == EmployeeTypeEnum.Cashier
+            );
+        }
+
+        public bool HasAccessToEmployees(AppState appState)
+        {
+            return appState.LoggedIn &&
+            (
+                appState.EmployeeType == EmployeeTypeEnum.Administrator ||
+                appState.EmployeeType == EmployeeTypeEnum.Manager
             );
         }
     }
