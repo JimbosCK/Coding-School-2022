@@ -10,10 +10,14 @@ namespace FuelStation.Blazor.Shared.Services
         private int _usernameMaxLength = 20;
         private int _passwordMaxLength = 256;
 
+        private int _fullNameMaxLength = 20 + 20;
+
         private int _nameMinLength = 1;
         private int _surnameMinLength = 1;
         private int _usernameMinLength = 1;
         private int _passwordMinLength = 1;
+
+        private int _fullNameMinLength = 1 + 1;
 
         public bool HasValidData(EmployeeViewModel employee)
         {
@@ -24,6 +28,22 @@ namespace FuelStation.Blazor.Shared.Services
                 IsValidPassword(employee.Password) &&
                 IsValidSallary(employee.SallaryPerMonth) &&
                 IsValidHireDateStart(employee.HireDateStart);
+        }
+
+        public bool HasValidData(EmployeeListViewModel employee)
+        {
+            return
+                IsValidFullName(employee.FullName) &&
+                IsValidUsername(employee.Username) &&
+                IsValidSallary(employee.SallaryPerMonth) &&
+                IsValidHireDateStart(employee.HireDateStart);
+        }
+        private bool IsValidFullName(string fullName)
+        {
+            if (fullName == null) return false;
+            if (fullName.Length < _fullNameMinLength) return false;
+
+            return fullName.Length <= _fullNameMaxLength;
         }
         private bool IsValidSallary(decimal sallary)
         {

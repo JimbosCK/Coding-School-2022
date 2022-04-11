@@ -12,9 +12,11 @@ namespace FuelStation.Blazor.Server.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly IEntityRepo<Employee> _employeeRepo;
-        public EmployeeController(IEntityRepo<Employee> employeeRepo)
+        private readonly EmployeeHandler _employeeHandler;
+        public EmployeeController(IEntityRepo<Employee> employeeRepo, EmployeeHandler employeeHandler)
         {
             _employeeRepo = employeeRepo;
+            _employeeHandler = employeeHandler;
         }
 
         [HttpGet]
@@ -87,10 +89,11 @@ namespace FuelStation.Blazor.Server.Controllers
         {
             try
             {
-                /*   if (!_employeeHandler.HasValidData(employee))
-                        {               
-                                "The request was well-formed but was unable to be followed due to semantic errors. Check format of 'Name', 'Surname' and 'CardNumber'.");
-                        }*/
+                if (!_employeeHandler.HasValidData(employee))
+                {
+                    return StatusCode(StatusCodes.Status422UnprocessableEntity,
+                    "The request was well-formed but was unable to be followed due to semantic errors. Check format of data.");
+                }
 
                 await _employeeRepo.CreateAsync(new Employee()
                 {
@@ -126,11 +129,11 @@ namespace FuelStation.Blazor.Server.Controllers
 
                 if (employeeToUpdate is null) return NotFound($"Employee with Id = {employee.ID} not found");
 
-                //if (!_employeeHandler.HasValidData(employee))
-                //{
-                //    return StatusCode(StatusCodes.Status422UnprocessableEntity,
-                //        "The request was well-formed but was unable to be followed due to semantic errors. Check format of 'Name', 'Surname' and 'CardNumber'.");
-                //}
+                if (!_employeeHandler.HasValidData(employee))
+                {
+                    return StatusCode(StatusCodes.Status422UnprocessableEntity,
+                        "The request was well-formed but was unable to be followed due to semantic errors. Check format.");
+                }
 
                 await _employeeRepo.UpdateAsync(employee.ID, new Employee()
                 {
@@ -163,11 +166,11 @@ namespace FuelStation.Blazor.Server.Controllers
 
                 if (employeeToUpdate is null) return NotFound($"Employee with Id = {employee.ID} not found");
 
-                //if (!_employeeHandler.HasValidData(employee))
-                //{
-                //    return StatusCode(StatusCodes.Status422UnprocessableEntity,
-                //        "The request was well-formed but was unable to be followed due to semantic errors. Check format of 'Name', 'Surname' and 'CardNumber'.");
-                //}
+                if (!_employeeHandler.HasValidData(employee))
+                {
+                    return StatusCode(StatusCodes.Status422UnprocessableEntity,
+                        "The request was well-formed but was unable to be followed due to semantic errors. Check format.");
+                }
 
                 await _employeeRepo.UpdateAsync(employee.ID, new Employee()
                 {
@@ -200,11 +203,11 @@ namespace FuelStation.Blazor.Server.Controllers
 
                 if (employeeToUpdate is null) return NotFound($"Employee with Id = {employee.ID} not found");
 
-                //if (!_employeeHandler.HasValidData(employee))
-                //{
-                //    return StatusCode(StatusCodes.Status422UnprocessableEntity,
-                //        "The request was well-formed but was unable to be followed due to semantic errors. Check format of 'Name', 'Surname' and 'CardNumber'.");
-                //}
+                if (!_employeeHandler.HasValidData(employee))
+                {
+                    return StatusCode(StatusCodes.Status422UnprocessableEntity,
+                        "The request was well-formed but was unable to be followed due to semantic errors. Check format.");
+                }
 
                 await _employeeRepo.UpdateAsync(employee.ID, new Employee()
                 {
