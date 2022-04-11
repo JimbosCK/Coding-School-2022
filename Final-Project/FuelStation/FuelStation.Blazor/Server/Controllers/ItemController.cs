@@ -116,12 +116,6 @@ namespace FuelStation.Blazor.Server.Controllers
 
                 if (itemToUpdate is null) return NotFound($"Item with Id = {item.ID} not found");
 
-                /*itemToUpdate.Description = item.Description;
-                itemToUpdate.Code = item.Code;
-                itemToUpdate.ItemType = (ItemTypeEnum)item.ItemType;
-                itemToUpdate.Price = item.Price;
-                itemToUpdate.Cost = item.Cost;*/
-
                 await _itemRepo.UpdateAsync(item.ID, new Item()
                 {
                     Description = item.Description,
@@ -137,7 +131,7 @@ namespace FuelStation.Blazor.Server.Controllers
             catch (Exception e)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                   "Error deleting data: " + e.ToString());
+                   "Error processing data: " + e.ToString());
             }
 
         }
