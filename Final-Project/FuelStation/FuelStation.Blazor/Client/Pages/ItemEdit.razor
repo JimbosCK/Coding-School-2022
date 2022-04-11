@@ -1,13 +1,13 @@
 ﻿@page "/items/edit/{id:guid?}"
 @using FuelStation.Blazor.Shared.ViewModels
 @using FuelStation.Model
-@inject AppState AppState
+@inject AppState appState
+@inject AccessHandler accessHandler
 @inject NavigationManager navigationManager
 @inject HttpClient httpClient
 
 @if (!IsAuthorized())
 {
-    @AppState.EmployeeType
     <FuelStation.Blazor.Client.Components.AccessDenied />
 
 }
@@ -128,10 +128,7 @@ else
     }
     private bool IsAuthorized()
     {
-        return AppState.LoggedIn &&
-    (AppState.EmployeeType == Model.EmployeeTypeEnum.Administrator ||
-    AppState.EmployeeType == Model.EmployeeTypeEnum.Manager ||
-    AppState.EmployeeType == Model.EmployeeTypeEnum.Staff);
+        return accessHandler.HasAccessToItems(appState);
     }
 
         }

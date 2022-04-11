@@ -1,0 +1,37 @@
+﻿@page "/ledger"
+@using FuelStation.Blazor.Shared.ViewModels
+@inject AppState appState
+@inject NavigationManager navigationManager
+@inject HttpClient httpClient
+@inject AccessHandler accessHandler
+
+@if (!IsAuthorized())
+{
+    <FuelStation.Blazor.Client.Components.AccessDenied />
+
+}
+else
+{
+    <h3>Item Managment</h3>
+    @if (isLoading)
+    {
+        <span>Loading...</span>
+    }
+    else
+    {
+
+    }
+}
+
+@code {
+    private bool isLoading = true;
+
+
+
+
+
+    private bool IsAuthorized()
+    {
+        return accessHandler.HasAccessToLedger(appState);
+    }
+}
