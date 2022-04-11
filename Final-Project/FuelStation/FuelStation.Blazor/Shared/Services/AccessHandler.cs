@@ -33,5 +33,14 @@ namespace FuelStation.Blazor.Shared.Services
                 appState.EmployeeType == EmployeeTypeEnum.Manager
             );
         }
+
+        public bool HasAccessToLedger(AppState appState)
+        {
+            return appState.LoggedIn &&
+            (
+                appState.EmployeeType == EmployeeTypeEnum.Administrator ||
+                appState.EmployeeType == EmployeeTypeEnum.Manager
+            );
+        }
     }
 }
