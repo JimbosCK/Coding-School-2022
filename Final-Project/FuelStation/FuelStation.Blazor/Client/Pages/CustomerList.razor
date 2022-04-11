@@ -7,7 +7,9 @@
 
 @if (IsAuthorized())
 {
-    <h3>Custormers</h3>
+    <h3>
+        <span>Customers (@{@customerList.Count();})</span>
+    </h3>
     @if (isLoading)
     {
         <span>Loading...</span>
