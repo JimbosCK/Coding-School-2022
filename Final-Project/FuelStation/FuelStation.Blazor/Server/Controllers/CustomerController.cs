@@ -1,4 +1,5 @@
 ﻿
+using FuelStation.Blazor.Shared.Services;
 using FuelStation.Blazor.Shared.ViewModels;
 using FuelStation.EF.Repositories;
 using FuelStation.Model;
@@ -11,10 +12,11 @@ namespace FuelStation.Blazor.Server.Controllers
     public class CustomerController : ControllerBase
     {
         private readonly IEntityRepo<Customer> _customerRepo;
-
-        public CustomerController(IEntityRepo<Customer> customerRepo)
+        private readonly CustomerHandler _customerHandler;
+        public CustomerController(IEntityRepo<Customer> customerRepo, CustomerHandler customerHandler)
         {
             _customerRepo = customerRepo;
+            _customerHandler = customerHandler;
         }
 
         [HttpGet]
@@ -78,6 +80,11 @@ namespace FuelStation.Blazor.Server.Controllers
         {
             try
             {
+                if( !_customerHandler.HasValidData(customer))
+                {
+                    return StatusCode(StatusCodes.Status422UnprocessableEntity,
+                        "The request was well-formed but was unable to be followed due to semantic errors. Check format of 'Name', 'Surname' and 'CardNumber'.");
+                }
                 var newCustomer = new Customer()
                 {
                     Name = customer.Name,
@@ -93,7 +100,7 @@ namespace FuelStation.Blazor.Server.Controllers
                 if (e is Microsoft.Data.SqlClient.SqlException)
                 {
                     return StatusCode(StatusCodes.Status422UnprocessableEntity,
-                        "The request was well-formed but was unable to be followed due to semantic errors. 'Customer.ID' might already exist in database.");
+                        "The request was well-formed but was unable to be followed due to semantic errors. 'Customer.CardNumber' might already exist in database.");
                 }
                 return StatusCode(StatusCodes.Status500InternalServerError,
                    "Error processing data: " + e.ToString());
@@ -108,6 +115,12 @@ namespace FuelStation.Blazor.Server.Controllers
                 var customerToUpdate = await _customerRepo.GetByIdAsync(customer.ID);
 
                 if (customerToUpdate is null) return NotFound($"Item with Id = {customer.ID} not found");
+
+                if (!_customerHandler.HasValidData(customer))
+                {
+                    return StatusCode(StatusCodes.Status422UnprocessableEntity,
+                        "The request was well-formed but was unable to be followed due to semantic errors. Check format of 'Name', 'Surname' and 'CardNumber'.");
+                }
 
                 await _customerRepo.UpdateAsync(customer.ID, new Customer()
                 {

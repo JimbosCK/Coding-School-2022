@@ -20,7 +20,7 @@ builder.Services.AddScoped<IEntityRepo<Transaction>, TransactionRepo>();
 builder.Services.AddScoped<IEntityRepo<TransactionLine>, TransactionLineRepo>();
 
 builder.Services.AddScoped<LoginHandler>();
-builder.Services.AddScoped<AccessHandler>();
+builder.Services.AddScoped<CustomerHandler>();
 //builder.Services.AddScoped<AppState>();
 
 
