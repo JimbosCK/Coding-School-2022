@@ -28,12 +28,12 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var employee in employeeList)
+                @foreach (var employee in activeEmployeeList)
                 {
                     <tr>
                         <td>@employee.FullName</td>
-                        <td>@employee.EmployeeType</td>
                         <td>@employee.Username</td>
+                        <td>@employee.EmployeeType</td>
                         <td>@employee.HireDateStart</td>
                         <td>@employee.SallaryPerMonth</td>
                         <td>
@@ -56,6 +56,8 @@ else
 @code {
     private bool isLoading = true;
     private List<EmployeeListViewModel> employeeList = new();
+    private List<EmployeeListViewModel> activeEmployeeList = new();
+    private List<EmployeeListViewModel> terminatedEmployeeList = new();
 
     protected override async Task OnInitializedAsync()
     {
@@ -66,6 +68,8 @@ else
     private async Task LoadItemsFromServer()
     {
         employeeList = await httpClient.GetFromJsonAsync<List<EmployeeListViewModel>>("employee");
+        activeEmployeeList = employeeList.Where(x => x.HireDateEnd is null).ToList();
+        terminatedEmployeeList = employeeList.Where(x => x.HireDateEnd is not null).ToList();
     }
 
     private async Task EditEmployee(EmployeeListViewModel employee)
@@ -88,7 +92,7 @@ else
 
     private async Task TerminateEmployee(EmployeeListViewModel employee)
     {
-        var response = await httpClient.PutAsJsonAsync("emloyee/terminate", employee);
+        var response = await httpClient.PutAsJsonAsync("employee/terminate", employee);
         response.EnsureSuccessStatusCode();
         await LoadItemsFromServer();
     }

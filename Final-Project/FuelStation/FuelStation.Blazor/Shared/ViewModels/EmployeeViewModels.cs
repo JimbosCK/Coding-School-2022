@@ -18,6 +18,7 @@ namespace FuelStation.Blazor.Shared.ViewModels
         public string Username { get; set; }
         public EmployeeTypeEnum EmployeeType { get; set; }
         public DateTime HireDateStart { get; set; }
+        public DateTime? HireDateEnd { get; set; }
         public decimal SallaryPerMonth { get; set; }
     }
 

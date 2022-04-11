@@ -12,9 +12,9 @@ namespace FuelStation.Blazor.Server.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly IEntityRepo<Employee> _employeeRepo;
-        public EmployeeController(IEntityRepo<Employee> customerRepo)
+        public EmployeeController(IEntityRepo<Employee> employeeRepo)
         {
-            _employeeRepo = customerRepo;
+            _employeeRepo = employeeRepo;
         }
 
         [HttpGet]
@@ -27,6 +27,7 @@ namespace FuelStation.Blazor.Server.Controllers
                 FullName = x.FullName,
                 EmployeeType = x.EmployeeType,
                 HireDateStart = x.HireDateStart,
+                HireDateEnd = x.HireDateEnd,
                 SallaryPerMonth = x.SallaryPerMonth,
                 Username = x.Username
             });
@@ -109,7 +110,7 @@ namespace FuelStation.Blazor.Server.Controllers
                 if (e is Microsoft.Data.SqlClient.SqlException)
                 {
                     return StatusCode(StatusCodes.Status422UnprocessableEntity,
-                        "The request was well-formed but was unable to be followed due to semantic errors. 'Customer.CardNumber' might already exist in database.");
+                        "The request was well-formed but was unable to be followed due to semantic errors. 'Employee.ID' might already exist in database.");
                 }
                 return StatusCode(StatusCodes.Status500InternalServerError,
                    "Error processing data: " + e.ToString());
@@ -123,7 +124,7 @@ namespace FuelStation.Blazor.Server.Controllers
             {
                 var employeeToUpdate = await _employeeRepo.GetByIdAsync(employee.ID);
 
-                if (employeeToUpdate is null) return NotFound($"Item with Id = {employee.ID} not found");
+                if (employeeToUpdate is null) return NotFound($"Employee with Id = {employee.ID} not found");
 
                 //if (!_employeeHandler.HasValidData(employee))
                 //{
@@ -141,6 +142,43 @@ namespace FuelStation.Blazor.Server.Controllers
                     SallaryPerMonth = employee.SallaryPerMonth,
                     Username = employee.Username,
                     Password = employee.Password
+                });
+
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                   "Error processing data: " + e.ToString());
+            }
+
+        }
+
+        [HttpPut("terminate")]
+        public async Task<ActionResult> Put(EmployeeListViewModel employee)
+        {
+            try
+            {
+                var employeeToUpdate = await _employeeRepo.GetByIdAsync(employee.ID);
+
+                if (employeeToUpdate is null) return NotFound($"Employee with Id = {employee.ID} not found");
+
+                //if (!_employeeHandler.HasValidData(employee))
+                //{
+                //    return StatusCode(StatusCodes.Status422UnprocessableEntity,
+                //        "The request was well-formed but was unable to be followed due to semantic errors. Check format of 'Name', 'Surname' and 'CardNumber'.");
+                //}
+
+                await _employeeRepo.UpdateAsync(employee.ID, new Employee()
+                {
+                    Name = employeeToUpdate.Name,
+                    Surname = employeeToUpdate.Surname,
+                    EmployeeType = employeeToUpdate.EmployeeType,
+                    HireDateStart = employeeToUpdate.HireDateStart,
+                    HireDateEnd = DateTime.Now,
+                    SallaryPerMonth = employeeToUpdate.SallaryPerMonth,
+                    Username = employeeToUpdate.Username,
+                    Password = employeeToUpdate.Password
                 });
 
                 return Ok();
