@@ -121,19 +121,19 @@
             this.listToolStripMenuItem2,
             this.addToolStripMenuItem2});
             this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
-            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(191, 48);
-            this.transactionToolStripMenuItem.Text = "Transaction";
+            this.transactionToolStripMenuItem.Size = new System.Drawing.Size(204, 48);
+            this.transactionToolStripMenuItem.Text = "Transactions";
             // 
             // listToolStripMenuItem2
             // 
             this.listToolStripMenuItem2.Name = "listToolStripMenuItem2";
-            this.listToolStripMenuItem2.Size = new System.Drawing.Size(260, 54);
+            this.listToolStripMenuItem2.Size = new System.Drawing.Size(448, 54);
             this.listToolStripMenuItem2.Text = "List";
             // 
             // addToolStripMenuItem2
             // 
             this.addToolStripMenuItem2.Name = "addToolStripMenuItem2";
-            this.addToolStripMenuItem2.Size = new System.Drawing.Size(260, 54);
+            this.addToolStripMenuItem2.Size = new System.Drawing.Size(448, 54);
             this.addToolStripMenuItem2.Text = "Add...";
             // 
             // logoutToolStripMenuItem
