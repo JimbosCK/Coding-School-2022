@@ -13,10 +13,12 @@ namespace FuelStation.Win
     {
         private AppState _appState;
         private AccessHandler _accessHandler;
+        private bool hidden = false;
+        public FormHome refToHome { get; set; }
         public FormLogin()
         {
             _appState = (AppState)Program.ServiceProvider.GetService(typeof(AppState));
-            _accessHandler = (AccessHandler)Program.ServiceProvider.GetService(typeof(AccessHandler)); ;
+            _accessHandler = (AccessHandler)Program.ServiceProvider.GetService(typeof(AccessHandler));
             InitializeComponent();
             
 
@@ -24,7 +26,6 @@ namespace FuelStation.Win
         
         public LoginViewModel login = new LoginViewModel();
 
-        private bool showErrorMessage = false;
         private HttpClient httpClient;
 
         private void FormLogin_Load(object sender, EventArgs e)
@@ -50,6 +51,7 @@ namespace FuelStation.Win
 
         private async void btnLogin_Click(object sender, EventArgs e)
         {
+            hidden = false;
             var verifiedEmployee = await httpClient.GetFromJsonAsync<VerifiedEmployeeViewModel>($"login/{(login.Username)}/{login.Password}");
 
             if (verifiedEmployee is not null)
@@ -58,14 +60,26 @@ namespace FuelStation.Win
                 {
                     _appState.LoggedIn = true;
                     _appState.EmployeeType = verifiedEmployee.EmployeeType;
-                    
-                    this.Close();
-                    //var formObject = new FormHome();
+
+                    if (refToHome is null)
+                    {
+                        var home = new FormHome();
+                        home.RefToLogin = this;
+                        home.Show();
+                    }
+                    else
+                    {
+                        refToHome.Show();
+                    }
+
+                    hidden = true;
+                    this.Hide();
                 }
             }
-
-            showErrorMessage = true;
-            ShowErrorMessage();
+            if (!hidden)
+            {
+                ShowErrorMessage();
+            }
         }
 
         private void ShowErrorMessage()

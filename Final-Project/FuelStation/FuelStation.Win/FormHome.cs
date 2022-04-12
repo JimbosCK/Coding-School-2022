@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraEditors;
-using FuelStation.Blazor.Shared.Services;
+﻿using FuelStation.Blazor.Shared.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,15 +11,42 @@ using System.Windows.Forms;
 
 namespace FuelStation.Win
 {
-    public partial class Home : XtraForm
+    public partial class FormHome : Form
     {
         private AppState _appState;
         private AccessHandler _accessHandler;
-        public Home(AppState appState, AccessHandler accessHandler)
+
+        public FormLogin RefToLogin { get; set; }
+        public FormHome()
         {
-            _appState = appState;
-            _accessHandler = accessHandler;
+            _appState = (AppState)Program.ServiceProvider.GetService(typeof(AppState));
+            _accessHandler = (AccessHandler)Program.ServiceProvider.GetService(typeof(AccessHandler));
             InitializeComponent();
+        }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            Application.Exit();
+            base.OnClosing(e);
+        }
+
+        private void FormHome_Load(object sender, EventArgs e)
+        {
+            RefToLogin.refToHome = this;
+            HandleAccess();
+        }
+        private void HandleAccess()
+        {
+            if (!_accessHandler.HasAccessToCustomers(_appState)) customersToolStripMenuItem.Visible = false;
+            if (!_accessHandler.HasAccessToItems(_appState))    itemsToolStripMenuItem.Visible = false;
+            if (!_accessHandler.HasAccessToTransactions(_appState)) transactionToolStripMenuItem.Visible = false;
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _appState.LoggedIn = false;
+            this.Hide();
+            RefToLogin.Show();
         }
     }
 }
+
