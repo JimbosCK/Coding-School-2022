@@ -31,7 +31,7 @@ namespace FuelStation.Win
         private void FormLogin_Load(object sender, EventArgs e)
         {
             SetUpHttpServerConnection();
-
+            InitializeLoginControls();
             bsLogin.DataSource = login;
             SetDataBindings();
             
@@ -42,6 +42,12 @@ namespace FuelStation.Win
             UriViewModel uri = (UriViewModel)JsonSerializer.Deserialize(file, typeof(UriViewModel));
             httpClient = new HttpClient();
             httpClient.BaseAddress = new Uri(uri.BaseAddress);
+        }
+        private void InitializeLoginControls()
+        {
+            textEditUsername.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            textEditPassword.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            textEditPassword.Properties.PasswordChar = '*';
         }
         private void SetDataBindings()
         {
