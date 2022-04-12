@@ -48,6 +48,7 @@ namespace FuelStation.Win
             textEditUsername.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             textEditPassword.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
             textEditPassword.Properties.PasswordChar = '*';
+
         }
         private void SetDataBindings()
         {
@@ -58,6 +59,7 @@ namespace FuelStation.Win
         private async void btnLogin_Click(object sender, EventArgs e)
         {
             hidden = false;
+            labelError.Text = "";
             var verifiedEmployee = await httpClient.GetFromJsonAsync<VerifiedEmployeeViewModel>($"login/{(login.Username)}/{login.Password}");
 
             if (verifiedEmployee is not null)
