@@ -28,14 +28,22 @@ namespace FuelStation.Win
             Application.Exit();
             base.OnClosing(e);
         }
+        private void FormHome_Shown(Object sender, EventArgs e)
+        {
+
+            HandleAccess();
+        }
 
         private void FormHome_Load(object sender, EventArgs e)
         {
             RefToLogin.refToHome = this;
-            HandleAccess();
         }
         private void HandleAccess()
         {
+            customersToolStripMenuItem.Visible = true;
+            itemsToolStripMenuItem.Visible = true;
+            transactionToolStripMenuItem.Visible = true;
+
             if (!_accessHandler.HasAccessToCustomers(_appState)) customersToolStripMenuItem.Visible = false;
             if (!_accessHandler.HasAccessToItems(_appState))    itemsToolStripMenuItem.Visible = false;
             if (!_accessHandler.HasAccessToTransactions(_appState)) transactionToolStripMenuItem.Visible = false;
