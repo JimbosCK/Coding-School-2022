@@ -18,12 +18,18 @@ builder.Services.AddScoped<IEntityRepo<Employee>, EmployeeRepo>();
 builder.Services.AddScoped<IEntityRepo<Customer>, CustomerRepo>();
 builder.Services.AddScoped<IEntityRepo<Transaction>, TransactionRepo>();
 builder.Services.AddScoped<IEntityRepo<TransactionLine>, TransactionLineRepo>();
+builder.Services.AddScoped<IEntityRepo<FuelStationShop>, FuelStationShopRepo>();
 
 builder.Services.AddScoped<LoginHandler>();
 builder.Services.AddScoped<CustomerHandler>();
 builder.Services.AddScoped<EmployeeHandler>();
+builder.Services.AddScoped<LedgerHandler>();
 
-
+// TODO: Refactor FuelStationShop initialization
+var context = new ApplicationContext();
+var fuelStationRepo = new FuelStationShopRepo(context);
+var fuelstation = await fuelStationRepo.GetAllAsync();
+if (fuelstation.Count() < 1) { await fuelStationRepo.CreateAsync(new FuelStationShop() { MonthlyRent = 5000 }); }
 
 var app = builder.Build();
 

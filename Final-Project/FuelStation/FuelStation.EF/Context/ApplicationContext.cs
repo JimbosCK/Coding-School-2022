@@ -11,6 +11,7 @@ namespace FuelStation.EF.Context
         public DbSet<Item> Items { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<TransactionLine> TransactionLines { get; set; }
+        public DbSet<FuelStationShop> FuelStationShops { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -19,6 +20,7 @@ namespace FuelStation.EF.Context
             modelBuilder.ApplyConfiguration(new TransactionConfiguration());
             modelBuilder.ApplyConfiguration(new TransactionLineConfiguration());
             modelBuilder.ApplyConfiguration(new ItemConfiguration());
+            modelBuilder.ApplyConfiguration(new FuelStationShopConfiguration());
             base.OnModelCreating(modelBuilder);
         }
 

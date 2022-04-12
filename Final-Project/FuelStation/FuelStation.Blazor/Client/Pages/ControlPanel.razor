@@ -1,0 +1,91 @@
+﻿@page "/controlpanel"
+@using FuelStation.Blazor.Shared.ViewModels
+@inject AppState appState
+@inject NavigationManager navigationManager
+@inject HttpClient httpClient
+@inject AccessHandler accessHandler
+
+@if (!IsAuthorized())
+{
+    <FuelStation.Blazor.Client.Components.AccessDenied />
+
+}
+else
+{
+    <h3>Control Panel</h3>
+    @if (isLoading)
+    {
+        <span>Loading...</span>
+    }
+    else
+    {
+        @if (databaseError)
+        {
+            <span style="color:red">Database error.</span>
+
+        }
+        <EditForm Model="@fuelStation" OnValidSubmit="@OnSave">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="form-label">Monthly Rent Cost</label>
+                    <InputNumber class="form-control" id="MonthlyRentCost" @bind-Value="fuelStation.MonthlyRentCost" />
+                </div>
+            </div>
+
+            <div class="row mt-2">
+                <div class="col">
+                    <button class="btn btn-success" type="submit">Save</button>
+                    <button class="btn btn-danger" @onclick="OnCancel">Cancel</button>
+                </div>
+            </div>
+        </EditForm>
+    }
+}
+
+@code {
+    private bool isLoading = true;
+    private bool databaseError = false;
+    private FuelStationShopViewModel fuelStation = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadItemsFromServer();
+
+        isLoading = false;
+    }
+
+    private async Task LoadItemsFromServer()
+    {
+        fuelStation = await httpClient.GetFromJsonAsync<FuelStationShopViewModel>($"ledger/fuelstation");
+    }
+
+    private void OnCancel()
+    {
+        navigationManager.NavigateTo("home");
+    }
+
+    private async Task OnSave()
+    {
+        HttpResponseMessage response;
+        try
+        {
+            response = await httpClient.PutAsJsonAsync("ledger/fuelstation", fuelStation);
+
+            response.EnsureSuccessStatusCode();
+            if ((int)response.StatusCode == 200) navigationManager.NavigateTo("home");
+        }
+        catch (Exception e)
+        {
+            databaseError = true;
+        }
+
+
+    }
+
+    private bool IsAuthorized()
+    {
+        return accessHandler.HasAccessToLedger(appState);
+    }
+}
