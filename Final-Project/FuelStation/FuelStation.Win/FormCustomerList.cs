@@ -18,12 +18,51 @@ namespace FuelStation.Win
             SetUpBindings();
         }
 
+        #region Btn Clicks
+        private void btnNew_Click(object sender, EventArgs e)
+        {
+            OpenEditPage(null);
+        }
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (bsCustomers.Current is CustomerListViewModel editCustomer)
+                OpenEditPage(editCustomer);
+        }
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (DeletionIsConfirmed())
                 _ = DeleteCustomer();
         }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
 
+        #region Methods
+        private void SetUpBindings()
+        {
+            bsCustomers.DataSource = customerList;
+            grdCtrlCustomers.DataSource = bsCustomers;
+        }
+        private async void OpenEditPage(CustomerListViewModel? editItem)
+        {
+            if (editItem is null)
+            {
+                editItem = new CustomerListViewModel();
+                editItem.ID = Guid.Empty;
+            }
+            var formItemEdit = new FormCustomerEdit(editItem);
+            var result = formItemEdit.ShowDialog();
+
+            if (result == DialogResult.OK) await UpdateListWithLatest();
+        }
+        private async Task UpdateListWithLatest()
+        {
+            customerList = await httpClient.GetFromJsonAsync<List<CustomerListViewModel>>("customer");
+            bsCustomers.DataSource = customerList;
+            grdCtrlCustomers.Refresh();
+        }
         private bool DeletionIsConfirmed()
         {
             var result = MessageBox.Show(this, "Are you sure you want to delete the selected Customer?",
@@ -39,12 +78,6 @@ namespace FuelStation.Win
             response.EnsureSuccessStatusCode();
             bsCustomers.Remove(customer);
         }
-        private void SetUpBindings()
-        {
-            bsCustomers.DataSource = customerList;
-            grdCtrlCustomers.DataSource = bsCustomers;
-        }
-
-
+        #endregion
     }
 }

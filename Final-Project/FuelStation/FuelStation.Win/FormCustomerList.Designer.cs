@@ -83,6 +83,7 @@
             this.btnEdit.StyleController = this.layoutControl1;
             this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "Edit...";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnClose
             // 
@@ -92,6 +93,7 @@
             this.btnClose.StyleController = this.layoutControl1;
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnDelete
             // 
@@ -111,6 +113,7 @@
             this.btnNew.StyleController = this.layoutControl1;
             this.btnNew.TabIndex = 2;
             this.btnNew.Text = "New...";
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // grdCtrlCustomers
             // 
@@ -129,6 +132,8 @@
             this.colCardNumber});
             this.gridViewCustomers.GridControl = this.grdCtrlCustomers;
             this.gridViewCustomers.Name = "gridViewCustomers";
+            this.gridViewCustomers.OptionsBehavior.Editable = false;
+            this.gridViewCustomers.OptionsView.ShowGroupPanel = false;
             // 
             // colFullName
             // 
