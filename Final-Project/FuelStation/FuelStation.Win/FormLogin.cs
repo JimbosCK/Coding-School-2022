@@ -13,14 +13,12 @@ namespace FuelStation.Win
     {
         public FormHome refToHome { get; set; }
         private AppState _appState;
-        private AccessHandler _accessHandler;
         private bool hidden = false;
         public LoginViewModel login = new LoginViewModel();
 
         public FormLogin()
         {
             _appState = (AppState)Program.ServiceProvider.GetService(typeof(AppState));
-            _accessHandler = (AccessHandler)Program.ServiceProvider.GetService(typeof(AccessHandler));
             InitializeComponent();
         }
         private void FormLogin_Load(object sender, EventArgs e)
