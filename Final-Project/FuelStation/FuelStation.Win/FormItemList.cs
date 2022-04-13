@@ -43,11 +43,11 @@ namespace FuelStation.Win
 
             if(result == DialogResult.OK)
             {
-                UpdateListWithLatest();
+                await UpdateListWithLatest();
             }
             
         }
-        private async void UpdateListWithLatest()
+        private async Task UpdateListWithLatest()
         {
             itemList = await httpClient.GetFromJsonAsync<List<ItemListViewModel>>("item");
             bsItems.DataSource = itemList;
