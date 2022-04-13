@@ -1,5 +1,4 @@
-﻿using DevExpress.XtraEditors;
-using FuelStation.Blazor.Shared.ViewModels;
+﻿using FuelStation.Blazor.Shared.ViewModels;
 using System.IO;
 using System.Net.Http;
 using System.Text.Json;
@@ -8,7 +7,7 @@ namespace FuelStation.Win
 {
     public class XtraFormWithServerConnection : FuelStationXtraForm
     {
-        protected HttpClient httpClient;
+        protected HttpClient httpClient = new();
 
         public XtraFormWithServerConnection()
         {
