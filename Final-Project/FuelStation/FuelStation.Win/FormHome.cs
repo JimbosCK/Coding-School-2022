@@ -29,13 +29,18 @@ namespace FuelStation.Win
         }
         private void FormHome_Shown(Object sender, EventArgs e)
         {
-
             HandleAccess();
         }
         protected override void OnClosing(CancelEventArgs e)
         {
             Application.Exit();
             base.OnClosing(e);
+        }
+
+        private void menuItemsList_Click(object sender, EventArgs e)
+        {
+            var itemListForm = new FormItemList();
+            itemListForm.ShowDialog();
         }
 
         private void HandleAccess()
