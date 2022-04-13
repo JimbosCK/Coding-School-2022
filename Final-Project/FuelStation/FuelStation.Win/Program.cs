@@ -42,7 +42,8 @@ namespace FuelStation.Win
             //Actual Service
             services.AddSingleton<AppState>()
                 .AddScoped<AccessHandler>()
-                .AddSingleton<FormLogin>();
+                .AddScoped<IEntityRepo<Item>, ItemRepo>();
+                
 
             ServiceProvider = services.BuildServiceProvider();
 
