@@ -1,9 +1,6 @@
-﻿
-using DevExpress.XtraEditors.Mask;
-using FuelStation.Blazor.Shared.ViewModels;
+﻿using FuelStation.Blazor.Shared.ViewModels;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text.RegularExpressions;
 
 namespace FuelStation.Win
 {
@@ -16,6 +13,7 @@ namespace FuelStation.Win
         private bool codeAlreadyExists = false;
         private bool itemDoesNotExist = false;
         private bool databaseError = false;
+
         public FormItemEdit(ItemListViewModel item)
         {
             _backupItem = new ItemListViewModel();
@@ -24,13 +22,27 @@ namespace FuelStation.Win
             _formRepoHandler = (FormRepositoryHandler)Program.ServiceProvider.GetService(typeof(FormRepositoryHandler));
             InitializeComponent();
         }
-
+        
         private void FormItemEdit_Load(object sender, EventArgs e)
         {
             _formRepoHandler.PopulateItemType(lookUpEditItemType.Properties);
             SetUpBindings();
         }
 
+        #region Button Clicks
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            _ = OnSave();
+        }
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            CopyItem(_backupItem, _item);
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+        #endregion
+
+        #region Methods
         private void SetUpBindings()
         {
             bsItem.DataSource = _item;
@@ -41,17 +53,14 @@ namespace FuelStation.Win
             textEditCost.DataBindings.Add(new Binding("EditValue", bsItem, "Cost", true));
             lookUpEditItemType.DataBindings.Add(new Binding("EditValue", bsItem, "ItemType", true));
         }
-
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void CopyItem(ItemListViewModel originItem, ItemListViewModel destinationItem)
         {
-            CopyItem(_backupItem, _item);
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
-        }
-
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            _ = OnSave();
+            destinationItem.ID = originItem.ID;
+            destinationItem.Code = originItem.Code;
+            destinationItem.Description = originItem.Description;
+            destinationItem.Price = originItem.Price;
+            destinationItem.Cost = originItem.Cost;
+            destinationItem.ItemType = originItem.ItemType;
         }
         private async Task OnSave()
         {
@@ -80,7 +89,6 @@ namespace FuelStation.Win
                 databaseError = true;
             }
         }
-
         private void UpdateErrorMessages()
         {
             labelErrors.Text = "";
@@ -96,15 +104,6 @@ namespace FuelStation.Win
             itemDoesNotExist = false;
             databaseError = false;
         }
-
-        private void CopyItem(ItemListViewModel originItem, ItemListViewModel destinationItem)
-        {
-            destinationItem.ID = originItem.ID;
-            destinationItem.Code = originItem.Code;
-            destinationItem.Description = originItem.Description;
-            destinationItem.Price = originItem.Price;
-            destinationItem.Cost = originItem.Cost;
-            destinationItem.ItemType = originItem.ItemType;
-        }
+        #endregion
     }
 }
