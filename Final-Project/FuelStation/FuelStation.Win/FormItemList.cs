@@ -1,16 +1,4 @@
-﻿using DevExpress.XtraEditors;
-using FuelStation.Blazor.Shared.Services;
-using FuelStation.Blazor.Shared.ViewModels;
-using FuelStation.EF.Repositories;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using FuelStation.Blazor.Shared.ViewModels;
 using System.Net.Http.Json;
 
 namespace FuelStation.Win
@@ -51,8 +39,6 @@ namespace FuelStation.Win
             Close();
         }
 
-
-
         private void SetUpBindings()
         {
             bsItems.DataSource = itemList;
@@ -60,15 +46,14 @@ namespace FuelStation.Win
         }
         private bool DeletionIsConfirmed()
         {
-            var result = MessageBox.Show(this, "Are you sure you want to delete the selected Item?", 
+            var result = MessageBox.Show(this, "Are you sure you want to delete the selected Item?",
                 this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             return result == DialogResult.Yes;
         }
-
         private async Task DeleteItem()
         {
             var item = bsItems.Current as ItemListViewModel;
-            if(item is null)
+            if (item is null)
                 return;
             var response = await httpClient.DeleteAsync($"item/{item.ID}");
             response.EnsureSuccessStatusCode();
