@@ -17,8 +17,6 @@ namespace FuelStation.Win
 {
     public partial class FormItemList : XtraFormWithServerConnection
     {
-        private AppState _appState;
-        private AccessHandler _accessHandler;
         private List<ItemListViewModel> itemList;
         private FormRepositoryHandler _formRepoHandler;
         public FormItemList()
