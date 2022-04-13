@@ -6,12 +6,13 @@ using System.Text.Json;
 
 namespace FuelStation.Win
 {
-    public class XtraFormWithServerConnection : XtraForm
+    public class XtraFormWithServerConnection : FuelStationXtraForm
     {
         protected HttpClient httpClient;
 
         public XtraFormWithServerConnection()
         {
+            this.BackColor = Color.LightGray;
             SetUpHttpServerConnection();
         }
         private void SetUpHttpServerConnection()
