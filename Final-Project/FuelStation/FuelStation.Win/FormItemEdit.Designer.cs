@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.labelErrors = new System.Windows.Forms.Label();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.lookUpEditItemType = new DevExpress.XtraEditors.LookUpEdit();
@@ -52,11 +53,10 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem7 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem5 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem6 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.bsItem = new System.Windows.Forms.BindingSource(this.components);
-            this.labelErrors = new System.Windows.Forms.Label();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEditItemType.Properties)).BeginInit();
@@ -79,10 +79,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItem)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -103,6 +103,14 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // labelErrors
+            // 
+            this.labelErrors.ForeColor = System.Drawing.Color.Red;
+            this.labelErrors.Location = new System.Drawing.Point(12, 664);
+            this.labelErrors.Name = "labelErrors";
+            this.labelErrors.Size = new System.Drawing.Size(1493, 50);
+            this.labelErrors.TabIndex = 8;
+            // 
             // btnCancel
             // 
             this.btnCancel.Location = new System.Drawing.Point(1256, 718);
@@ -111,6 +119,7 @@
             this.btnCancel.StyleController = this.layoutControl1;
             this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnSave
             // 
@@ -120,6 +129,7 @@
             this.btnSave.StyleController = this.layoutControl1;
             this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lookUpEditItemType
             // 
@@ -307,6 +317,15 @@
             this.emptySpaceItem7.Size = new System.Drawing.Size(1021, 58);
             this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // layoutControlItem3
+            // 
+            this.layoutControlItem3.Control = this.labelErrors;
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 652);
+            this.layoutControlItem3.Name = "layoutControlItem3";
+            this.layoutControlItem3.Size = new System.Drawing.Size(1497, 54);
+            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem3.TextVisible = false;
+            // 
             // emptySpaceItem5
             // 
             this.emptySpaceItem5.AllowHotTrack = false;
@@ -322,23 +341,6 @@
             this.emptySpaceItem6.Name = "emptySpaceItem3";
             this.emptySpaceItem6.Size = new System.Drawing.Size(1497, 27);
             this.emptySpaceItem6.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // labelErrors
-            // 
-            this.labelErrors.ForeColor = System.Drawing.Color.Red;
-            this.labelErrors.Location = new System.Drawing.Point(12, 664);
-            this.labelErrors.Name = "labelErrors";
-            this.labelErrors.Size = new System.Drawing.Size(1493, 50);
-            this.labelErrors.TabIndex = 8;
-            // 
-            // layoutControlItem3
-            // 
-            this.layoutControlItem3.Control = this.labelErrors;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 652);
-            this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(1497, 54);
-            this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem3.TextVisible = false;
             // 
             // FormItemEdit
             // 
@@ -371,10 +373,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsItem)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             this.ResumeLayout(false);
 
         }

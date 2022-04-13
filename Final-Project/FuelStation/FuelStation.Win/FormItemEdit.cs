@@ -9,13 +9,16 @@ namespace FuelStation.Win
     {
         private FormRepositoryHandler _formRepoHandler;
         private ItemListViewModel _item;
+        private ItemListViewModel _backupItem;
 
         private bool codeAlreadyExists = false;
         private bool itemDoesNotExist = false;
         private bool databaseError = false;
         public FormItemEdit(ItemListViewModel item)
         {
+            _backupItem = new ItemListViewModel();
             _item = item;
+            CopyItem(item, _backupItem);
             _formRepoHandler = (FormRepositoryHandler)Program.ServiceProvider.GetService(typeof(FormRepositoryHandler));
             InitializeComponent();
         }
@@ -31,16 +34,17 @@ namespace FuelStation.Win
         {
             bsItem.DataSource = _item;
 
-            ctrlCode.DataBindings.Add(new Binding("EditValue", bsItem, "Code", true));
-            ctrlDescription.DataBindings.Add(new Binding("EditValue", bsItem, "Description", true));
-            ctrlPrice.DataBindings.Add(new Binding("EditValue", bsItem, "Price", true));
-            ctrlCost.DataBindings.Add(new Binding("EditValue", bsItem, "Cost", true));
-            ctrlItemType.DataBindings.Add(new Binding("EditValue", bsItem, "ItemType", true));
+            textEditCode.DataBindings.Add(new Binding("EditValue", bsItem, "Code", true));
+            textEditDescription.DataBindings.Add(new Binding("EditValue", bsItem, "Description", true));
+            textEditPrice.DataBindings.Add(new Binding("EditValue", bsItem, "Price", true));
+            textEditCost.DataBindings.Add(new Binding("EditValue", bsItem, "Cost", true));
+            lookUpEditItemType.DataBindings.Add(new Binding("EditValue", bsItem, "ItemType", true));
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Close();
+            CopyItem(_backupItem, _item);
+            this.Close();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -80,7 +84,7 @@ namespace FuelStation.Win
             if (codeAlreadyExists) labelErrors.Text += "Code already exists. ";
             if (itemDoesNotExist) labelErrors.Text += "Item was not found. ";
             if (databaseError) labelErrors.Text += "Database error.";
-            
+
             ResetErrorFlags();
         }
         private void ResetErrorFlags()
@@ -88,6 +92,16 @@ namespace FuelStation.Win
             codeAlreadyExists = true;
             itemDoesNotExist = true;
             databaseError = true;
+        }
+
+        private void CopyItem(ItemListViewModel originItem, ItemListViewModel destinationItem)
+        {
+            destinationItem.ID = originItem.ID;
+            destinationItem.Code = originItem.Code;
+            destinationItem.Description = originItem.Description;
+            destinationItem.Price = originItem.Price;
+            destinationItem.Cost = originItem.Cost;
+            destinationItem.ItemType = originItem.ItemType;
         }
     }
 }

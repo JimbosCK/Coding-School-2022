@@ -23,11 +23,29 @@ namespace FuelStation.Win
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            //OpenDetailsPage();
+            OpenEditPage();
         }
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            //OpenDetailsPage(productCategory);
+            if (bsItems.Current is ItemListViewModel editItem)
+                OpenEditPage(editItem);
+        }
+        private void OpenEditPage()
+        {
+            var newItem = new ItemListViewModel();
+            newItem.ID = Guid.Empty;
+            var formItemEdit = new FormItemEdit(newItem);
+            formItemEdit.ShowDialog();
+
+            grdViewItems.RefreshData();
+        }
+
+        private void OpenEditPage(ItemListViewModel editItem)
+        {
+            var formItemEdit = new FormItemEdit(editItem);
+            formItemEdit.ShowDialog();
+
+            grdViewItems.RefreshData();
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -36,7 +54,7 @@ namespace FuelStation.Win
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Close();
+           this.Close();
         }
 
         private void SetUpBindings()
