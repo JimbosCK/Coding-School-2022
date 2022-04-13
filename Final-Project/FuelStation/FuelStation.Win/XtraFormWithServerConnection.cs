@@ -20,7 +20,6 @@ namespace FuelStation.Win
 
         public XtraFormWithServerConnection()
         {
-            this.MaximizeBox = true;
             SetUpHttpServerConnection();
         }
         private void SetUpHttpServerConnection()
