@@ -23,29 +23,35 @@ namespace FuelStation.Win
 
         private void btnNew_Click(object sender, EventArgs e)
         {
-            OpenEditPage();
+            OpenEditPage(null);
         }
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (bsItems.Current is ItemListViewModel editItem)
                 OpenEditPage(editItem);
         }
-        private void OpenEditPage()
-        {
-            var newItem = new ItemListViewModel();
-            newItem.ID = Guid.Empty;
-            var formItemEdit = new FormItemEdit(newItem);
-            formItemEdit.ShowDialog();
 
-            grdViewItems.RefreshData();
-        }
-
-        private void OpenEditPage(ItemListViewModel editItem)
+        private async void OpenEditPage(ItemListViewModel? editItem)
         {
+            if(editItem is null)
+            {
+                editItem = new ItemListViewModel();
+                editItem.ID = Guid.Empty;
+            }
             var formItemEdit = new FormItemEdit(editItem);
-            formItemEdit.ShowDialog();
+            var result = formItemEdit.ShowDialog();
 
-            grdViewItems.RefreshData();
+            if(result == DialogResult.OK)
+            {
+                UpdateListWithLatest();
+            }
+            
+        }
+        private async void UpdateListWithLatest()
+        {
+            itemList = await httpClient.GetFromJsonAsync<List<ItemListViewModel>>("item");
+            bsItems.DataSource = itemList;
+            grdCtrlItems.Refresh();
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {

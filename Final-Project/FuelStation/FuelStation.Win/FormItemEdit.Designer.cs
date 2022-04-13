@@ -145,6 +145,8 @@
             // 
             this.textEditDescription.Location = new System.Drawing.Point(905, 12);
             this.textEditDescription.Name = "textEditDescription";
+            this.textEditDescription.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.textEditDescription.Properties.MaxLength = 30;
             this.textEditDescription.Size = new System.Drawing.Size(600, 48);
             this.textEditDescription.StyleController = this.layoutControl1;
             this.textEditDescription.TabIndex = 2;
@@ -153,6 +155,10 @@
             // 
             this.textEditCost.Location = new System.Drawing.Point(905, 76);
             this.textEditCost.Name = "textEditCost";
+            this.textEditCost.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.textEditCost.Properties.MaskSettings.Set("mask", "c");
+            this.textEditCost.Properties.MaskSettings.Set("culture", "el-GR");
+            this.textEditCost.Properties.MaskSettings.Set("valueType", typeof(decimal));
             this.textEditCost.Size = new System.Drawing.Size(600, 48);
             this.textEditCost.StyleController = this.layoutControl1;
             this.textEditCost.TabIndex = 4;
@@ -161,6 +167,8 @@
             // 
             this.textEditCode.Location = new System.Drawing.Point(156, 12);
             this.textEditCode.Name = "textEditCode";
+            this.textEditCode.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.textEditCode.Properties.MaxLength = 6;
             this.textEditCode.Size = new System.Drawing.Size(591, 48);
             this.textEditCode.StyleController = this.layoutControl1;
             this.textEditCode.TabIndex = 0;
@@ -169,6 +177,11 @@
             // 
             this.textEditPrice.Location = new System.Drawing.Point(156, 74);
             this.textEditPrice.Name = "textEditPrice";
+            this.textEditPrice.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.textEditPrice.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.textEditPrice.Properties.MaskSettings.Set("mask", "c");
+            this.textEditPrice.Properties.MaskSettings.Set("culture", "el-GR");
+            this.textEditPrice.Properties.MaskSettings.Set("valueType", typeof(decimal));
             this.textEditPrice.Size = new System.Drawing.Size(591, 48);
             this.textEditPrice.StyleController = this.layoutControl1;
             this.textEditPrice.TabIndex = 3;

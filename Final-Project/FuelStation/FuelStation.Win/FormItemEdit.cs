@@ -1,7 +1,9 @@
 ﻿
+using DevExpress.XtraEditors.Mask;
 using FuelStation.Blazor.Shared.ViewModels;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text.RegularExpressions;
 
 namespace FuelStation.Win
 {
@@ -27,7 +29,6 @@ namespace FuelStation.Win
         {
             _formRepoHandler.PopulateItemType(lookUpEditItemType.Properties);
             SetUpBindings();
-
         }
 
         private void SetUpBindings()
@@ -44,6 +45,7 @@ namespace FuelStation.Win
         private void btnCancel_Click(object sender, EventArgs e)
         {
             CopyItem(_backupItem, _item);
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
@@ -70,6 +72,7 @@ namespace FuelStation.Win
                 if ((int)response.StatusCode == 500) databaseError = true;
                 UpdateErrorMessages();
                 response.EnsureSuccessStatusCode();
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             catch (Exception)
@@ -89,9 +92,9 @@ namespace FuelStation.Win
         }
         private void ResetErrorFlags()
         {
-            codeAlreadyExists = true;
-            itemDoesNotExist = true;
-            databaseError = true;
+            codeAlreadyExists = false;
+            itemDoesNotExist = false;
+            databaseError = false;
         }
 
         private void CopyItem(ItemListViewModel originItem, ItemListViewModel destinationItem)
