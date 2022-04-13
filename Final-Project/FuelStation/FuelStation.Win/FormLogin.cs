@@ -1,11 +1,7 @@
-using System.Text.Json;
 using System.Net.Http.Json;
 using FuelStation.Blazor.Shared.ViewModels;
-using System.Net.Http;
-using DevExpress.XtraEditors;
 using FuelStation.Blazor.Client.Shared;
 using FuelStation.Blazor.Shared.Services;
-using System.IO;
 
 namespace FuelStation.Win
 {
@@ -80,7 +76,5 @@ namespace FuelStation.Win
         {
             labelError.Text = "Incorrect Username or password. Try again.";
         }
-
-
     }
 }

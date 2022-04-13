@@ -1,11 +1,6 @@
 ﻿using DevExpress.XtraEditors.Controls;
 using DevExpress.XtraEditors.Repository;
 using FuelStation.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FuelStation.Win
 {
