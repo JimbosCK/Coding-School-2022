@@ -46,7 +46,7 @@ namespace FuelStation.Win
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (DeletionIsConfirmed())
-                DeleteCategory();
+                _ = DeleteItem();
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -66,11 +66,15 @@ namespace FuelStation.Win
                 this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             return result == DialogResult.Yes;
         }
-        private void DeleteCategory()
+
+        private async Task DeleteItem()
         {
-            // TODO: Add Delete Item logic
+            var item = bsItems.Current as ItemListViewModel;
+            if(item is null)
+                return;
+            var response = await httpClient.DeleteAsync($"item/{item.ID}");
+            response.EnsureSuccessStatusCode();
+            bsItems.Remove(item);
         }
-
-
     }
 }
