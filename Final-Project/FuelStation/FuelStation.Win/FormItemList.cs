@@ -20,6 +20,7 @@ namespace FuelStation.Win
             SetUpBindings();
         }
 
+        #region BtnClicks
         private void btnNew_Click(object sender, EventArgs e)
         {
             OpenEditPage(null);
@@ -29,7 +30,18 @@ namespace FuelStation.Win
             if (bsItems.Current is ItemListViewModel editItem)
                 OpenEditPage(editItem);
         }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (DeletionIsConfirmed())
+                _ = DeleteItem();
+        }
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
 
+        #region Methods
         private async void OpenEditPage(ItemListViewModel? editItem)
         {
             if(editItem is null)
@@ -40,11 +52,7 @@ namespace FuelStation.Win
             var formItemEdit = new FormItemEdit(editItem);
             var result = formItemEdit.ShowDialog();
 
-            if(result == DialogResult.OK)
-            {
-                await UpdateListWithLatest();
-            }
-            
+            if(result == DialogResult.OK)   await UpdateListWithLatest();
         }
         private async Task UpdateListWithLatest()
         {
@@ -52,16 +60,6 @@ namespace FuelStation.Win
             bsItems.DataSource = itemList;
             grdCtrlItems.Refresh();
         }
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            if (DeletionIsConfirmed())
-                _ = DeleteItem();
-        }
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-           this.Close();
-        }
-
         private void SetUpBindings()
         {
             bsItems.DataSource = itemList;
@@ -82,5 +80,6 @@ namespace FuelStation.Win
             response.EnsureSuccessStatusCode();
             bsItems.Remove(item);
         }
+        #endregion
     }
 }
