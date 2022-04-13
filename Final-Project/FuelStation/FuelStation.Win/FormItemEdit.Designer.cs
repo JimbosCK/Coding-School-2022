@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -46,13 +47,14 @@
             this.ctrlCost = new DevExpress.XtraLayout.LayoutControlItem();
             this.textEditDescription = new DevExpress.XtraEditors.TextEdit();
             this.ctrlDescription = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textEditItemType = new DevExpress.XtraEditors.TextEdit();
-            this.ctrlItemType = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem7 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.emptySpaceItem8 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem9 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.bsItem = new System.Windows.Forms.BindingSource(this.components);
+            this.lookUpEditItemType = new DevExpress.XtraEditors.LookUpEdit();
+            this.ctrlItemType = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem8 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
@@ -70,18 +72,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCost)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlDescription)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditItemType.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctrlItemType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsItem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditItemType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlItemType)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem8)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.textEditItemType);
+            this.layoutControl1.Controls.Add(this.lookUpEditItemType);
             this.layoutControl1.Controls.Add(this.textEditDescription);
             this.layoutControl1.Controls.Add(this.textEditCost);
             this.layoutControl1.Controls.Add(this.textEditCode);
@@ -106,13 +109,13 @@
             this.ctrlCode,
             this.ctrlCost,
             this.ctrlDescription,
-            this.ctrlItemType,
             this.emptySpaceItem7,
             this.emptySpaceItem9,
             this.emptySpaceItem3,
-            this.emptySpaceItem8,
             this.emptySpaceItem2,
-            this.emptySpaceItem4});
+            this.emptySpaceItem4,
+            this.ctrlItemType,
+            this.emptySpaceItem8});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(1517, 784);
             this.Root.TextVisible = false;
@@ -120,9 +123,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 714);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 450);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(1497, 50);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(1497, 314);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // btnSave
@@ -148,7 +151,7 @@
             this.emptySpaceItem4.AllowHotTrack = false;
             this.emptySpaceItem4.Location = new System.Drawing.Point(749, 116);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(748, 70);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(748, 66);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem5
@@ -187,7 +190,7 @@
             // 
             // textEditPrice
             // 
-            this.textEditPrice.Location = new System.Drawing.Point(156, 74);
+            this.textEditPrice.Location = new System.Drawing.Point(156, 76);
             this.textEditPrice.Name = "textEditPrice";
             this.textEditPrice.Size = new System.Drawing.Size(591, 48);
             this.textEditPrice.StyleController = this.layoutControl1;
@@ -196,7 +199,7 @@
             // ctrlPrice
             // 
             this.ctrlPrice.Control = this.textEditPrice;
-            this.ctrlPrice.Location = new System.Drawing.Point(0, 62);
+            this.ctrlPrice.Location = new System.Drawing.Point(0, 64);
             this.ctrlPrice.Name = "ctrlPrice";
             this.ctrlPrice.Size = new System.Drawing.Size(739, 52);
             this.ctrlPrice.Text = "Price";
@@ -254,23 +257,6 @@
             this.ctrlDescription.Text = "Description";
             this.ctrlDescription.TextSize = new System.Drawing.Size(132, 33);
             // 
-            // textEditItemType
-            // 
-            this.textEditItemType.Location = new System.Drawing.Point(156, 146);
-            this.textEditItemType.Name = "textEditItemType";
-            this.textEditItemType.Size = new System.Drawing.Size(591, 48);
-            this.textEditItemType.StyleController = this.layoutControl1;
-            this.textEditItemType.TabIndex = 5;
-            // 
-            // ctrlItemType
-            // 
-            this.ctrlItemType.Control = this.textEditItemType;
-            this.ctrlItemType.Location = new System.Drawing.Point(0, 134);
-            this.ctrlItemType.Name = "ctrlItemType";
-            this.ctrlItemType.Size = new System.Drawing.Size(739, 52);
-            this.ctrlItemType.Text = "Item Type";
-            this.ctrlItemType.TextSize = new System.Drawing.Size(132, 33);
-            // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
@@ -284,32 +270,51 @@
             this.emptySpaceItem3.AllowHotTrack = false;
             this.emptySpaceItem3.Location = new System.Drawing.Point(0, 52);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
-            this.emptySpaceItem3.Size = new System.Drawing.Size(739, 10);
+            this.emptySpaceItem3.Size = new System.Drawing.Size(739, 12);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem7
             // 
             this.emptySpaceItem7.AllowHotTrack = false;
-            this.emptySpaceItem7.Location = new System.Drawing.Point(0, 186);
+            this.emptySpaceItem7.Location = new System.Drawing.Point(0, 182);
             this.emptySpaceItem7.Name = "emptySpaceItem7";
-            this.emptySpaceItem7.Size = new System.Drawing.Size(1497, 528);
+            this.emptySpaceItem7.Size = new System.Drawing.Size(1497, 268);
             this.emptySpaceItem7.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // emptySpaceItem8
-            // 
-            this.emptySpaceItem8.AllowHotTrack = false;
-            this.emptySpaceItem8.Location = new System.Drawing.Point(0, 114);
-            this.emptySpaceItem8.Name = "emptySpaceItem8";
-            this.emptySpaceItem8.Size = new System.Drawing.Size(739, 20);
-            this.emptySpaceItem8.TextSize = new System.Drawing.Size(0, 0);
             // 
             // emptySpaceItem9
             // 
             this.emptySpaceItem9.AllowHotTrack = false;
             this.emptySpaceItem9.Location = new System.Drawing.Point(739, 0);
             this.emptySpaceItem9.Name = "emptySpaceItem9";
-            this.emptySpaceItem9.Size = new System.Drawing.Size(10, 186);
+            this.emptySpaceItem9.Size = new System.Drawing.Size(10, 182);
             this.emptySpaceItem9.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // lookUpEditItemType
+            // 
+            this.lookUpEditItemType.Location = new System.Drawing.Point(156, 142);
+            this.lookUpEditItemType.Name = "lookUpEditItemType";
+            this.lookUpEditItemType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEditItemType.Size = new System.Drawing.Size(591, 48);
+            this.lookUpEditItemType.StyleController = this.layoutControl1;
+            this.lookUpEditItemType.TabIndex = 5;
+            // 
+            // ctrlItemType
+            // 
+            this.ctrlItemType.Control = this.lookUpEditItemType;
+            this.ctrlItemType.Location = new System.Drawing.Point(0, 130);
+            this.ctrlItemType.Name = "ctrlItemType";
+            this.ctrlItemType.Size = new System.Drawing.Size(739, 52);
+            this.ctrlItemType.Text = "Item Type";
+            this.ctrlItemType.TextSize = new System.Drawing.Size(132, 33);
+            // 
+            // emptySpaceItem8
+            // 
+            this.emptySpaceItem8.AllowHotTrack = false;
+            this.emptySpaceItem8.Location = new System.Drawing.Point(0, 116);
+            this.emptySpaceItem8.Name = "emptySpaceItem8";
+            this.emptySpaceItem8.Size = new System.Drawing.Size(739, 14);
+            this.emptySpaceItem8.TextSize = new System.Drawing.Size(0, 0);
             // 
             // FormItemEdit
             // 
@@ -319,6 +324,7 @@
             this.Controls.Add(this.layoutControl1);
             this.Name = "FormItemEdit";
             this.Text = "Item Managment";
+            this.Load += new System.EventHandler(this.FormItemEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
@@ -336,13 +342,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCost)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlDescription)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditItemType.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctrlItemType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsItem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEditItemType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlItemType)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -359,7 +366,6 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        private DevExpress.XtraEditors.TextEdit textEditItemType;
         private DevExpress.XtraEditors.TextEdit textEditDescription;
         private DevExpress.XtraEditors.TextEdit textEditCost;
         private DevExpress.XtraEditors.TextEdit textEditCode;
@@ -368,11 +374,13 @@
         private DevExpress.XtraLayout.LayoutControlItem ctrlCode;
         private DevExpress.XtraLayout.LayoutControlItem ctrlCost;
         private DevExpress.XtraLayout.LayoutControlItem ctrlDescription;
-        private DevExpress.XtraLayout.LayoutControlItem ctrlItemType;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem7;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem9;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem8;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
+        private BindingSource bsItem;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEditItemType;
+        private DevExpress.XtraLayout.LayoutControlItem ctrlItemType;
+        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem8;
     }
 }
