@@ -357,11 +357,14 @@
             // 
             // FormItemEdit
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(1517, 784);
             this.Controls.Add(this.layoutControl1);
             this.Name = "FormItemEdit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Item Managment";
             this.Load += new System.EventHandler(this.FormItemEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();

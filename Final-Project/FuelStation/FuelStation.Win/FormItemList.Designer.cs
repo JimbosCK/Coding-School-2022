@@ -274,12 +274,15 @@
             // 
             // FormItemList
             // 
+            this.AcceptButton = this.btnEdit;
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(1309, 753);
             this.Controls.Add(this.layoutControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormItemList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Items";
             this.Load += new System.EventHandler(this.FormItemList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();

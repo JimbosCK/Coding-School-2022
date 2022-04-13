@@ -19,6 +19,7 @@ namespace FuelStation.Win
         }
         private void FormLogin_Load(object sender, EventArgs e)
         {
+            this.Size = new Size(Width, Height);
             InitializeLoginControls();
             bsLogin.DataSource = login;
             SetDataBindings();
