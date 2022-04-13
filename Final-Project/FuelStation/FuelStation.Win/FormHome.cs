@@ -45,7 +45,7 @@ namespace FuelStation.Win
             transactionToolStripMenuItem.Visible = true;
 
             if (!_accessHandler.HasAccessToCustomers(_appState)) customersToolStripMenuItem.Visible = false;
-            if (!_accessHandler.HasAccessToItems(_appState))    itemsToolStripMenuItem.Visible = false;
+            if (!_accessHandler.HasAccessToItems(_appState)) itemsToolStripMenuItem.Visible = false;
             if (!_accessHandler.HasAccessToTransactions(_appState)) transactionToolStripMenuItem.Visible = false;
         }
 

@@ -18,7 +18,7 @@ namespace FuelStation.Win
             //Actual Service
             services.AddSingleton<AppState>()
                 .AddScoped<AccessHandler>();
-                
+
 
             ServiceProvider = services.BuildServiceProvider();
 
@@ -35,6 +35,6 @@ namespace FuelStation.Win
 
             Application.Run(new FormLogin());
         }
-       
+
     }
 }

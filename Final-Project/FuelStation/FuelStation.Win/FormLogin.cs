@@ -28,7 +28,7 @@ namespace FuelStation.Win
             InitializeLoginControls();
             bsLogin.DataSource = login;
             SetDataBindings();
-            
+
         }
 
         private void InitializeLoginControls()
