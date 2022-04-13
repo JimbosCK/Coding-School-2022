@@ -11,7 +11,6 @@ namespace FuelStation.Win
 
         public XtraFormWithServerConnection()
         {
-            this.BackColor = Color.LightGray;
             SetUpHttpServerConnection();
         }
         private void SetUpHttpServerConnection()
