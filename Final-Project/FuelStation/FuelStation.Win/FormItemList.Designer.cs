@@ -98,7 +98,7 @@
             this.btnEdit.Size = new System.Drawing.Size(218, 54);
             this.btnEdit.StyleController = this.layoutControl1;
             this.btnEdit.TabIndex = 7;
-            this.btnEdit.Text = "Edit";
+            this.btnEdit.Text = "Edit...";
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
@@ -275,6 +275,8 @@
             // FormItemList
             // 
             this.AcceptButton = this.btnEdit;
+            this.Appearance.BackColor = System.Drawing.Color.LightGray;
+            this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 33F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnClose;

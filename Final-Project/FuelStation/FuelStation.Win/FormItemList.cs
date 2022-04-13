@@ -17,7 +17,6 @@ namespace FuelStation.Win
         {
             itemList = await httpClient.GetFromJsonAsync<List<ItemListViewModel>>("item");
             _formRepoHandler.PopulateItemType(repositoryItemType);
-            var c = repositoryItemType;
             SetUpBindings();
         }
 

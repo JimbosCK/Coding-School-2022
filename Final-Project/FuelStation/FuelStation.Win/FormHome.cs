@@ -34,7 +34,17 @@ namespace FuelStation.Win
             var itemListForm = new FormItemList();
             itemListForm.ShowDialog();
         }
-
+        private void menuCustomerList_Click(object sender, EventArgs e)
+        {
+            var customerListForm = new FormCustomerList();
+            customerListForm.ShowDialog();
+        }
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            _appState.LoggedIn = false;
+            this.Hide();
+            RefToLogin.Show();
+        }
         private void HandleAccess()
         {
             customersToolStripMenuItem.Visible = true;
@@ -46,12 +56,7 @@ namespace FuelStation.Win
             if (!_accessHandler.HasAccessToTransactions(_appState)) transactionToolStripMenuItem.Visible = false;
         }
 
-        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _appState.LoggedIn = false;
-            this.Hide();
-            RefToLogin.Show();
-        }
+
     }
 }
 
