@@ -23,21 +23,21 @@ namespace FuelStation.Win
             _accessHandler = (AccessHandler)Program.ServiceProvider.GetService(typeof(AccessHandler));
             InitializeComponent();
         }
-        protected override void OnClosing(CancelEventArgs e)
+        private void FormHome_Load(object sender, EventArgs e)
         {
-            Application.Exit();
-            base.OnClosing(e);
+            RefToLogin.refToHome = this;
         }
         private void FormHome_Shown(Object sender, EventArgs e)
         {
 
             HandleAccess();
         }
-
-        private void FormHome_Load(object sender, EventArgs e)
+        protected override void OnClosing(CancelEventArgs e)
         {
-            RefToLogin.refToHome = this;
+            Application.Exit();
+            base.OnClosing(e);
         }
+
         private void HandleAccess()
         {
             customersToolStripMenuItem.Visible = true;

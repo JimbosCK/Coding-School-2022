@@ -9,40 +9,28 @@ using System.IO;
 
 namespace FuelStation.Win
 {
-    public partial class FormLogin : XtraForm
+    public partial class FormLogin : XtraFormWithServerConnection
     {
+        public FormHome refToHome { get; set; }
         private AppState _appState;
         private AccessHandler _accessHandler;
         private bool hidden = false;
-        public FormHome refToHome { get; set; }
+        public LoginViewModel login = new LoginViewModel();
+
         public FormLogin()
         {
             _appState = (AppState)Program.ServiceProvider.GetService(typeof(AppState));
             _accessHandler = (AccessHandler)Program.ServiceProvider.GetService(typeof(AccessHandler));
             InitializeComponent();
-            
-
         }
-        
-        public LoginViewModel login = new LoginViewModel();
-
-        private HttpClient httpClient;
-
         private void FormLogin_Load(object sender, EventArgs e)
         {
-            SetUpHttpServerConnection();
             InitializeLoginControls();
             bsLogin.DataSource = login;
             SetDataBindings();
             
         }
-        private void SetUpHttpServerConnection()
-        {
-            using FileStream file = File.OpenRead("appsettings.json");
-            UriViewModel uri = (UriViewModel)JsonSerializer.Deserialize(file, typeof(UriViewModel));
-            httpClient = new HttpClient();
-            httpClient.BaseAddress = new Uri(uri.BaseAddress);
-        }
+
         private void InitializeLoginControls()
         {
             textEditUsername.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
