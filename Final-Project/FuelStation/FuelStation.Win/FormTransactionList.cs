@@ -33,7 +33,8 @@ namespace FuelStation.Win
         #region Btn Clicks
         private void btnNew_Click(object sender, EventArgs e)
         {
-
+            var formFindCustomer = new FormFindCustomerPrompt();
+            formFindCustomer.ShowDialog();
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {

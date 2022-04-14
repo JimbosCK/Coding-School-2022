@@ -11,6 +11,8 @@ namespace FuelStation.Win
         private CustomerViewModel _backupCustomer;
         private CustomerListViewModel _customerListViewmodel;
 
+        public FormFindCustomerPrompt RefFindCustomerPrompt { get; set; } = null;
+
         private bool codeAlreadyExists = false;
         private bool customerDoesNotExist = false;
         private bool databaseError = false;
@@ -36,6 +38,11 @@ namespace FuelStation.Win
         }
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            if(RefFindCustomerPrompt is not null)
+            {
+                RefFindCustomerPrompt.Show();
+                this.Close();
+            }
             CopyItem(_backupCustomer, _customer);
             this.DialogResult = DialogResult.Cancel;
             this.Close();
@@ -60,10 +67,13 @@ namespace FuelStation.Win
         }
         private async Task InitializeCustomer()
         {
-            if (_customerListViewmodel.ID == Guid.Empty)
-                _customer = new CustomerViewModel();
-            else
-                await GetCustomerViewModel(_customerListViewmodel.ID);
+            if(_customerListViewmodel is not null)
+            {
+                if (_customerListViewmodel.ID == Guid.Empty)
+                    _customer = new CustomerViewModel();
+                else
+                    await GetCustomerViewModel(_customerListViewmodel.ID);
+            }
         }
         private async Task GetCustomerViewModel(Guid editCustomerID)
         {
@@ -100,6 +110,11 @@ namespace FuelStation.Win
                 UpdateErrorMessages();
                 response.EnsureSuccessStatusCode();
                 this.DialogResult = DialogResult.OK;
+                if (RefFindCustomerPrompt is not null)
+                {
+                    RefFindCustomerPrompt.CustomerCardNumber = _customer.CardNumber;
+                    RefFindCustomerPrompt.Show();
+                }
                 this.Close();
             }
             catch (Exception)
