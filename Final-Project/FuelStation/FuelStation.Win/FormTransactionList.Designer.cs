@@ -36,6 +36,12 @@
             this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.grdCtrlTransactions = new DevExpress.XtraGrid.GridControl();
             this.grdViewTransactions = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEmployeeName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomerCardNumber = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPaymentMethod = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryPaymentMethod = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.colTotalValue = new DevExpress.XtraGrid.Columns.GridColumn();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -44,16 +50,11 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.bsTransactions = new System.Windows.Forms.BindingSource(this.components);
-            this.colDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colEmployeeName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCustomerCardNumber = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPaymentMethod = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTotaValue = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryPaymentMethod = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewTransactions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryPaymentMethod)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
@@ -62,7 +63,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransactions)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryPaymentMethod)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -139,11 +139,69 @@
             this.colEmployeeName,
             this.colCustomerCardNumber,
             this.colPaymentMethod,
-            this.colTotaValue});
+            this.colTotalValue});
             this.grdViewTransactions.GridControl = this.grdCtrlTransactions;
             this.grdViewTransactions.Name = "grdViewTransactions";
             this.grdViewTransactions.OptionsBehavior.Editable = false;
             this.grdViewTransactions.OptionsView.ShowGroupPanel = false;
+            // 
+            // colDate
+            // 
+            this.colDate.Caption = "Date";
+            this.colDate.FieldName = "Date";
+            this.colDate.MinWidth = 50;
+            this.colDate.Name = "colDate";
+            this.colDate.Visible = true;
+            this.colDate.VisibleIndex = 0;
+            this.colDate.Width = 187;
+            // 
+            // colEmployeeName
+            // 
+            this.colEmployeeName.Caption = "Employee";
+            this.colEmployeeName.FieldName = "EmployeeName";
+            this.colEmployeeName.MinWidth = 50;
+            this.colEmployeeName.Name = "colEmployeeName";
+            this.colEmployeeName.Visible = true;
+            this.colEmployeeName.VisibleIndex = 1;
+            this.colEmployeeName.Width = 187;
+            // 
+            // colCustomerCardNumber
+            // 
+            this.colCustomerCardNumber.Caption = "Customer Card Number";
+            this.colCustomerCardNumber.FieldName = "CustomerCardNumber";
+            this.colCustomerCardNumber.MinWidth = 50;
+            this.colCustomerCardNumber.Name = "colCustomerCardNumber";
+            this.colCustomerCardNumber.Visible = true;
+            this.colCustomerCardNumber.VisibleIndex = 2;
+            this.colCustomerCardNumber.Width = 187;
+            // 
+            // colPaymentMethod
+            // 
+            this.colPaymentMethod.Caption = "Payment Method";
+            this.colPaymentMethod.ColumnEdit = this.repositoryPaymentMethod;
+            this.colPaymentMethod.FieldName = "PaymentMethod";
+            this.colPaymentMethod.MinWidth = 50;
+            this.colPaymentMethod.Name = "colPaymentMethod";
+            this.colPaymentMethod.Visible = true;
+            this.colPaymentMethod.VisibleIndex = 3;
+            this.colPaymentMethod.Width = 187;
+            // 
+            // repositoryPaymentMethod
+            // 
+            this.repositoryPaymentMethod.AutoHeight = false;
+            this.repositoryPaymentMethod.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryPaymentMethod.Name = "repositoryPaymentMethod";
+            // 
+            // colTotalValue
+            // 
+            this.colTotalValue.Caption = "Total Value";
+            this.colTotalValue.FieldName = "TotalValue";
+            this.colTotalValue.MinWidth = 50;
+            this.colTotalValue.Name = "colTotalValue";
+            this.colTotalValue.Visible = true;
+            this.colTotalValue.VisibleIndex = 4;
+            this.colTotalValue.Width = 187;
             // 
             // Root
             // 
@@ -213,64 +271,6 @@
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
-            // colDate
-            // 
-            this.colDate.Caption = "Date";
-            this.colDate.FieldName = "Date";
-            this.colDate.MinWidth = 50;
-            this.colDate.Name = "colDate";
-            this.colDate.Visible = true;
-            this.colDate.VisibleIndex = 0;
-            this.colDate.Width = 187;
-            // 
-            // colEmployeeName
-            // 
-            this.colEmployeeName.Caption = "Employee";
-            this.colEmployeeName.FieldName = "EmployeeName";
-            this.colEmployeeName.MinWidth = 50;
-            this.colEmployeeName.Name = "colEmployeeName";
-            this.colEmployeeName.Visible = true;
-            this.colEmployeeName.VisibleIndex = 1;
-            this.colEmployeeName.Width = 187;
-            // 
-            // colCustomerCardNumber
-            // 
-            this.colCustomerCardNumber.Caption = "Customer Card Number";
-            this.colCustomerCardNumber.FieldName = "CustomerCardNumber";
-            this.colCustomerCardNumber.MinWidth = 50;
-            this.colCustomerCardNumber.Name = "colCustomerCardNumber";
-            this.colCustomerCardNumber.Visible = true;
-            this.colCustomerCardNumber.VisibleIndex = 2;
-            this.colCustomerCardNumber.Width = 187;
-            // 
-            // colPaymentMethod
-            // 
-            this.colPaymentMethod.Caption = "Payment Method";
-            this.colPaymentMethod.ColumnEdit = this.repositoryPaymentMethod;
-            this.colPaymentMethod.FieldName = "PaymentMethod";
-            this.colPaymentMethod.MinWidth = 50;
-            this.colPaymentMethod.Name = "colPaymentMethod";
-            this.colPaymentMethod.Visible = true;
-            this.colPaymentMethod.VisibleIndex = 3;
-            this.colPaymentMethod.Width = 187;
-            // 
-            // colTotaValue
-            // 
-            this.colTotaValue.Caption = "Tota Value";
-            this.colTotaValue.FieldName = "TotaValue";
-            this.colTotaValue.MinWidth = 50;
-            this.colTotaValue.Name = "colTotaValue";
-            this.colTotaValue.Visible = true;
-            this.colTotaValue.VisibleIndex = 4;
-            this.colTotaValue.Width = 187;
-            // 
-            // repositoryPaymentMethod
-            // 
-            this.repositoryPaymentMethod.AutoHeight = false;
-            this.repositoryPaymentMethod.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryPaymentMethod.Name = "repositoryPaymentMethod";
-            // 
             // FormTransactionList
             // 
             this.AcceptButton = this.btnEdit;
@@ -289,6 +289,7 @@
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlTransactions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewTransactions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryPaymentMethod)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
@@ -297,7 +298,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransactions)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryPaymentMethod)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -323,7 +323,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colEmployeeName;
         private DevExpress.XtraGrid.Columns.GridColumn colCustomerCardNumber;
         private DevExpress.XtraGrid.Columns.GridColumn colPaymentMethod;
-        private DevExpress.XtraGrid.Columns.GridColumn colTotaValue;
+        private DevExpress.XtraGrid.Columns.GridColumn colTotalValue;
         private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryPaymentMethod;
     }
 }
