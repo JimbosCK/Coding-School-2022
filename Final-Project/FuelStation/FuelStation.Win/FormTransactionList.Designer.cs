@@ -30,27 +30,32 @@
         {
             this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.btnNew = new DevExpress.XtraEditors.SimpleButton();
+            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
+            this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.grdCtrlTransactions = new DevExpress.XtraGrid.GridControl();
             this.grdViewTransactions = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnClose = new DevExpress.XtraEditors.SimpleButton();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnNew = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.bsTransactions = new System.Windows.Forms.BindingSource(this.components);
+            this.colDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colEmployeeName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomerCardNumber = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPaymentMethod = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotaValue = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewTransactions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
@@ -73,6 +78,69 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(879, 977);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(260, 54);
+            this.btnNew.StyleController = this.layoutControl1;
+            this.btnNew.TabIndex = 8;
+            this.btnNew.Text = "New...";
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(1143, 977);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(257, 54);
+            this.btnEdit.StyleController = this.layoutControl1;
+            this.btnEdit.TabIndex = 7;
+            this.btnEdit.Text = "Edit...";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(1404, 977);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(249, 54);
+            this.btnDelete.StyleController = this.layoutControl1;
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(1657, 977);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(233, 54);
+            this.btnClose.StyleController = this.layoutControl1;
+            this.btnClose.TabIndex = 5;
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
+            // grdCtrlTransactions
+            // 
+            this.grdCtrlTransactions.Location = new System.Drawing.Point(12, 12);
+            this.grdCtrlTransactions.MainView = this.grdViewTransactions;
+            this.grdCtrlTransactions.Name = "grdCtrlTransactions";
+            this.grdCtrlTransactions.Size = new System.Drawing.Size(1878, 961);
+            this.grdCtrlTransactions.TabIndex = 4;
+            this.grdCtrlTransactions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdViewTransactions});
+            // 
+            // grdViewTransactions
+            // 
+            this.grdViewTransactions.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colDate,
+            this.colEmployeeName,
+            this.colCustomerCardNumber,
+            this.colPaymentMethod,
+            this.colTotaValue});
+            this.grdViewTransactions.GridControl = this.grdCtrlTransactions;
+            this.grdViewTransactions.Name = "grdViewTransactions";
+            this.grdViewTransactions.OptionsBehavior.Editable = false;
+            this.grdViewTransactions.OptionsView.ShowGroupPanel = false;
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -88,31 +156,6 @@
             this.Root.Size = new System.Drawing.Size(1902, 1043);
             this.Root.TextVisible = false;
             // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 965);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(867, 58);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // grdCtrlTransactions
-            // 
-            this.grdCtrlTransactions.Location = new System.Drawing.Point(12, 12);
-            this.grdCtrlTransactions.MainView = this.grdViewTransactions;
-            this.grdCtrlTransactions.Name = "grdCtrlTransactions";
-            this.grdCtrlTransactions.Size = new System.Drawing.Size(1878, 961);
-            this.grdCtrlTransactions.TabIndex = 4;
-            this.grdCtrlTransactions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.grdViewTransactions});
-            // 
-            // grdViewTransactions
-            // 
-            this.grdViewTransactions.GridControl = this.grdCtrlTransactions;
-            this.grdViewTransactions.Name = "grdViewTransactions";
-            this.grdViewTransactions.OptionsBehavior.Editable = false;
-            this.grdViewTransactions.OptionsView.ShowGroupPanel = false;
-            // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.grdCtrlTransactions;
@@ -122,15 +165,13 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // btnClose
+            // emptySpaceItem1
             // 
-            this.btnClose.Location = new System.Drawing.Point(1657, 977);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(233, 54);
-            this.btnClose.StyleController = this.layoutControl1;
-            this.btnClose.TabIndex = 5;
-            this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.emptySpaceItem1.AllowHotTrack = false;
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 965);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(867, 58);
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem2
             // 
@@ -141,16 +182,6 @@
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(1404, 977);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(249, 54);
-            this.btnDelete.StyleController = this.layoutControl1;
-            this.btnDelete.TabIndex = 6;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.btnDelete;
@@ -159,16 +190,6 @@
             this.layoutControlItem3.Size = new System.Drawing.Size(253, 58);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Location = new System.Drawing.Point(1143, 977);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(257, 54);
-            this.btnEdit.StyleController = this.layoutControl1;
-            this.btnEdit.TabIndex = 7;
-            this.btnEdit.Text = "Edit...";
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // layoutControlItem4
             // 
@@ -179,16 +200,6 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(879, 977);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(260, 54);
-            this.btnNew.StyleController = this.layoutControl1;
-            this.btnNew.TabIndex = 8;
-            this.btnNew.Text = "New...";
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.btnNew;
@@ -197,6 +208,56 @@
             this.layoutControlItem5.Size = new System.Drawing.Size(264, 58);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
+            // 
+            // colDate
+            // 
+            this.colDate.Caption = "Date";
+            this.colDate.FieldName = "Date";
+            this.colDate.MinWidth = 50;
+            this.colDate.Name = "colDate";
+            this.colDate.Visible = true;
+            this.colDate.VisibleIndex = 0;
+            this.colDate.Width = 187;
+            // 
+            // colEmployeeName
+            // 
+            this.colEmployeeName.Caption = "Employee";
+            this.colEmployeeName.FieldName = "EmployeeName";
+            this.colEmployeeName.MinWidth = 50;
+            this.colEmployeeName.Name = "colEmployeeName";
+            this.colEmployeeName.Visible = true;
+            this.colEmployeeName.VisibleIndex = 1;
+            this.colEmployeeName.Width = 187;
+            // 
+            // colCustomerCardNumber
+            // 
+            this.colCustomerCardNumber.Caption = "Customer Card Number";
+            this.colCustomerCardNumber.FieldName = "CustomerCardNumber";
+            this.colCustomerCardNumber.MinWidth = 50;
+            this.colCustomerCardNumber.Name = "colCustomerCardNumber";
+            this.colCustomerCardNumber.Visible = true;
+            this.colCustomerCardNumber.VisibleIndex = 2;
+            this.colCustomerCardNumber.Width = 187;
+            // 
+            // colPaymentMethod
+            // 
+            this.colPaymentMethod.Caption = "Payment Method";
+            this.colPaymentMethod.FieldName = "PaymentMethod";
+            this.colPaymentMethod.MinWidth = 50;
+            this.colPaymentMethod.Name = "colPaymentMethod";
+            this.colPaymentMethod.Visible = true;
+            this.colPaymentMethod.VisibleIndex = 3;
+            this.colPaymentMethod.Width = 187;
+            // 
+            // colTotaValue
+            // 
+            this.colTotaValue.Caption = "Tota Value";
+            this.colTotaValue.FieldName = "TotaValue";
+            this.colTotaValue.MinWidth = 50;
+            this.colTotaValue.Name = "colTotaValue";
+            this.colTotaValue.Visible = true;
+            this.colTotaValue.VisibleIndex = 4;
+            this.colTotaValue.Width = 187;
             // 
             // FormTransactionList
             // 
@@ -214,11 +275,11 @@
             this.Load += new System.EventHandler(this.FormTransactionList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlTransactions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewTransactions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
@@ -245,5 +306,10 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private BindingSource bsTransactions;
+        private DevExpress.XtraGrid.Columns.GridColumn colDate;
+        private DevExpress.XtraGrid.Columns.GridColumn colEmployeeName;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomerCardNumber;
+        private DevExpress.XtraGrid.Columns.GridColumn colPaymentMethod;
+        private DevExpress.XtraGrid.Columns.GridColumn colTotaValue;
     }
 }
