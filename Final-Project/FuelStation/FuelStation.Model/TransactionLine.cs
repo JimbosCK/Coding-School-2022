@@ -4,7 +4,7 @@ namespace FuelStation.Model
     public class TransactionLine : BaseEntity
     {
         public Guid TransactionID { get; set; }
-        public Transaction Transaction { get; set; }
+        //public Transaction Transaction { get; set; }
         public Guid ItemID { get; set; } 
         public Item Item { get; set; } 
         public int Quantity { get; set; }

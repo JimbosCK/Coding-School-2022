@@ -35,11 +35,9 @@ namespace FuelStation.Blazor.Server.Controllers
             
             foreach (var transaction in transactions)
             {
-                var transactionCustomer = new Customer();
-                var transactionEmployee = new Employee();
-                transactionCustomer = await _customerRepo.GetByIdAsync(transaction.CustomerID);
+                var transactionCustomer = await _customerRepo.GetByIdAsync(transaction.CustomerID);
                 var customerCardNumber = transactionCustomer is not null ? transactionCustomer.CardNumber : "N/A";
-                transactionEmployee = await _employeeRepo.GetByIdAsync(transaction.EmployeeID);
+                var transactionEmployee = await _employeeRepo.GetByIdAsync(transaction.EmployeeID);
                 var employeeName = transactionEmployee is not null ? transactionEmployee.FullName : "N/A";
 
                 transactionViewModels.Add(new TransactionViewModel()

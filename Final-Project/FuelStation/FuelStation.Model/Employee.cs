@@ -9,7 +9,7 @@ namespace FuelStation.Model
         public EmployeeTypeEnum EmployeeType { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
-        public List<Transaction> Transactions { get; set; }
+        //public List<Transaction> Transactions { get; set; }
 
     }
 }

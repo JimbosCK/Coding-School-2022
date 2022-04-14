@@ -20,7 +20,7 @@ namespace FuelStation.EF.Context
             builder.Property(transactionLine => transactionLine.DiscountValue).HasPrecision(7, 2);
             builder.Property(transactionLine => transactionLine.TotalValue).HasPrecision(7, 2);
 
-            builder.HasOne(transactionLine => transactionLine.Transaction).WithMany(transaction => transaction.TransactionLines).HasForeignKey(transactionLine => transactionLine.TransactionID);
+            //builder.HasOne(transactionLine => transactionLine.Transaction).WithMany(transaction => transaction.TransactionLines).HasForeignKey(transactionLine => transactionLine.TransactionID);
             builder.HasOne(transactionLine => transactionLine.Item).WithMany(item => item.TransactionLines).HasForeignKey(transactionLine => transactionLine.ItemID);
 
 

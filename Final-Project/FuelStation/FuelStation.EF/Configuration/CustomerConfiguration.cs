@@ -21,7 +21,7 @@ namespace FuelStation.EF.Context
 
             builder.Ignore(customer => customer.FullName);
 
-            builder.HasMany(customer => customer.Transactions).WithOne(transaction => transaction.Customer).HasForeignKey(transaction => transaction.CustomerID);
+           // builder.HasMany(customer => customer.Transactions).WithOne(transaction => transaction.Customer).HasForeignKey(transaction => transaction.CustomerID);
 
         }
     }
