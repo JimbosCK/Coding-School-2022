@@ -21,6 +21,19 @@ namespace FuelStation.Win
             lookup.ValueMember = "Key";
             lookup.ShowHeader = false;
         }
+        public void PopulatePaymentMethod(RepositoryItemLookUpEdit lookup)
+        {
+            var types = new Dictionary<PaymentMethodEnum, string>()
+            {
+                { PaymentMethodEnum.CreditCard, "Credit Card" },
+                { PaymentMethodEnum.Cash, "Cash" }
+            };
 
+            lookup.DataSource = types;
+            lookup.Columns.Add(new LookUpColumnInfo("Value"));
+            lookup.DisplayMember = "Value";
+            lookup.ValueMember = "Key";
+            lookup.ShowHeader = false;
+        }
     }
 }

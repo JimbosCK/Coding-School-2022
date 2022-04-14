@@ -7,8 +7,11 @@ namespace FuelStation.Win
     public partial class FormTransactionList : XtraFormWithServerConnection
     {
         private List<TransactionViewModel> _transactionList = new();
+        private FormRepositoryHandler _formRepoHandler;
+
         public FormTransactionList()
         {
+            _formRepoHandler = (FormRepositoryHandler)Program.ServiceProvider.GetService(typeof(FormRepositoryHandler));
             InitializeComponent();
         }
 
@@ -17,6 +20,7 @@ namespace FuelStation.Win
             try
             {
                 _transactionList = await httpClient.GetFromJsonAsync<List<TransactionViewModel>>("transaction");
+                _formRepoHandler.PopulatePaymentMethod(repositoryPaymentMethod);
                 SetUpBindings();
             }
             catch (Exception ex)

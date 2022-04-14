@@ -49,6 +49,7 @@
             this.colCustomerCardNumber = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPaymentMethod = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTotaValue = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryPaymentMethod = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlTransactions)).BeginInit();
@@ -61,6 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransactions)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryPaymentMethod)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -123,6 +125,8 @@
             this.grdCtrlTransactions.Location = new System.Drawing.Point(12, 12);
             this.grdCtrlTransactions.MainView = this.grdViewTransactions;
             this.grdCtrlTransactions.Name = "grdCtrlTransactions";
+            this.grdCtrlTransactions.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryPaymentMethod});
             this.grdCtrlTransactions.Size = new System.Drawing.Size(1878, 961);
             this.grdCtrlTransactions.TabIndex = 4;
             this.grdCtrlTransactions.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -242,6 +246,7 @@
             // colPaymentMethod
             // 
             this.colPaymentMethod.Caption = "Payment Method";
+            this.colPaymentMethod.ColumnEdit = this.repositoryPaymentMethod;
             this.colPaymentMethod.FieldName = "PaymentMethod";
             this.colPaymentMethod.MinWidth = 50;
             this.colPaymentMethod.Name = "colPaymentMethod";
@@ -258,6 +263,13 @@
             this.colTotaValue.Visible = true;
             this.colTotaValue.VisibleIndex = 4;
             this.colTotaValue.Width = 187;
+            // 
+            // repositoryPaymentMethod
+            // 
+            this.repositoryPaymentMethod.AutoHeight = false;
+            this.repositoryPaymentMethod.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryPaymentMethod.Name = "repositoryPaymentMethod";
             // 
             // FormTransactionList
             // 
@@ -285,6 +297,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransactions)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryPaymentMethod)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -311,5 +324,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCustomerCardNumber;
         private DevExpress.XtraGrid.Columns.GridColumn colPaymentMethod;
         private DevExpress.XtraGrid.Columns.GridColumn colTotaValue;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryPaymentMethod;
     }
 }
