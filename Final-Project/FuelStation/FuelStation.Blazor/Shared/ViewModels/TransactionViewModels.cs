@@ -5,6 +5,7 @@ namespace FuelStation.Blazor.Shared.ViewModels
 {
     public class TransactionViewModel
     {
+        public Guid ID { get; set; }
         public DateTime Date { get; set; }
         public Guid EmployeeID { get; set; }
         public Guid CustomerID { get; set; }
@@ -15,6 +16,7 @@ namespace FuelStation.Blazor.Shared.ViewModels
 
     public class TransactionLineViewModel
     {
+        public Guid ID { get; set; }
         public Guid TransactionID { get; set; }
         public Guid ItemID { get; set; }
         public int Quantity { get; set; }
