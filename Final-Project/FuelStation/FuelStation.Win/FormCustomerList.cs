@@ -14,8 +14,16 @@ namespace FuelStation.Win
 
         private async void FormCustomerList_Load(object sender, EventArgs e)
         {
-            customerList = await httpClient.GetFromJsonAsync<List<CustomerListViewModel>>("customer");
-            SetUpBindings();
+            try
+            {
+                customerList = await httpClient.GetFromJsonAsync<List<CustomerListViewModel>>("customer");
+                SetUpBindings();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, $"Error retrieving Data from database.\n[{ex}]",
+                this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         #region Btn Clicks

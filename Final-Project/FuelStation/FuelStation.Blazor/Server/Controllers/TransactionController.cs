@@ -29,17 +29,33 @@ namespace FuelStation.Blazor.Server.Controllers
         [HttpGet]
         public async Task<IEnumerable<TransactionViewModel>> Get()
         {
-            var result = await _transactionRepo.GetAllAsync();
-            return result.Select(x => new TransactionViewModel
+            var transactionViewModels = new List<TransactionViewModel>();
+
+            var transactions = await _transactionRepo.GetAllAsync();
+            
+            foreach (var transaction in transactions)
             {
-                ID = x.ID,
-                Date = x.Date,
-                CustomerID = x.CustomerID,
-                EmployeeID = x.EmployeeID,
-                PaymentMethod  =x.PaymentMethod,
-                TotalValue = x.TotalValue,
-                TransactionLines = x.TransactionLines
-            });
+                var transactionCustomer = new Customer();
+                var transactionEmployee = new Employee();
+                transactionCustomer = await _customerRepo.GetByIdAsync(transaction.CustomerID);
+                var customerCardNumber = transactionCustomer is not null ? transactionCustomer.CardNumber : "N/A";
+                transactionEmployee = await _employeeRepo.GetByIdAsync(transaction.EmployeeID);
+                var employeeName = transactionEmployee is not null ? transactionEmployee.FullName : "N/A";
+
+                transactionViewModels.Add(new TransactionViewModel()
+                {
+                    ID = transaction.ID,
+                    Date = transaction.Date,
+                    CustomerID = transaction.CustomerID,
+                    CustomerCardNumber = customerCardNumber,
+                    EmployeeID = transaction.EmployeeID,
+                    EmployeeName = employeeName,
+                    PaymentMethod = transaction.PaymentMethod,
+                    TotalValue = transaction.TotalValue,
+                    TransactionLines = transaction.TransactionLines
+                });
+            }
+            return transactionViewModels;
         }
 
     }

@@ -15,9 +15,18 @@ namespace FuelStation.Win
 
         private async void FormItemList_Load(object sender, EventArgs e)
         {
-            itemList = await httpClient.GetFromJsonAsync<List<ItemListViewModel>>("item");
-            _formRepoHandler.PopulateItemType(repositoryItemType);
-            SetUpBindings();
+            try
+            {
+                itemList = await httpClient.GetFromJsonAsync<List<ItemListViewModel>>("item");
+                _formRepoHandler.PopulateItemType(repositoryItemType);
+                SetUpBindings();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, $"Error retrieving Data from database.\n[{ex}]",
+                this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         #region BtnClicks

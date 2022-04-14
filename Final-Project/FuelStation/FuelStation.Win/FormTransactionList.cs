@@ -14,8 +14,16 @@ namespace FuelStation.Win
 
         private async void FormTransactionList_Load(object sender, EventArgs e)
         {
-            _transactionList = await httpClient.GetFromJsonAsync<List<TransactionViewModel>>("transaction");
-            SetUpBindings();
+            try
+            {
+                _transactionList = await httpClient.GetFromJsonAsync<List<TransactionViewModel>>("transaction");
+                SetUpBindings();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, $"Error retrieving Data from database.\n[{ex}]",
+                this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         #region Btn Clicks
