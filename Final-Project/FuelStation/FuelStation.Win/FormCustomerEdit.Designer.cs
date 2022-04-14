@@ -30,43 +30,43 @@
         {
             this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.labelErrors = new System.Windows.Forms.Label();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
+            this.textEditCardNumber = new DevExpress.XtraEditors.TextEdit();
+            this.textEditSurname = new DevExpress.XtraEditors.TextEdit();
             this.textEditName = new DevExpress.XtraEditors.TextEdit();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.ctrlName = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.textEditSurname = new DevExpress.XtraEditors.TextEdit();
-            this.ctrlSurname = new DevExpress.XtraLayout.LayoutControlItem();
-            this.textEditCardNumber = new DevExpress.XtraEditors.TextEdit();
             this.ctrlCardNumber = new DevExpress.XtraLayout.LayoutControlItem();
+            this.ctrlSurname = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem3 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem4 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.emptySpaceItem5 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.bsCustomer = new System.Windows.Forms.BindingSource(this.components);
-            this.labelErrors = new System.Windows.Forms.Label();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bsCustomer = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditCardNumber.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditSurname.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditSurname.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctrlSurname)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditCardNumber.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCardNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlSurname)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsCustomer)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -84,6 +84,61 @@
             this.layoutControl1.Size = new System.Drawing.Size(1617, 948);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // labelErrors
+            // 
+            this.labelErrors.ForeColor = System.Drawing.Color.Red;
+            this.labelErrors.Location = new System.Drawing.Point(12, 828);
+            this.labelErrors.Name = "labelErrors";
+            this.labelErrors.Size = new System.Drawing.Size(1593, 50);
+            this.labelErrors.TabIndex = 6;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Location = new System.Drawing.Point(1369, 882);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(236, 54);
+            this.btnCancel.StyleController = this.layoutControl1;
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(1146, 882);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(219, 54);
+            this.btnSave.StyleController = this.layoutControl1;
+            this.btnSave.TabIndex = 4;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // textEditCardNumber
+            // 
+            this.textEditCardNumber.Location = new System.Drawing.Point(182, 84);
+            this.textEditCardNumber.Name = "textEditCardNumber";
+            this.textEditCardNumber.Properties.MaxLength = 20;
+            this.textEditCardNumber.Size = new System.Drawing.Size(611, 48);
+            this.textEditCardNumber.StyleController = this.layoutControl1;
+            this.textEditCardNumber.TabIndex = 3;
+            // 
+            // textEditSurname
+            // 
+            this.textEditSurname.Location = new System.Drawing.Point(995, 12);
+            this.textEditSurname.Name = "textEditSurname";
+            this.textEditSurname.Properties.MaxLength = 20;
+            this.textEditSurname.Size = new System.Drawing.Size(610, 48);
+            this.textEditSurname.StyleController = this.layoutControl1;
+            this.textEditSurname.TabIndex = 2;
+            // 
+            // textEditName
+            // 
+            this.textEditName.Location = new System.Drawing.Point(182, 12);
+            this.textEditName.Name = "textEditName";
+            this.textEditName.Properties.MaxLength = 20;
+            this.textEditName.Size = new System.Drawing.Size(611, 48);
+            this.textEditName.StyleController = this.layoutControl1;
+            this.textEditName.TabIndex = 0;
             // 
             // Root
             // 
@@ -105,14 +160,6 @@
             this.Root.Size = new System.Drawing.Size(1617, 948);
             this.Root.TextVisible = false;
             // 
-            // textEditName
-            // 
-            this.textEditName.Location = new System.Drawing.Point(182, 12);
-            this.textEditName.Name = "textEditName";
-            this.textEditName.Size = new System.Drawing.Size(611, 48);
-            this.textEditName.StyleController = this.layoutControl1;
-            this.textEditName.TabIndex = 0;
-            // 
             // ctrlName
             // 
             this.ctrlName.Control = this.textEditName;
@@ -130,13 +177,14 @@
             this.emptySpaceItem1.Size = new System.Drawing.Size(1597, 692);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // textEditSurname
+            // ctrlCardNumber
             // 
-            this.textEditSurname.Location = new System.Drawing.Point(995, 12);
-            this.textEditSurname.Name = "textEditSurname";
-            this.textEditSurname.Size = new System.Drawing.Size(610, 48);
-            this.textEditSurname.StyleController = this.layoutControl1;
-            this.textEditSurname.TabIndex = 2;
+            this.ctrlCardNumber.Control = this.textEditCardNumber;
+            this.ctrlCardNumber.Location = new System.Drawing.Point(0, 72);
+            this.ctrlCardNumber.Name = "ctrlCardNumber";
+            this.ctrlCardNumber.Size = new System.Drawing.Size(785, 52);
+            this.ctrlCardNumber.Text = "Card Number";
+            this.ctrlCardNumber.TextSize = new System.Drawing.Size(158, 33);
             // 
             // ctrlSurname
             // 
@@ -146,23 +194,6 @@
             this.ctrlSurname.Size = new System.Drawing.Size(784, 52);
             this.ctrlSurname.Text = "Surname";
             this.ctrlSurname.TextSize = new System.Drawing.Size(158, 33);
-            // 
-            // textEditCardNumber
-            // 
-            this.textEditCardNumber.Location = new System.Drawing.Point(182, 84);
-            this.textEditCardNumber.Name = "textEditCardNumber";
-            this.textEditCardNumber.Size = new System.Drawing.Size(611, 48);
-            this.textEditCardNumber.StyleController = this.layoutControl1;
-            this.textEditCardNumber.TabIndex = 3;
-            // 
-            // ctrlCardNumber
-            // 
-            this.ctrlCardNumber.Control = this.textEditCardNumber;
-            this.ctrlCardNumber.Location = new System.Drawing.Point(0, 72);
-            this.ctrlCardNumber.Name = "ctrlCardNumber";
-            this.ctrlCardNumber.Size = new System.Drawing.Size(785, 52);
-            this.ctrlCardNumber.Text = "Card Number";
-            this.ctrlCardNumber.TextSize = new System.Drawing.Size(158, 33);
             // 
             // emptySpaceItem2
             // 
@@ -180,16 +211,6 @@
             this.emptySpaceItem3.Size = new System.Drawing.Size(28, 124);
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(1146, 882);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(219, 54);
-            this.btnSave.StyleController = this.layoutControl1;
-            this.btnSave.TabIndex = 4;
-            this.btnSave.Text = "Save";
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.btnSave;
@@ -198,16 +219,6 @@
             this.layoutControlItem4.Size = new System.Drawing.Size(223, 58);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.Location = new System.Drawing.Point(1369, 882);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(236, 54);
-            this.btnCancel.StyleController = this.layoutControl1;
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // layoutControlItem5
             // 
@@ -234,14 +245,6 @@
             this.emptySpaceItem5.Size = new System.Drawing.Size(785, 20);
             this.emptySpaceItem5.TextSize = new System.Drawing.Size(0, 0);
             // 
-            // labelErrors
-            // 
-            this.labelErrors.ForeColor = System.Drawing.Color.Red;
-            this.labelErrors.Location = new System.Drawing.Point(12, 828);
-            this.labelErrors.Name = "labelErrors";
-            this.labelErrors.Size = new System.Drawing.Size(1593, 50);
-            this.labelErrors.TabIndex = 6;
-            // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.labelErrors;
@@ -267,22 +270,22 @@
             this.Load += new System.EventHandler(this.FormCustomerEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditCardNumber.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditSurname.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditSurname.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctrlSurname)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditCardNumber.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlCardNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctrlSurname)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bsCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsCustomer)).EndInit();
             this.ResumeLayout(false);
 
         }
