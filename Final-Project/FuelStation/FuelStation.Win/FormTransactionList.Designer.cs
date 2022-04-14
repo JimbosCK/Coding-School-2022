@@ -130,6 +130,7 @@
             this.btnClose.StyleController = this.layoutControl1;
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // layoutControlItem2
             // 
@@ -148,6 +149,7 @@
             this.btnDelete.StyleController = this.layoutControl1;
             this.btnDelete.TabIndex = 6;
             this.btnDelete.Text = "Delete";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // layoutControlItem3
             // 
@@ -166,6 +168,7 @@
             this.btnEdit.StyleController = this.layoutControl1;
             this.btnEdit.TabIndex = 7;
             this.btnEdit.Text = "Edit...";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // layoutControlItem4
             // 
@@ -184,6 +187,7 @@
             this.btnNew.StyleController = this.layoutControl1;
             this.btnNew.TabIndex = 8;
             this.btnNew.Text = "New...";
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
             // 
             // layoutControlItem5
             // 

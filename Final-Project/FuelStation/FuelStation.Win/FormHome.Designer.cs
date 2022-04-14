@@ -37,7 +37,7 @@
             this.itemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemsList = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuTransactionList = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
             this.menuStrip2.SuspendLayout();
@@ -50,7 +50,7 @@
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
-            this.menuStrip1.Location = new System.Drawing.Point(0, 49);
+            this.menuStrip1.Location = new System.Drawing.Point(0, 52);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
             this.menuStrip1.Size = new System.Drawing.Size(1569, 24);
@@ -68,7 +68,7 @@
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip2.Size = new System.Drawing.Size(1569, 49);
+            this.menuStrip2.Size = new System.Drawing.Size(1569, 52);
             this.menuStrip2.TabIndex = 1;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -77,7 +77,7 @@
             this.customersToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuCustomerList});
             this.customersToolStripMenuItem.Name = "customersToolStripMenuItem";
-            this.customersToolStripMenuItem.Size = new System.Drawing.Size(184, 45);
+            this.customersToolStripMenuItem.Size = new System.Drawing.Size(184, 48);
             this.customersToolStripMenuItem.Text = "Customers";
             // 
             // menuCustomerList
@@ -105,16 +105,17 @@
             // transactionToolStripMenuItem
             // 
             this.transactionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.listToolStripMenuItem2});
+            this.menuTransactionList});
             this.transactionToolStripMenuItem.Name = "transactionToolStripMenuItem";
             this.transactionToolStripMenuItem.Size = new System.Drawing.Size(204, 48);
             this.transactionToolStripMenuItem.Text = "Transactions";
             // 
-            // listToolStripMenuItem2
+            // menuTransactionList
             // 
-            this.listToolStripMenuItem2.Name = "listToolStripMenuItem2";
-            this.listToolStripMenuItem2.Size = new System.Drawing.Size(228, 54);
-            this.listToolStripMenuItem2.Text = "List";
+            this.menuTransactionList.Name = "menuTransactionList";
+            this.menuTransactionList.Size = new System.Drawing.Size(448, 54);
+            this.menuTransactionList.Text = "List";
+            this.menuTransactionList.Click += new System.EventHandler(this.menuTransactionList_Click);
             // 
             // logoutToolStripMenuItem
             // 
@@ -156,7 +157,7 @@
         private ToolStripMenuItem itemsToolStripMenuItem;
         private ToolStripMenuItem menuItemsList;
         private ToolStripMenuItem transactionToolStripMenuItem;
-        private ToolStripMenuItem listToolStripMenuItem2;
+        private ToolStripMenuItem menuTransactionList;
         private ToolStripMenuItem logoutToolStripMenuItem;
     }
 }
