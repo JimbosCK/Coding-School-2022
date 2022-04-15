@@ -89,6 +89,7 @@ namespace FuelStation.Win
         }
         #endregion
 
+        #region Methods
         private void SetUpBindings()
         {
             bsItems.DataSource = itemList;
@@ -97,7 +98,6 @@ namespace FuelStation.Win
             bsTransactionLines.DataSource = transactionLineList;
             grdCtrlTransactionLines.DataSource = bsTransactionLines;
         }
-
         private bool DeletionIsConfirmed()
         {
             var result = MessageBox.Show(this, "Are you sure you want to delete the selected  transaction line?",
@@ -180,5 +180,6 @@ namespace FuelStation.Win
                 labelErrors.Text = "Database Error.";
             }
         }
+        #endregion
     }
 }
