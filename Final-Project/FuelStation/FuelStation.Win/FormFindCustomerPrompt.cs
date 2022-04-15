@@ -13,15 +13,11 @@ namespace FuelStation.Win
         {
             InitializeComponent();
         }
-        private async void FormFindCustomerPrompt_Shown(object sender, EventArgs e)
+        private void FormFindCustomerPrompt_VisibleChanged(object sender, EventArgs e)
         {
-            if (CustomerCardNumber != string.Empty)
+            if (! string.IsNullOrEmpty(CustomerCardNumber))
             {
-                var customers = await httpClient.GetFromJsonAsync<List<CustomerViewModel>>("customer");
-                var FormTransactionEdit = new FormTransactionEdit(customers.SingleOrDefault(x=>x.CardNumber == CustomerCardNumber).ID);
-                FormTransactionEdit.RefFindCustomerPrompt = this;
-                FormTransactionEdit.Show();
-                this.Hide();
+                OpenTransactionLineEdit(CustomerCardNumber);
             }
         }
 
@@ -31,6 +27,7 @@ namespace FuelStation.Win
             try
             {
                 ResetErrorLabel();
+                OpenTransactionLineEdit(textEditCustomerCardNumber.Text);
 
             }
             catch (Exception ex)
@@ -52,6 +49,29 @@ namespace FuelStation.Win
         }
 
         #endregion
+
+        #region Methods
+        private async void OpenTransactionLineEdit(string customerCardNumber)
+        {
+            try
+            {
+                var customer = await httpClient.GetFromJsonAsync<CustomerViewModel>($"customer/cardnumber/{customerCardNumber}");
+                if(customer is null)
+                {
+                    _errorFindingUser = true;
+                    return;
+                }
+                var formTransactionEdit = new FormTransactionEdit(customer.ID);
+                formTransactionEdit.RefFindCustomerPrompt = this;
+                formTransactionEdit.Show();
+                this.Hide();
+            }
+            catch(Exception e)
+            {
+                _errorFindingUser = true;
+            }
+            if (_errorFindingUser) ShowErrorLabel();
+        }
         private void ResetErrorLabel()
         {
             labelErrors.Text = string.Empty;
@@ -61,7 +81,6 @@ namespace FuelStation.Win
         {
             labelErrors.Text = "Could not find Customer's Card Number.";
         }
-
-
+        #endregion
     }
 }

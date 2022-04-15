@@ -36,23 +36,6 @@ else
                     <span style="color:red">Database error.</span>
 
                 }
-                @*
-
-                    public string Name { get; set; }
-                    [Required]
-                    public string Surname { get; set; }
-                    [Required]
-                    public EmployeeTypeEnum EmployeeType { get; set; }
-                    [Required]
-                    public DateTime HireDateStart { get; set; }
-                    public DateTime? HireDateEnd { get; set; }
-                    [Required]
-                    public decimal SallaryPerMonth { get; set; }
-                    [Required]
-                    public string Username { get; set; }
-                    [Required]
-                    public string Password { get; set; }*@
-
                 <div class="col-md-6">
                     <label for="name" class="form-label">Name</label>
                     <InputText class="form-control" id="name" @bind-Value="employee.Name" />

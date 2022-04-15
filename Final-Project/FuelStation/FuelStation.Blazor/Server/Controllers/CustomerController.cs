@@ -55,6 +55,32 @@ namespace FuelStation.Blazor.Server.Controllers
             }
 
         }
+        [HttpGet("cardnumber/{cardnumber}")]
+        public async Task<CustomerViewModel?> GetByCardNumber(string cardnumber)
+        {
+            CustomerViewModel customer = new();
+            try
+            {
+                if (!string.IsNullOrEmpty(cardnumber))
+                {
+                    var customers = await _customerRepo.GetAllAsync();
+                    var foundCustomer = (customers.SingleOrDefault(x => x.CardNumber == cardnumber));
+
+                    if (foundCustomer is null) return null;
+
+                    customer.ID = foundCustomer.ID;
+                    customer.Name = foundCustomer.Name;
+                    customer.Surname = foundCustomer.Surname;
+                    customer.CardNumber = foundCustomer.CardNumber;
+                }
+                return customer;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+        }
 
         [HttpDelete("{id:Guid}")]
         public async Task<ActionResult<CustomerListViewModel>> Delete(Guid id)
