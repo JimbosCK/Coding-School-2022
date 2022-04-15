@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
@@ -49,6 +50,8 @@
             this.emptySpaceItem5 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.spinEditQuantity = new DevExpress.XtraEditors.SpinEdit();
             this.ctrlQuantity = new DevExpress.XtraLayout.LayoutControlItem();
+            this.bsItems = new System.Windows.Forms.BindingSource(this.components);
+            this.bsTransactionLines = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
@@ -68,6 +71,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditQuantity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsTransactionLines)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -314,6 +319,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditQuantity.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ctrlQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bsTransactionLines)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -341,5 +348,7 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem4;
         private DevExpress.XtraLayout.LayoutControlItem ctrlQuantity;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem5;
+        private BindingSource bsItems;
+        private BindingSource bsTransactionLines;
     }
 }
