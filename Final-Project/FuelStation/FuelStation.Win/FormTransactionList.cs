@@ -31,14 +31,17 @@ namespace FuelStation.Win
         }
 
         #region Btn Clicks
-        private void btnNew_Click(object sender, EventArgs e)
+        private async void btnNew_Click(object sender, EventArgs e)
         {
             var formFindCustomer = new FormFindCustomerPrompt();
-            formFindCustomer.ShowDialog();
+            var result = formFindCustomer.ShowDialog();
+
+            if (result == DialogResult.OK || result == DialogResult.Cancel) await UpdateListWithLatest();
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
+            if (DeletionIsConfirmed())
+                _ = DeleteTransaction();
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -52,7 +55,37 @@ namespace FuelStation.Win
             bsTransactions.DataSource = _transactionList;
             grdCtrlTransactions.DataSource = bsTransactions;
         }
+        private void FormTransactionList_VisibleChanged(object sender, EventArgs e)
+        {
+            RefreshGrids();
+        }
+        private void RefreshGrids()
+        {
+            grdCtrlTransactions.Refresh();
+            grdViewTransactions.RefreshData();
 
+        }
+        private bool DeletionIsConfirmed()
+        {
+            var result = MessageBox.Show(this, "Are you sure you want to delete the selected Transaction?",
+                this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            return result == DialogResult.Yes;
+        }
+        private async Task DeleteTransaction()
+        {
+            var transaction = bsTransactions.Current as TransactionViewModel;
+            if (transaction is null)
+                return;
+            var response = await httpClient.DeleteAsync($"transaction/{transaction.ID}");
+            response.EnsureSuccessStatusCode();
+            bsTransactions.Remove(transaction);
+        }
+        private async Task UpdateListWithLatest()
+        {
+            _transactionList = await httpClient.GetFromJsonAsync<List<TransactionViewModel>>("transaction");
+            bsTransactions.DataSource = _transactionList;
+            RefreshGrids();
+        }
         #endregion
     }
 }

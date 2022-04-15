@@ -260,7 +260,14 @@
             this.Name = "FormTransactionList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Transactions";
+            this.Activated += new System.EventHandler(this.FormTransactionList_VisibleChanged);
             this.Load += new System.EventHandler(this.FormTransactionList_Load);
+            this.Shown += new System.EventHandler(this.FormTransactionList_VisibleChanged);
+            this.BindingContextChanged += new System.EventHandler(this.FormTransactionList_VisibleChanged);
+            this.EnabledChanged += new System.EventHandler(this.FormTransactionList_VisibleChanged);
+            this.VisibleChanged += new System.EventHandler(this.FormTransactionList_VisibleChanged);
+            this.Enter += new System.EventHandler(this.FormTransactionList_VisibleChanged);
+            this.ParentChanged += new System.EventHandler(this.FormTransactionList_VisibleChanged);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlTransactions)).EndInit();

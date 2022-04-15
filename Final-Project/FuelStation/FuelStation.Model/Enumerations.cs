@@ -17,9 +17,9 @@ namespace FuelStation.Model
 
     public enum ItemTypeEnum
     {
-        Fuel,
-        Product,
-        Service
+        Fuel =0,
+        Product = 1,
+        Service = 2
     }
     public enum MonthsEnum
     {

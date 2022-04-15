@@ -109,6 +109,7 @@ namespace FuelStation.Win
                 if ((int)response.StatusCode == 500) databaseError = true;
                 UpdateErrorMessages();
                 response.EnsureSuccessStatusCode();
+
                 this.DialogResult = DialogResult.OK;
                 if (RefFindCustomerPrompt is not null)
                 {

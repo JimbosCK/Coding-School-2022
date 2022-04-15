@@ -56,5 +56,61 @@ namespace FuelStation.Blazor.Server.Controllers
             return transactionViewModels;
         }
 
+        [HttpPost]
+        public async Task<ActionResult> Post(TransactionVesselViewModel transaction)
+        {
+            try
+            {
+                var transactionViewModel = transaction.Transaction;
+                var newTransaction = new Transaction()
+                {
+                    Date = transactionViewModel.Date,
+                    EmployeeID = transactionViewModel.EmployeeID,
+                    CustomerID = transactionViewModel.CustomerID,
+                    PaymentMethod = transactionViewModel.PaymentMethod,
+                    TotalValue = transactionViewModel.TotalValue,
+                };
+                foreach (var line in transaction.TransactionLists)
+                {
+                    newTransaction.TransactionLines.Add(new TransactionLine()
+                    {
+                        TransactionID = newTransaction.ID,
+                        ItemID = line.ItemID,
+                        Quantity = line.Quantity,
+                        ItemPrice = line.ItemPrice,
+                        NetValue = line.NetValue,
+                        DiscountPercent = line.DiscountPercent,
+                        DiscountValue = line.DiscountValue,
+                        TotalValue = line.TotalValue
+                    });
+                }
+                await _transactionRepo.CreateAsync(newTransaction);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                   "Error processing data: " + e.ToString());
+            }
+        }
+
+        [HttpDelete("{id:Guid}")]
+        public async Task<ActionResult<TransactionViewModel>> Delete(Guid id)
+        {
+            try
+            {
+                var transactionToDelete = await _transactionRepo.GetByIdAsync(id);
+
+                if (transactionToDelete is null) return NotFound($"Transaction with Id = {id} not found");
+
+                await _transactionRepo.DeleteAsync(id);
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data: " + e.ToString());
+            }
+        }
     }
 }

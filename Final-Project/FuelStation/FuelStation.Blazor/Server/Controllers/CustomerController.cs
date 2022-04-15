@@ -79,7 +79,6 @@ namespace FuelStation.Blazor.Server.Controllers
             {
                 return null;
             }
-
         }
 
         [HttpDelete("{id:Guid}")]
