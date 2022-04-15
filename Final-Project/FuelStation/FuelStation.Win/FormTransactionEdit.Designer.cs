@@ -214,7 +214,7 @@
             // 
             this.btnAddItem.Location = new System.Drawing.Point(12, 1311);
             this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(167, 54);
+            this.btnAddItem.Size = new System.Drawing.Size(366, 54);
             this.btnAddItem.StyleController = this.layoutControl1;
             this.btnAddItem.TabIndex = 5;
             this.btnAddItem.Text = "Add Item(s)";
@@ -451,7 +451,7 @@
             this.layoutControlItem3.Control = this.btnAddItem;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 1299);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(171, 58);
+            this.layoutControlItem3.Size = new System.Drawing.Size(370, 58);
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
@@ -476,9 +476,9 @@
             // emptySpaceItem4
             // 
             this.emptySpaceItem4.AllowHotTrack = false;
-            this.emptySpaceItem4.Location = new System.Drawing.Point(171, 1299);
+            this.emptySpaceItem4.Location = new System.Drawing.Point(370, 1299);
             this.emptySpaceItem4.Name = "emptySpaceItem4";
-            this.emptySpaceItem4.Size = new System.Drawing.Size(1977, 58);
+            this.emptySpaceItem4.Size = new System.Drawing.Size(1778, 58);
             this.emptySpaceItem4.TextSize = new System.Drawing.Size(0, 0);
             // 
             // ctrlQuantity

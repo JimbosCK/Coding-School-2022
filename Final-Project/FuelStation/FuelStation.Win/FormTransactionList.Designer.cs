@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.btnNew = new DevExpress.XtraEditors.SimpleButton();
-            this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
-            this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.grdCtrlTransactions = new DevExpress.XtraGrid.GridControl();
             this.grdViewTransactions = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colDate = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -41,6 +37,10 @@
             this.colPaymentMethod = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryPaymentMethod = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
             this.colTotalValue = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnNew = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
+            this.btnClose = new DevExpress.XtraEditors.SimpleButton();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -48,11 +48,11 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.bsTransactions = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
-            this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewTransactions)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryPaymentMethod)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
@@ -61,50 +61,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsTransactions)).BeginInit();
             this.SuspendLayout();
-            // 
-            // layoutControl1
-            // 
-            this.layoutControl1.Controls.Add(this.btnNew);
-            this.layoutControl1.Controls.Add(this.btnDelete);
-            this.layoutControl1.Controls.Add(this.btnClose);
-            this.layoutControl1.Controls.Add(this.grdCtrlTransactions);
-            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1902, 1043);
-            this.layoutControl1.TabIndex = 0;
-            this.layoutControl1.Text = "layoutControl1";
-            // 
-            // btnNew
-            // 
-            this.btnNew.Location = new System.Drawing.Point(1167, 977);
-            this.btnNew.Name = "btnNew";
-            this.btnNew.Size = new System.Drawing.Size(243, 54);
-            this.btnNew.StyleController = this.layoutControl1;
-            this.btnNew.TabIndex = 8;
-            this.btnNew.Text = "New...";
-            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(1414, 977);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(239, 54);
-            this.btnDelete.StyleController = this.layoutControl1;
-            this.btnDelete.TabIndex = 6;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(1657, 977);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(233, 54);
-            this.btnClose.StyleController = this.layoutControl1;
-            this.btnClose.TabIndex = 5;
-            this.btnClose.Text = "Close";
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // grdCtrlTransactions
             // 
@@ -189,6 +145,50 @@
             this.colTotalValue.VisibleIndex = 4;
             this.colTotalValue.Width = 187;
             // 
+            // layoutControl1
+            // 
+            this.layoutControl1.Controls.Add(this.btnNew);
+            this.layoutControl1.Controls.Add(this.btnDelete);
+            this.layoutControl1.Controls.Add(this.btnClose);
+            this.layoutControl1.Controls.Add(this.grdCtrlTransactions);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.Root = this.Root;
+            this.layoutControl1.Size = new System.Drawing.Size(1902, 1043);
+            this.layoutControl1.TabIndex = 0;
+            this.layoutControl1.Text = "layoutControl1";
+            // 
+            // btnNew
+            // 
+            this.btnNew.Location = new System.Drawing.Point(1167, 977);
+            this.btnNew.Name = "btnNew";
+            this.btnNew.Size = new System.Drawing.Size(243, 54);
+            this.btnNew.StyleController = this.layoutControl1;
+            this.btnNew.TabIndex = 8;
+            this.btnNew.Text = "New...";
+            this.btnNew.Click += new System.EventHandler(this.btnNew_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(1414, 977);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(239, 54);
+            this.btnDelete.StyleController = this.layoutControl1;
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(1657, 977);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(233, 54);
+            this.btnClose.StyleController = this.layoutControl1;
+            this.btnClose.TabIndex = 5;
+            this.btnClose.Text = "Close";
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -268,11 +268,11 @@
             this.VisibleChanged += new System.EventHandler(this.FormTransactionList_VisibleChanged);
             this.Enter += new System.EventHandler(this.FormTransactionList_VisibleChanged);
             this.ParentChanged += new System.EventHandler(this.FormTransactionList_VisibleChanged);
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
-            this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdCtrlTransactions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewTransactions)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryPaymentMethod)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
