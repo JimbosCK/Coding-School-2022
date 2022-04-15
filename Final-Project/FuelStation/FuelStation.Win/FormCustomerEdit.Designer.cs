@@ -119,7 +119,7 @@
             this.textEditCardNumber.Name = "textEditCardNumber";
             this.textEditCardNumber.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.SimpleMaskManager));
             this.textEditCardNumber.Properties.MaskSettings.Set("MaskManagerSignature", "ignoreMaskBlank=True");
-            this.textEditCardNumber.Properties.MaskSettings.Set("mask", "\\AAAAAAAAAAAAAAAAAAAA");
+            this.textEditCardNumber.Properties.MaskSettings.Set("mask", "\\AAaaaaaaaaaaaaaaaaaa");
             this.textEditCardNumber.Properties.MaskSettings.Set("ignoreMaskBlank", false);
             this.textEditCardNumber.Properties.MaxLength = 20;
             this.textEditCardNumber.Size = new System.Drawing.Size(611, 48);
