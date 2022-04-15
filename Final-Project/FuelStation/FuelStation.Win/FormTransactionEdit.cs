@@ -22,6 +22,11 @@ namespace FuelStation.Win
             _appState = (AppState)Program.ServiceProvider.GetService(typeof(AppState));
             _formRepoHandler = (FormRepositoryHandler)Program.ServiceProvider.GetService(typeof(FormRepositoryHandler));
             _customerID = customerID;
+
+            newTransaction.Date = DateTime.Now;
+            newTransaction.EmployeeID = _appState.EmployeeID;
+            newTransaction.CustomerID = customerID;
+
             InitializeComponent();
         }
 
@@ -29,8 +34,6 @@ namespace FuelStation.Win
         {
             try
             {
-                newTransaction.Date = DateTime.Now;
-                //newTransaction.EmployeeID = _appState.
                 itemList = await httpClient.GetFromJsonAsync<List<ItemListViewModel>>("item");
                 _formRepoHandler.PopulateItemType(repositoryItemType);
                 SetUpBindings();
