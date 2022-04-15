@@ -63,7 +63,7 @@ namespace FuelStation.Win
                 }
                 var formTransactionEdit = new FormTransactionEdit(customer.ID);
                 formTransactionEdit.RefFindCustomerPrompt = this;
-                formTransactionEdit.Show();
+                formTransactionEdit.ShowDialog();
                 this.Hide();
             }
             catch(Exception e)
