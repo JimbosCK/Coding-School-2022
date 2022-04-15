@@ -8,6 +8,7 @@ namespace FuelStation.Blazor.Shared.Services
     {
         private bool _loggedIn;
         private EmployeeTypeEnum _employeeType;
+        private Guid _employeeID;
         public event Action OnChange;
         public bool LoggedIn
         {
@@ -33,6 +34,19 @@ namespace FuelStation.Blazor.Shared.Services
                 }
             }
         }
+        public Guid EmployeeID
+        {
+            get { return _employeeID; }
+            set
+            {
+                if (_employeeID != value)
+                {
+                    _employeeID = value;
+                    NotifyStateChanged();
+                }
+            }
+        }
+
 
         private void NotifyStateChanged() => OnChange?.Invoke();
     }

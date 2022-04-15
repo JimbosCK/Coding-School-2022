@@ -1,4 +1,5 @@
 ﻿
+using FuelStation.Blazor.Shared.Services;
 using FuelStation.Blazor.Shared.ViewModels;
 using System.Net.Http.Json;
 
@@ -11,11 +12,14 @@ namespace FuelStation.Win
         private List<ItemListViewModel> itemList = new();
         private TransactionViewModel newTransaction = new();
         private FormRepositoryHandler _formRepoHandler;
+        private AppState _appState;
+
         public FormFindCustomerPrompt RefFindCustomerPrompt { get; set; }
 
 
         public FormTransactionEdit(Guid customerID)
         {
+            _appState = (AppState)Program.ServiceProvider.GetService(typeof(AppState));
             _formRepoHandler = (FormRepositoryHandler)Program.ServiceProvider.GetService(typeof(FormRepositoryHandler));
             _customerID = customerID;
             InitializeComponent();
@@ -25,6 +29,8 @@ namespace FuelStation.Win
         {
             try
             {
+                newTransaction.Date = DateTime.Now;
+                //newTransaction.EmployeeID = _appState.
                 itemList = await httpClient.GetFromJsonAsync<List<ItemListViewModel>>("item");
                 _formRepoHandler.PopulateItemType(repositoryItemType);
                 SetUpBindings();
@@ -107,6 +113,8 @@ namespace FuelStation.Win
         {
             grdCtrlTransactionLines.Refresh();
             grdViewTransactionLines.RefreshData();
+
+            textEditTotalPrice.Text = newTransaction.TotalValue.ToString();
 
             spinEditQuantity.Text = "1";
         }

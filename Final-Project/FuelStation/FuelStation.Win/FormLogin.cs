@@ -51,6 +51,7 @@ namespace FuelStation.Win
                 {
                     _appState.LoggedIn = true;
                     _appState.EmployeeType = verifiedEmployee.EmployeeType;
+                    _appState.EmployeeID = verifiedEmployee.ID;
 
                     if (refToHome is null)
                     {
