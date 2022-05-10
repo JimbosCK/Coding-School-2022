@@ -6,72 +6,64 @@
 @inject NavigationManager navigationManager
 @inject HttpClient httpClient
 
-@if (!IsAuthorized())
-{
-    <FuelStation.Blazor.Client.Components.AccessDenied />
+@if (!IsAuthorized()) {
+        <FuelStation.Blazor.Client.Components.AccessDenied />
 
 }
-else
-{
-    <h3>Item Managment</h3>
-    @if (isLoading)
-    {
-        <span>Loading...</span>
+else {
+        <h3>Item Managment</h3>
+    @if (isLoading) {
+               <div class="lds-hourglass"></div>
     }
-    else
-    {
-        <EditForm Model="@item" OnValidSubmit="@OnSave">
-            <DataAnnotationsValidator />
-            <ValidationSummary />
-            <div class="row">
-                @if (codeAlreadyExists)
-                {
-                    <span style="color:red">Code already exists.</span>
+    else {
+                <EditForm Model="@item" OnValidSubmit="@OnSave">
+                    <DataAnnotationsValidator />
+                    <ValidationSummary />
+                    <div class="row">
+                @if (codeAlreadyExists) {
+                                <span style="color:red">Code already exists.</span>
                 }
-                @if (itemDoesNotExist)
-                {
-                    <span style="color:red">Item was not found.</span>
+                @if (itemDoesNotExist) {
+                                <span style="color:red">Item was not found.</span>
                 }
-                @if (databaseError)
-                {
-                    <span style="color:red">Database error.</span>
+                @if (databaseError) {
+                                <span style="color:red">Database error.</span>
 
                 }
 
-                <div class="col-md-6">
-                    <label class="form-label">Code</label>
-                    <InputText class="form-control" id="code" @bind-Value="item.Code" />
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label">Description</label>
-                    <InputText class="form-control" id="description" @bind-Value="item.Description" />
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label">Price</label>
-                    <InputNumber class="form-control" id="price" @bind-Value="item.Price" />
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label">Cost</label>
-                    <InputNumber class="form-control" id="cost" @bind-Value="item.Cost" />
-                </div>
-                <div class="col-md-6">
-                    <label class="form-label mt-2">Item Type</label>
-                    <select class="form-select" @bind="@item.ItemType">
-                        @foreach (var type in Enum.GetValues(typeof(ItemTypeEnum)))
-                        {
-                            <option value="@type">@type</option>
+                        <div class="col-md-6">
+                            <label class="form-label">Code</label>
+                            <InputText class="form-control" id="code" @bind-Value="item.Code" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Description</label>
+                            <InputText class="form-control" id="description" @bind-Value="item.Description" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Price</label>
+                            <InputNumber class="form-control" id="price" @bind-Value="item.Price" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Cost</label>
+                            <InputNumber class="form-control" id="cost" @bind-Value="item.Cost" />
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label mt-2">Item Type</label>
+                            <select class="form-select" @bind="@item.ItemType">
+                        @foreach (var type in Enum.GetValues(typeof(ItemTypeEnum))) {
+                                        <option value="@type">@type</option>
                         }
-                    </select>
-                </div>
+                            </select>
+                        </div>
 
-            </div>
-            <div class="row mt-2">
-                <div class="col">
-                    <button class="btn btn-success" type="submit">Save</button>
-                    <button class="btn btn-danger" @onclick="OnCancel">Cancel</button>
-                </div>
-            </div>
-        </EditForm>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col">
+                            <button class="btn btn-success" type="submit">Save</button>
+                            <button class="btn btn-danger" @onclick="OnCancel">Cancel</button>
+                        </div>
+                    </div>
+                </EditForm>
     }
 }
 
@@ -83,34 +75,27 @@ else
     private bool itemDoesNotExist = false;
     private bool databaseError = false;
 
-    protected override async Task OnInitializedAsync()
-    {
+    protected override async Task OnInitializedAsync() {
         await LoadItemsFromServer();
         isLoading = false;
     }
 
-    private async Task LoadItemsFromServer()
-    {
+    private async Task LoadItemsFromServer() {
         if (id.HasValue)
             item = await httpClient.GetFromJsonAsync<ItemListViewModel>($"item/{id}");
     }
 
-    private void OnCancel()
-    {
+    private void OnCancel() {
         navigationManager.NavigateTo("Items");
     }
 
-    private async Task OnSave()
-    {
+    private async Task OnSave() {
         HttpResponseMessage response;
-        try
-        {
-            if (id == Guid.Empty || id== null)
-            {
+        try {
+            if (id == Guid.Empty || id == null) {
                 response = await httpClient.PostAsJsonAsync("item", item);
             }
-            else
-            {
+            else {
                 response = await httpClient.PutAsJsonAsync("item", item);
             }
 
@@ -119,14 +104,12 @@ else
             response.EnsureSuccessStatusCode();
             if ((int)response.StatusCode == 200) navigationManager.NavigateTo("items");
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             databaseError = true;
         }
     }
 
-    private bool IsAuthorized()
-    {
+    private bool IsAuthorized() {
         return accessHandler.HasAccessToItems(appState);
     }
 
