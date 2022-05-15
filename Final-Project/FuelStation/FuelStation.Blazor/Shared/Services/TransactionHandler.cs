@@ -37,7 +37,7 @@ namespace FuelStation.Blazor.Shared.Services
         }
         public TransactionViewModel UpdateTransaction(TransactionViewModel transaction, List<TransactionLineViewModel> transactionLines)
         {
-            transaction.TotalValue = transactionLines.Sum(x => x.NetValue);
+            transaction.TotalValue = transactionLines.Sum(x => x.TotalValue);
             return transaction;
         }
         public bool HasToPayWithCash(decimal TotalValue)
