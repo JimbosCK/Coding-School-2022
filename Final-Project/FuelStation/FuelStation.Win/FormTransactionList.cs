@@ -55,9 +55,9 @@ namespace FuelStation.Win
             bsTransactions.DataSource = _transactionList;
             grdCtrlTransactions.DataSource = bsTransactions;
         }
-        private void FormTransactionList_VisibleChanged(object sender, EventArgs e)
+        private async void FormTransactionList_VisibleChanged(object sender, EventArgs e)
         {
-            RefreshGrids();
+            await UpdateListWithLatest();
         }
         private void RefreshGrids()
         {
