@@ -26,6 +26,7 @@ namespace FuelStation.Win
         {
             try
             {
+                labelErrors.Focus();
                 ResetErrorLabel();
                 OpenTransactionLineEdit(textEditCustomerCardNumber.Text);
 
