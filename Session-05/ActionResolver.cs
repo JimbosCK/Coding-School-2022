@@ -100,7 +100,7 @@ namespace Session_05 {
             int numOfWords = 0;
             int maxLengthOfWord = 0;
             int? indexOfBiggestWord = null;
-            string outputUpper = str;
+            string outputUpper = str ??= string.Empty;
 
             try {
                 string[] words = str.Split(' ');
