@@ -1,0 +1,16 @@
+﻿@page "/home"
+@using FuelStation.Blazor.Shared.Services
+@inject AppState AppState
+
+<PageTitle>Home</PageTitle>
+@if (!AppState.LoggedIn)
+{
+    <FuelStation.Blazor.Client.Components.AccessDenied />
+}
+else
+{
+    <h1>Hello, @AppState.EmployeeType</h1>
+
+   <span>Welcome to your new app.</span> 
+}
+

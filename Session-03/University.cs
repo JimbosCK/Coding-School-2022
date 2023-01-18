@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Session_03 {
+    [Serializable]
     internal class University : Institute{
         public Student[] Students;
         public Course[] Courses;

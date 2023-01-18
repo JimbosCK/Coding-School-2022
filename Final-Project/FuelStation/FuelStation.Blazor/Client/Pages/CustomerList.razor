@@ -1,0 +1,88 @@
+﻿@page "/customers"
+@using FuelStation.Blazor.Shared.ViewModels
+@inject AppState AppState
+@inject NavigationManager navigationManager
+@inject HttpClient httpClient
+@inject AccessHandler accessHandler
+
+@if (IsAuthorized())
+{
+    <h3>
+        <span>Customers (@{@customerList.Count();})</span>
+    </h3>
+    @if (isLoading)
+    {
+        <div class="lds-hourglass"></div>
+    }
+    else
+    {
+        <button class="btn btn-primary" @onclick="AddNewCustomer">New Customer</button>
+
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Card Number</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var customer in customerList)
+                {
+                    <tr>
+                        <td>@customer.FullName</td>
+                        <td>@customer.CardNumber</td>
+                        <td>
+                            <button class="btn btn-primary" @onclick="() => EditCustomer(customer)">Edit</button>
+                            <button class="btn btn-danger" @onclick="() => DeleteCustomer(customer)">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+else
+{
+    <FuelStation.Blazor.Client.Components.AccessDenied />
+}
+
+
+@code {
+    private bool isLoading = true;
+    private List<CustomerListViewModel> customerList = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadItemsFromServer();
+        isLoading = false;
+    }
+
+    private async Task LoadItemsFromServer()
+    {
+        customerList = await httpClient.GetFromJsonAsync<List<CustomerListViewModel>>("customer");
+    }
+
+    private async Task EditCustomer(CustomerListViewModel customer)
+    {
+        navigationManager.NavigateTo($"/Customers/Edit/{customer.ID}");
+
+    }
+
+    private async Task AddNewCustomer()
+    {
+        navigationManager.NavigateTo("/customers/edit");
+    }
+
+    private async Task DeleteCustomer(CustomerListViewModel customer)
+    {
+        var response = await httpClient.DeleteAsync($"customer/{customer.ID}");
+        response.EnsureSuccessStatusCode();
+        await LoadItemsFromServer();
+    }
+    private bool IsAuthorized()
+    {
+        return accessHandler.HasAccessToCustomers(AppState);
+    }
+
+}

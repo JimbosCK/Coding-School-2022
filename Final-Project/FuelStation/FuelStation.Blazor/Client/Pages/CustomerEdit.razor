@@ -1,0 +1,120 @@
+﻿@page "/customers/edit/{id:guid?}"
+@using FuelStation.Blazor.Shared.ViewModels
+@using FuelStation.Model
+@inject AppState appState
+@inject NavigationManager navigationManager
+@inject HttpClient httpClient
+@inject AccessHandler accessHandler
+
+@if (!IsAuthorized())
+{
+    <FuelStation.Blazor.Client.Components.AccessDenied />
+}
+else
+{
+    <h3>Item Managment</h3>
+    @if (isLoading)
+    {
+        <div class="lds-hourglass"></div>
+    }
+    else
+    {
+        <EditForm Model="@customer" OnValidSubmit="@OnSave">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="row">
+                @if (codeAlreadyExists)
+                {
+                    <span style="color:red">Code already exists.</span>
+                }
+                @if (itemDoesNotExist)
+                {
+                    <span style="color:red">Item was not found.</span>
+                }
+                @if (databaseError)
+                {
+                    <span style="color:red">Database error.</span>
+
+                }
+
+                <div class="col-md-6">
+                    <label class="form-label">Name</label>
+                    <InputText class="form-control" id="code" @bind-Value="customer.Name" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Surname</label>
+                    <InputText class="form-control" id="description" @bind-Value="customer.Surname" />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Card Number</label>
+                    <InputText class="form-control" id="price" @bind-Value="customer.CardNumber" />
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <button class="btn btn-success" type="submit">Save</button>
+                    <button class="btn btn-danger" @onclick="OnCancel">Cancel</button>
+                </div>
+            </div>
+        </EditForm>
+    }
+}
+
+@code {
+    [Parameter] public Guid? id { get; set; }
+    private bool isLoading = true;
+    private CustomerViewModel? customer = new();
+    private bool codeAlreadyExists = false;
+    private bool itemDoesNotExist = false;
+    private bool databaseError = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadItemsFromServer();
+        isLoading = false;
+    }
+
+    private async Task LoadItemsFromServer()
+    {
+        if (id.HasValue)
+            customer = await httpClient.GetFromJsonAsync<CustomerViewModel>($"customer/{id}");
+    }
+
+    private void OnCancel()
+    {
+        navigationManager.NavigateTo("customers");
+    }
+
+    private async Task OnSave()
+    {
+        HttpResponseMessage response;
+        try
+        {
+            if (id == Guid.Empty || id== null)
+            {
+                response = await httpClient.PostAsJsonAsync("customer", customer);
+            }
+            else
+            {
+                response = await httpClient.PutAsJsonAsync("customer", customer);
+            }
+
+            if ((int)response.StatusCode == 422) codeAlreadyExists = true;
+            if ((int)response.StatusCode == 404) itemDoesNotExist = true;
+            response.EnsureSuccessStatusCode();
+            if ((int)response.StatusCode == 200) navigationManager.NavigateTo("customers");
+        }
+        catch (Exception e)
+        {
+            databaseError = true;
+        }
+
+
+    }
+    private bool IsAuthorized()
+    {
+        return accessHandler.HasAccessToCustomers(appState);
+    }
+
+        }
+

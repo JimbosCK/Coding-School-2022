@@ -3,16 +3,18 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
-    <RootNamespace>Session_06</RootNamespace>
+    <RootNamespace>Session_07</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="Calculation">
-      <HintPath>Calculation\obj\Debug\net6.0\Calculation.dll</HintPath>
-    </Reference>
+    <PackageReference Include="devexpress.win.design" Version="21.2.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Uni\Uni.csproj" />
   </ItemGroup>
 
 </Project>

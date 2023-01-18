@@ -1,0 +1,141 @@
+﻿@page "/employees/edit/{id:guid?}"
+@using FuelStation.Blazor.Shared.ViewModels
+@using FuelStation.Model
+@inject AppState appState
+@inject NavigationManager navigationManager
+@inject HttpClient httpClient
+@inject AccessHandler accessHandler
+
+@if (!IsAuthorized())
+{
+    <FuelStation.Blazor.Client.Components.AccessDenied />
+}
+else
+{
+    <h3>Item Managment</h3>
+    @if (isLoading)
+    {
+        <div class="lds-hourglass"></div>
+    }
+    else
+    {
+        <EditForm Model="@employee" OnValidSubmit="@OnSave">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="row">
+                @if (codeAlreadyExists)
+                {
+                    <span style="color:red">Code already exists.</span>
+                }
+                @if (itemDoesNotExist)
+                {
+                    <span style="color:red">Item was not found.</span>
+                }
+                @if (databaseError)
+                {
+                    <span style="color:red">Database error.</span>
+
+                }
+                <div class="col-md-6">
+                    <label for="name" class="form-label">Name</label>
+                    <InputText class="form-control" id="name" @bind-Value="employee.Name" />
+                </div>
+                <div class="col-md-6">
+                    <label for="surname" class="form-label">Surname</label>
+                    <InputText class="form-control" id="surname" @bind-Value="employee.Surname" />
+                </div>
+                <div class="col-md-6">
+                    <label for="type" class="form-label mt-2">Item Type</label>
+                    <select id="type" class="form-select" @bind="@employee.EmployeeType">
+                        @foreach (var type in Enum.GetValues(typeof(EmployeeTypeEnum)))
+                        {
+                            <option value="@type">@type</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label" for="hireDate">Hire Date</label>
+                    <InputDate class="form-control" id="hireDate" @bind-Value="employee.HireDateStart" />
+                </div>
+                <div class="col-md-6">
+                    <label for="sallary" class="form-label">Sallary per month</label>
+                    <InputNumber class="form-control" id="sallary" @bind-Value="employee.SallaryPerMonth" />
+                </div>
+                <div class="col-md-6">
+                    <label for="username" class="form-label">Username</label>
+                    <InputText class="form-control" id="username" @bind-Value="employee.Username" />
+                </div>
+                <div class="col-md-6">
+                    <label for="password" class="form-label">Password</label>
+                    <InputText class="form-control" id="password" @bind-Value="employee.Password" />
+                </div>
+
+            </div>
+            <div class="row mt-2">
+                <div class="col">
+                    <button class="btn btn-success" type="submit">Save</button>
+                    <button class="btn btn-danger" @onclick="OnCancel">Cancel</button>
+                </div>
+            </div>
+        </EditForm>
+    }
+}
+
+@code {
+    [Parameter] public Guid? id { get; set; }
+    private bool isLoading = true;
+    private EmployeeViewModel? employee = new();
+    private bool codeAlreadyExists = false;
+    private bool itemDoesNotExist = false;
+    private bool databaseError = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadItemsFromServer();
+        isLoading = false;
+    }
+
+    private async Task LoadItemsFromServer()
+    {
+        if (id.HasValue)
+            employee = await httpClient.GetFromJsonAsync<EmployeeViewModel>($"employee/{id}");
+    }
+
+    private void OnCancel()
+    {
+        navigationManager.NavigateTo("employees");
+    }
+
+    private async Task OnSave()
+    {
+        HttpResponseMessage response;
+        try
+        {
+            if (id == Guid.Empty || id == null)
+            {
+                response = await httpClient.PostAsJsonAsync("employee", employee);
+            }
+            else
+            {
+                response = await httpClient.PutAsJsonAsync("employee", employee);
+            }
+
+            if ((int)response.StatusCode == 422) codeAlreadyExists = true;
+            if ((int)response.StatusCode == 404) itemDoesNotExist = true;
+            response.EnsureSuccessStatusCode();
+            if ((int)response.StatusCode == 200) navigationManager.NavigateTo("employees");
+        }
+        catch (Exception e)
+        {
+            databaseError = true;
+        }
+
+
+    }
+    private bool IsAuthorized()
+    {
+        return accessHandler.HasAccessToEmployees(appState);
+    }
+
+        }
+
