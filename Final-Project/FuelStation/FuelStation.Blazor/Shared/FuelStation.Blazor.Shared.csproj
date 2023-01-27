@@ -11,10 +11,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="DevExpress.XtraEditors.v21.2">
-      <HintPath>..\..\..\..\..\..\..\..\..\..\..\..\..\Program Files (x86)\DevExpress 21.2\Components\Offline Packages\devexpress.win.navigation\21.2.6\lib\netcoreapp3.0\DevExpress.XtraEditors.v21.2.dll</HintPath>
+    <Reference Include="DevExpress.Data.v22.2">
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\DevExpress 22.2\Components\Tools\eXpressAppFrameworkNetCore\Model Editor\DevExpress.Data.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v22.2">
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\DevExpress 22.2\Components\Tools\eXpressAppFrameworkNetCore\Model Editor\DevExpress.Utils.v22.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v22.2">
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\DevExpress 22.2\Components\Tools\eXpressAppFrameworkNetCore\Model Editor\DevExpress.XtraEditors.v22.2.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
