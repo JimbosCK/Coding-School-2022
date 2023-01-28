@@ -8,11 +8,12 @@ namespace FuelStation.Win
         private AppState _appState;
         private AccessHandler _accessHandler;
 
-        public FormLogin RefToLogin { get; set; }
+        public FormLogin RefToLogin { get; set; } = new();
         public FormHome()
         {
-            _appState = (AppState)Program.ServiceProvider.GetService(typeof(AppState));
-            _accessHandler = (AccessHandler)Program.ServiceProvider.GetService(typeof(AccessHandler));
+            RefToLogin.refToHome = this;
+            _appState = Program.ServiceProvider.GetService(typeof(AppState)) as AppState ?? new AppState();
+            _accessHandler = Program.ServiceProvider.GetService(typeof(AccessHandler)) as AccessHandler ?? new AccessHandler();
             InitializeComponent();
         }
         private void FormHome_Load(object sender, EventArgs e)
