@@ -49,7 +49,7 @@ namespace FuelStation.Blazor.Server.Controllers
                 }
                 return customer;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -75,7 +75,7 @@ namespace FuelStation.Blazor.Server.Controllers
                 }
                 return customer;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }

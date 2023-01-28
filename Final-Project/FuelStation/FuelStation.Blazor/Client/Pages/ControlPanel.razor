@@ -76,7 +76,7 @@ else
             response.EnsureSuccessStatusCode();
             if ((int)response.StatusCode == 200) navigationManager.NavigateTo("home");
         }
-        catch (Exception e)
+        catch (Exception)
         {
             databaseError = true;
         }
