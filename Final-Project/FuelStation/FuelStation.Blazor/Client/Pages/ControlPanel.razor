@@ -58,7 +58,7 @@ else
 
     private async Task LoadItemsFromServer()
     {
-        fuelStation = await httpClient.GetFromJsonAsync<FuelStationShopViewModel>($"ledger/fuelstation");
+        fuelStation = await httpClient.GetFromJsonAsync<FuelStationShopViewModel>($"ledger/fuelstation") ?? new FuelStationShopViewModel();
     }
 
     private void OnCancel()
