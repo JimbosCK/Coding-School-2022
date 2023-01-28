@@ -79,7 +79,7 @@ namespace FuelStation.Win
         {
             try
             {
-                _customer = await httpClient.GetFromJsonAsync<CustomerViewModel>($"customer/{editCustomerID}");
+                _customer = await httpClient.GetFromJsonAsync<CustomerViewModel>($"customer/{editCustomerID}") ?? new CustomerViewModel();
                 CopyItem(_customer, _backupCustomer);
                 UpdateBindings();
             }

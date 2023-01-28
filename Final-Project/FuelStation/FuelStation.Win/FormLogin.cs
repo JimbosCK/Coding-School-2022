@@ -14,7 +14,7 @@ namespace FuelStation.Win
 
         public FormLogin()
         {
-            _appState = (AppState)Program.ServiceProvider.GetService(typeof(AppState));
+            _appState = Program.ServiceProvider.GetService(typeof(AppState)) as AppState ?? new AppState();
             InitializeComponent();
         }
         private void FormLogin_Load(object sender, EventArgs e)

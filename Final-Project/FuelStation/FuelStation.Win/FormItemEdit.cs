@@ -19,7 +19,7 @@ namespace FuelStation.Win
             _backupItem = new ItemListViewModel();
             _item = item;
             CopyItem(item, _backupItem);
-            _formRepoHandler = (FormRepositoryHandler)Program.ServiceProvider.GetService(typeof(FormRepositoryHandler));
+            _formRepoHandler = Program.ServiceProvider.GetService(typeof(FormRepositoryHandler)) as FormRepositoryHandler ?? new FormRepositoryHandler();
             InitializeComponent();
         }
         

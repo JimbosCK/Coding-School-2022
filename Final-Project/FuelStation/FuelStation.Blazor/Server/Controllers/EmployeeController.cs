@@ -58,7 +58,7 @@ namespace FuelStation.Blazor.Server.Controllers
                 }
                 return employee;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }

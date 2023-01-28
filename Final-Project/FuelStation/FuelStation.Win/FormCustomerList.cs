@@ -16,7 +16,7 @@ namespace FuelStation.Win
         {
             try
             {
-                customerList = await httpClient.GetFromJsonAsync<List<CustomerListViewModel>>("customer");
+                customerList = await httpClient.GetFromJsonAsync<List<CustomerListViewModel>>("customer") ?? new List<CustomerListViewModel> ();
                 SetUpBindings();
             }
             catch (Exception ex)
@@ -67,7 +67,7 @@ namespace FuelStation.Win
         }
         private async Task UpdateListWithLatest()
         {
-            customerList = await httpClient.GetFromJsonAsync<List<CustomerListViewModel>>("customer");
+            customerList = await httpClient.GetFromJsonAsync<List<CustomerListViewModel>>("customer") ?? new List<CustomerListViewModel>();
             bsCustomers.DataSource = customerList;
             grdCtrlCustomers.Refresh();
         }

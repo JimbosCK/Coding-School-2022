@@ -23,7 +23,7 @@ namespace FuelStation.Win {
                 OpenTransactionLineEdit(textEditCustomerCardNumber.Text);
 
             }
-            catch (Exception ex) {
+            catch (Exception) {
                 _errorFindingUser = true;
             }
             if (_errorFindingUser) ShowErrorLabel();
@@ -53,7 +53,7 @@ namespace FuelStation.Win {
                 formTransactionEdit.ShowDialog();
                 this.Hide();
             }
-            catch (Exception e) {
+            catch (Exception) {
                 _errorFindingUser = true;
             }
             if (_errorFindingUser) ShowErrorLabel();

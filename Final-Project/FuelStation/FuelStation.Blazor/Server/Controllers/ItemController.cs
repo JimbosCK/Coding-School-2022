@@ -52,7 +52,7 @@ namespace FuelStation.Blazor.Server.Controllers
                 }
                 return item;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }

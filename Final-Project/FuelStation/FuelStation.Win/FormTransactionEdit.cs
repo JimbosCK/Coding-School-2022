@@ -22,9 +22,9 @@ namespace FuelStation.Win
 
         public FormTransactionEdit(Guid customerID)
         {
-            _appState = (AppState)Program.ServiceProvider.GetService(typeof(AppState));
-            _transactionHandler = (TransactionHandler)Program.ServiceProvider.GetService(typeof(TransactionHandler));
-            _formRepoHandler = (FormRepositoryHandler)Program.ServiceProvider.GetService(typeof(FormRepositoryHandler));
+            _appState = Program.ServiceProvider.GetService(typeof(AppState)) as AppState ?? new AppState();
+            _transactionHandler = Program.ServiceProvider.GetService(typeof(TransactionHandler)) as TransactionHandler ?? new TransactionHandler();
+            _formRepoHandler = Program.ServiceProvider.GetService(typeof(FormRepositoryHandler)) as FormRepositoryHandler ?? new FormRepositoryHandler();
             _customerID = customerID;
 
             newTransaction.Date = DateTime.Now;
@@ -38,7 +38,7 @@ namespace FuelStation.Win
         {
             try
             {
-                itemList = await httpClient.GetFromJsonAsync<List<ItemListViewModel>>("item");
+                itemList = await httpClient.GetFromJsonAsync<List<ItemListViewModel>>("item") ?? new List<ItemListViewModel>();
                 _formRepoHandler.PopulateItemType(repositoryItemType);
                 _formRepoHandler.PopulatePaymentMethod(lookUpPaymentMethod.Properties);
                 lookUpPaymentMethod.EditValue = PaymentMethodEnum.Cash;

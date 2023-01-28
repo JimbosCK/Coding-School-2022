@@ -11,7 +11,7 @@ namespace FuelStation.Win
 
         public FormTransactionList()
         {
-            _formRepoHandler = (FormRepositoryHandler)Program.ServiceProvider.GetService(typeof(FormRepositoryHandler));
+            _formRepoHandler = (FormRepositoryHandler)Program.ServiceProvider.GetService(typeof(FormRepositoryHandler)) ?? new FormRepositoryHandler();
             InitializeComponent();
         }
 
@@ -19,7 +19,7 @@ namespace FuelStation.Win
         {
             try
             {
-                _transactionList = await httpClient.GetFromJsonAsync<List<TransactionViewModel>>("transaction");
+                _transactionList = await httpClient.GetFromJsonAsync<List<TransactionViewModel>>("transaction") ?? new List<TransactionViewModel>();
                 _formRepoHandler.PopulatePaymentMethod(repositoryPaymentMethod);
                 SetUpBindings();
             }
@@ -82,7 +82,7 @@ namespace FuelStation.Win
         }
         private async Task UpdateListWithLatest()
         {
-            _transactionList = await httpClient.GetFromJsonAsync<List<TransactionViewModel>>("transaction");
+            _transactionList = await httpClient.GetFromJsonAsync<List<TransactionViewModel>>("transaction") ?? new List<TransactionViewModel>();
             bsTransactions.DataSource = _transactionList;
             RefreshGrids();
         }

@@ -9,7 +9,7 @@ namespace FuelStation.Win
         private FormRepositoryHandler _formRepoHandler;
         public FormItemList()
         {
-            _formRepoHandler = (FormRepositoryHandler)Program.ServiceProvider.GetService(typeof(FormRepositoryHandler));
+            _formRepoHandler = Program.ServiceProvider.GetService(typeof(FormRepositoryHandler)) as FormRepositoryHandler ?? new FormRepositoryHandler();
             InitializeComponent();
         }
 
@@ -17,7 +17,7 @@ namespace FuelStation.Win
         {
             try
             {
-                itemList = await httpClient.GetFromJsonAsync<List<ItemListViewModel>>("item");
+                itemList = await httpClient.GetFromJsonAsync<List<ItemListViewModel>>("item") ?? new List<ItemListViewModel>();
                 _formRepoHandler.PopulateItemType(repositoryItemType);
                 SetUpBindings();
             }
@@ -65,7 +65,7 @@ namespace FuelStation.Win
         }
         private async Task UpdateListWithLatest()
         {
-            itemList = await httpClient.GetFromJsonAsync<List<ItemListViewModel>>("item");
+            itemList = await httpClient.GetFromJsonAsync<List<ItemListViewModel>>("item") ?? new List<ItemListViewModel>();
             bsItems.DataSource = itemList;
             grdCtrlItems.Refresh();
         }
