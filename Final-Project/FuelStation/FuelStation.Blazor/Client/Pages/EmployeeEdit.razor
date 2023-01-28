@@ -125,7 +125,7 @@ else
             response.EnsureSuccessStatusCode();
             if ((int)response.StatusCode == 200) navigationManager.NavigateTo("employees");
         }
-        catch (Exception e)
+        catch (Exception)
         {
             databaseError = true;
         }
