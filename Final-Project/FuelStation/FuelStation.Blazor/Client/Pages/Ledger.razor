@@ -69,7 +69,7 @@ else
     //@bind="ledger.Date"
     private async Task LoadItemsFromServer()
     {
-        ledger = await httpClient.GetFromJsonAsync<LedgerViewModel>($"ledger/{ledger.Date.Year}/{ledger.Date.Month}");
+        ledger = await httpClient.GetFromJsonAsync<LedgerViewModel>($"ledger/{ledger.Date.Year}/{ledger.Date.Month}") ?? new LedgerViewModel();
     }
     private async Task UpdateLedger(ChangeEventArgs  e)
     {

@@ -68,7 +68,7 @@ else
 
     private async Task LoadItemsFromServer()
     {
-        itemList = await httpClient.GetFromJsonAsync<List<ItemListViewModel>>("item");
+        itemList = await httpClient.GetFromJsonAsync<List<ItemListViewModel>>("item") ?? new List<ItemListViewModel>();
     }
 
     private async Task EditItem(ItemListViewModel item)
