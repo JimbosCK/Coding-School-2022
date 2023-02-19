@@ -118,7 +118,7 @@ else
     }
 
     private async Task LoadItemsFromServer()
-    {
+    { 
         employeeList = await httpClient.GetFromJsonAsync<List<EmployeeListViewModel>>("employee") ?? new List<EmployeeListViewModel>();
         activeEmployeeList = employeeList.Where(x => x.HireDateEnd is null).ToList() ?? new List<EmployeeListViewModel>();
         terminatedEmployeeList = employeeList.Where(x => x.HireDateEnd is not null).ToList();
